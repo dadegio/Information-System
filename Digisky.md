@@ -1,11 +1,49 @@
 # Progetto di Sistemi Informativi – Digisky
 
 ## 1. Introduzione all’azienda
+
 ### 1.1 Descrizione generale di Digisky
-### 1.2 Dimensione aziendale
-### 1.3 Bilancio annuale
-### 1.4 Servizi offerti
-### 1.5 Obiettivi aziendali e strategia
+**DigiSky S.r.l.** è una società torinese attiva nel settore aerospaziale, con particolare specializzazione nell’Earth 
+Observation, nel monitoraggio aereo del territorio, nei sistemi avionici e nelle missioni di rilievo digitale. 
+L’azienda dichiara oltre 20 anni di esperienza nel settore aerospace e opera tramite soluzioni proprietarie rivolte a 
+settori come agricoltura di precisione, infrastrutture, utilities, gestione del rischio ambientale e sorveglianza.
+
+La società è inoltre indicata come azienda certificata EASA e fornisce servizi di progettazione avionica e test in volo 
+di sistemi, tecnologie e sensori. Un elemento distintivo è la presenza operativa presso il Torino Aeritalia Airport, dove
+DigiSky dispone di laboratori, infrastrutture e una propria flotta per attività sperimentali e operative.
+
+### 1.2 Dimensione aziendale e bilancio annuale
+
+DigiSky di fatto è una PMI innovativa e specializzata, con una struttura aziendale contenuta, sull'ordine dei 10 dipendenti,
+ma ad alta competenza tecnica. Tale competenza si dimostra anche nei fatturati: DigiSky S.r.l. ha registrato nel 2024 un 
+fatturato di circa 1,74 milioni di euro e un utile netto di circa 187 mila euro. 
+
+### 1.3 Servizi offerti
+DigiSky offre servizi e soluzioni legati a monitoraggio aereo, Earth Observation, progettazione avionica e sistemi per 
+missioni speciali. Le principali aree di attività includono:
+- **Earth Observation e monitoraggio territoriale**: L’azienda sviluppa tecnologie per l’osservazione e il 
+monitoraggio di territorio, infrastrutture, foreste, emergenze ambientali e aziende con asset distribuiti sul territorio. 
+Tra i diversi servizi in tale ambito figurano anche osservazioni per l'agricoltura di precisione, linee elettriche, ferrovie,
+pipeline, bacini idroelettrici e dighe;
+- **Progettazione e test avionici**: l'azienda supporta OEM aerospaziali e clienti industriali nelle fasi di progettazione, 
+sviluppo, produzione e qualificazione in volo di sistemi avionici.
+- **SmartBay e integrazione sensori**: DigiSky ha sviluppato e brevettato SmartBay, un sistema per l’imbarco di sensori 
+su velivoli di aviazione generale, installabile su piattaforme ad ala fissa o rotante, vantando inoltre configurazioni 
+SmartBay certificate su velivoli Tecnam P92 JS e P2006;
+- **Skymetry e SkyGate**: Nel 2026 DigiSky infine ha presentato le business unit Skymetry® e SkyGate®: la prima dedicata ai servizi di Earth 
+Observation ad altissima risoluzione, la seconda alla calibrazione e validazione di sistemi per applicazioni aeronautiche e spaziali
+
+### 1.4 Obiettivi aziendali e strategia (DA RIVEDERE)
+L’azienda si pone come obiettivo principale quello di democratizzare le attività di monitoraggio aereo, offrendo soluzioni 
+accessibili, versatili e ad alto contenuto tecnologico. La strategia aziendale si basa su quattro pilastri:
+- Integrazione verticale della catena del valore, dalla progettazione avionica alla raccolta dati, pianificazione delle missioni,
+operazioni di volo, validazione dei dati e produzione di mappe digitali tematiche.
+- **Uso di tecnologie proprietarie** (e.g. SmartBay e Skymetry) per differenziarsi nel mercato del telerilevamento e della 
+mappatura aerea. 
+- Sfruttamento della posizione geografica nel settore aerospace, grazie alla sede operativa presso l’aeroporto Torino 
+Aeritalia e alla presenza nei network aerospaziali regionali e dell’ESA Business Network. 
+- Supporto a innovazione, R&D e test in volo, anche tramite una propria flotta di aeromobili equipaggiati con sistemi 
+avionici, pensata per validare tecnologie e dispositivi in condizioni operative reali.
 
 ## 2. Analisi organizzativa
 ### 2.1 Modello organizzativo
