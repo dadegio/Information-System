@@ -208,13 +208,342 @@ informativi più importanti dei vari processi.
 
 
 ### 4.1.3 Introduzione di strumenti di Business Intelligence
+
+L’introduzione di strumenti di Business Intelligence ha l’obiettivo di trasformare i dati raccolti dal sistema informativo 
+in informazioni utili per il controllo e il miglioramento dei processi aziendali.
+
+Poiché l’azienda gestisce grandi quantità di dati diventa importante poter monitorare in modo chiaro l’utilizzo dello storage,
+lo stato delle commesse, i tempi di lavorazione e i costi associati ai dataset prodotti. Gli strumenti di BI permettono 
+quindi di leggere i dati presenti nel database centralizzato e trasformarli in dashboard, indicatori e report consultabili
+dalla direzione, dai project manager e dai responsabili tecnici.
+
+Tradotto nel modello che proponiamo, questo si collega principalmente al database PostgreSQL/PostGIS, dal quale recupera 
+informazioni relative a clienti, commesse, missioni di volo, dataset, dimensioni dei file, stato delle elaborazioni, output 
+prodotti e posizione dei dati nello storage. In questo modo, i dati tecnici e gestionali raccolti durante il ciclo di vita 
+della commessa possono essere utilizzati per ottenere una visione complessiva dell’attività aziendale.
+
+Ad esempio, attraverso una dashboard dedicata allo storage, sarà possibile visualizzare informazioni come:
+```
+spazio totale utilizzato: int
+spazio disponibile sul NAS: int
+spazio occupato nel cloud: int
+crescita mensile dello storage: float
+spazio occupato per cliente: array
+spazio occupato per commessa: array
+costo stimato per TB: float
+dataset non consultati da oltre 12 mesi: array
+dataset candidati allo spostamento in cold storage: array
+```
+
+Queste informazioni permettono, secondo noi, di passare da una gestione basata su controlli manuali e verifiche puntuali a 
+una gestione più proattiva, fondata su dati aggiornati e facilmente consultabili. Ad esempio, la direzione potrà individuare 
+quali clienti generano più dati, quali commesse hanno un costo di archiviazione più elevato o quali dataset possono essere 
+spostati dal NAS locale verso uno storage cloud più economico.
+
+Collegando i dati tecnici presenti nel database con informazioni economiche, come valore della commessa, costi di archiviazione e tempi di 
+lavorazione, sarà inoltre possibile stimare meglio la redditività dei progetti grazie a strumenti del genere. Di seguito proponiamo 
+una possibile organizzazione delle dashboard:
+
+| Dashboard                         | Descrizione                                                  | Indicatori principali                                                                                     |
+| --------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| **Storage e costi**               | Monitora l’utilizzo dello spazio e i costi di archiviazione. | TB totali, spazio su NAS, spazio su cloud, crescita mensile, costo per TB, dati per cliente.              |
+| **Commesse**                      | Monitora lo stato di avanzamento dei progetti.               | Commesse attive, commesse concluse, commesse in ritardo, output da validare, tempi di consegna.           |
+| **Produzione tecnica**            | Analizza le attività operative e i dati prodotti.            | Missioni svolte, GB prodotti per missione, sensori utilizzati, elaborazioni completate, rilavorazioni.    |
+| **Economico-gestionale**          | Collega i dati tecnici ai dati economici.                    | Ricavo per commessa, costo storage per commessa, redditività cliente, clienti ad alto consumo di storage. |
+| **Monitoraggio infrastrutturale** | Controlla lo stato tecnico dei sistemi.                      | Spazio residuo NAS, stato backup, errori di sincronizzazione, saturazione storage, alert tecnici.         |
+
+La nostra proposta ricade sull'adozione di **Metabase** come strumento principale di Business Intelligence: esso consente di creare 
+dashboard e report collegandosi direttamente al 
+database senza introdurre un’infrastruttura eccessivamente complessa. Attraverso Metabase sarà possibile 
+monitorare indicatori relativi allo spazio occupato, alla crescita dello storage, allo stato delle commesse, ai dataset 
+archiviati, ai tempi di elaborazione e ai costi associati ai dati prodotti. La scelta di Metabase permette inoltre di contenere 
+i costi iniziali, mantenendo comunque la possibilità di realizzare dashboard operative e direzionali facilmente consultabili 
+dagli utenti autorizzati. In questo modo DigiSky potrà passare da una gestione reattiva, basata su controlli manuali e 
+verifiche occasionali, a una gestione più proattiva come dicevamo prima e basata su dati aggiornati.
+
 ### 4.1.4 Introduzione di un sistema documentale
-### 4.1.5 Portale HR per cedolini e documenti dei dipendenti
-### 4.1.6 Automazione dei workflow interni
+
+L’introduzione di un sistema documentale ha l’obiettivo di separare la gestione dei documenti aziendali dalla gestione 
+dei dataset tecnici pesanti. Nel contesto analizzato, infatti, non tutti i file hanno la stessa natura: da un lato esistono
+immagini RAW, ortofoto, mappe e file geospaziali di grandi dimensioni; dall’altro lato esistono documenti amministrativi, 
+commerciali, tecnici e HR che richiedono logiche di gestione diverse.
+
+Il sistema documentale non ha quindi lo scopo di archiviare i 100 TB di dati aerofotogrammetrici prodotti dall’azienda. 
+Questi continueranno a essere gestiti tramite NAS locale e cloud object storage. Il documentale servirà invece per organizzare 
+e controllare documenti come contratti, offerte, report tecnici, certificazioni, manuali, documenti amministrativi, documenti 
+di commessa e documentazione del personale.
+
+Attualmente, l’utilizzo di Google Drive come contenitore unico rischia di creare confusione tra dati molto diversi tra loro. 
+Nello stesso ambiente possono trovarsi cartelle con foto RAW, mappe elaborate, report finali, preventivi, contratti, fatture 
+e documenti interni. Questa situazione rende più difficile individuare la versione corretta di un documento, controllare gli 
+accessi, ricostruire lo storico delle modifiche e distinguere i documenti ufficiali dai file di lavoro.
+
+Nel modello TO BE, il sistema documentale viene introdotto per gestire in modo ordinato i documenti aziendali, lasciando 
+allo storage tecnico il compito di conservare i file pesanti. In questo modo ogni categoria di informazione viene trattata 
+con lo strumento più adatto.
+
+Una possibile classificazione dei documenti gestiti è la seguente:
+
+| Categoria               | Documenti gestiti                                                        | Utenti principali                        |
+| ----------------------- | ------------------------------------------------------------------------ | ---------------------------------------- |
+| **Commerciale**         | offerte, preventivi, contratti, documenti cliente                        | direzione, commerciale, amministrazione  |
+| **Tecnica**             | report tecnici, manuali, documenti di commessa, certificazioni operative | tecnici, project manager, direzione      |
+| **Amministrativa**      | fatture, ordini, documenti fornitori, comunicazioni amministrative       | amministrazione, direzione               |
+| **Qualità e sicurezza** | procedure, verbali, certificazioni, documenti normativi                  | direzione, qualità, responsabili tecnici |
+| **HR**                  | contratti dipendenti, attestati, comunicazioni interne                   | HR, dipendenti autorizzati               |
+
+Grande vantaggio offerto da un approccio del genere è il **versioning** che per verrebbe introdotto: con un sistema documentale, 
+il documento mantiene una sola identità e le modifiche vengono 
+tracciate come versioni successive, evitando il rischio di doppioni o fogli svolazzanti
+In questo modo è possibile sapere quale sia la versione più aggiornata, chi l’ha modificata e quando.
+
+
+Il sistema verrebbe gestito chiaramente seguendo una struttura gerarchica e di controllo degli accessi, per evitare modifiche 
+da parte di persone non coinvolte in manipolazioni dati delicate. Un altro aspetto rilevante è il controllo degli accessi. 
+Non tutti gli utenti aziendali devono infatti poter consultare o modificare tutti i documenti. Ad esempio, un tecnico può avere accesso ai 
+report di commessa, ma non necessariamente ai documenti HR o ai contratti economici.
+Allo stesso modo, un dipendente deve poter accedere ai propri documenti personali, ma non a quelli degli altri dipendenti.
+
+Il sistema documentale può inoltre supportare workflow di approvazione. Per esempio, un report tecnico prodotto al 
+termine di una commessa potrebbe seguire un processo strutturato prima di essere inviato al cliente:
+- creazione bozza da parte del tecnico
+- revisione del project manager
+- eventuale correzione
+- approvazione finale
+- pubblicazione come documento ufficiale
+- consegna al cliente
+
+Questo permette di ridurre il rischio che vengano inviati documenti non validati o versioni non definitive.
+
+Per quanto riguarda la scelta dello strumento, nel progetto si può valutare l’utilizzo di soluzioni come SharePoint, Nextcloud o Alfresco. 
+Tuttavia, considerando l’esigenza di separare i documenti dai dataset
+tecnici e di mantenere una soluzione flessibile e controllabile, la nostra scelta è ricaduta su Nextcloud.
+
+Nextcloud permette di gestire documenti in un ambiente centralizzato, con funzionalità di condivisione, permessi, versionamento e 
+accesso controllato. Può essere installato su infrastruttura propria o su server dedicato, integrandosi con la logica generale della 
+soluzione TO BE, che prevede NAS locale, cloud storage, PostgreSQL/PostGIS e strumenti di BI.
+
+
 ### 4.1.7 Unità organizzative coinvolte nel TO BE
+L’introduzione della nuova architettura informativa TO BE non riguarda esclusivamente l’area tecnica o informatica, ma 
+coinvolge diverse unità organizzative aziendali. La soluzione proposta, infatti, modifica il modo in cui i dati vengono prodotti, 
+archiviati, ricercati, elaborati e utilizzati per prendere decisioni.
+
+Le unità organizzative coinvolte possono essere individuate principalmente nelle seguenti aree:
+
+| Unità organizzativa                       | Ruolo nel sistema TO BE                                                                                                                                              |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Direzione**                             | Definisce le priorità strategiche, monitora costi, redditività delle commesse e andamento generale tramite dashboard di Business Intelligence.                       |
+| **Project Management**                    | Coordina le commesse, controlla lo stato di avanzamento, verifica le consegne e utilizza il database per monitorare missioni, dataset, output e documenti collegati. |
+| **Area tecnica / operatori di volo**      | Produce i dati tramite droni e aeromobili, registra le missioni di volo, carica i dataset sul NAS e aggiorna le informazioni operative nel sistema.                  |
+| **Area elaborazione dati**                | Gestisce le fasi di post-processing, mosaicizzazione, ortorettifica, controllo qualità e produzione degli output finali.                                             |
+| **Amministrazione**                       | Gestisce documenti amministrativi, contratti, fatture, ordini e può consultare informazioni economiche collegate alle commesse.                                      |
+| **Commerciale**                           | Accede a documenti cliente, offerte, preventivi e informazioni sulle commesse utili per la gestione del rapporto commerciale.                                        |
+| **IT / responsabile sistemi informativi** | Gestisce l’infrastruttura tecnica, il NAS, il database, il sistema documentale, i backup, gli accessi e l’integrazione tra i vari componenti.                        |
+| **Qualità e sicurezza**                   | Gestisce procedure, certificazioni, documenti normativi e controlla che i flussi documentali seguano regole definite.                                                |
+| **HR**                                    | Utilizza il sistema documentale per la gestione dei documenti relativi al personale, con accessi riservati e controllati.                                            |
+
+Nel nuovo modello, ogni area mantiene le proprie responsabilità, ma lavora su un sistema informativo più ordinato e integrato. 
+Questo permette di ridurre la dispersione delle informazioni, limitare la duplicazione dei file e rendere più chiaro chi deve p
+rodurre, validare, consultare o archiviare un determinato dato.
+
+Un aspetto importante è la definizione dei ruoli e dei permessi. Non tutti gli utenti devono avere accesso agli stessi contenuti:
+ad esempio, un tecnico potrà accedere ai dataset di una missione e ai report tecnici, ma non necessariamente ai documenti 
+HR o ai contratti economici. Allo stesso modo, la direzione potrà visualizzare dashboard aggregate sull’andamento delle 
+commesse e sui costi dello storage, senza dover accedere manualmente alle cartelle operative.
+
+Il modello TO BE introduce quindi una maggiore responsabilizzazione degli utenti, perché ogni unità organizzativa opera su 
+dati più tracciabili, aggiornati e collegati ai processi aziendali.
+
 ### 4.1.8 Modello tecnologico TO BE
+
+Il modello tecnologico TO BE si basa su un’architettura composta da più livelli, ognuno dei quali ha una funzione specifica. 
+L’obiettivo non è concentrare tutte le informazioni in un unico strumento, come accade oggi con Google Drive, ma distribuire 
+i dati su componenti specializzati e tra loro collegati.
+
+La logica generale del modello è la seguente:
+
+- i file tecnici pesanti vengono conservati nello storage più adatto;
+- i metadati vengono registrati nel database centralizzato;
+- i documenti aziendali vengono gestiti in un sistema documentale dedicato;
+- i dati gestionali e tecnici vengono analizzati tramite strumenti di Business Intelligence;
+- gli utenti accedono alle informazioni attraverso interfacce controllate.
+
+Il modello tecnologico può essere rappresentato attraverso i seguenti livelli.
+
+| Livello                          | Componente                                         | Funzione                                                                                                |
+| -------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Livello utente**               | Portale interno / interfaccia applicativa          | Permette agli utenti di cercare commesse, dataset, documenti, output e informazioni operative.          |
+| **Livello dati strutturati**     | PostgreSQL + PostGIS                               | Gestisce metadati, relazioni tra entità, informazioni geografiche e stato dei processi.                 |
+| **Livello storage operativo**    | NAS aziendale locale                               | Conserva dati recenti, pesanti e frequentemente utilizzati nelle attività tecniche quotidiane.          |
+| **Livello storage storico**      | Cloud object storage / cold storage                | Conserva dataset storici, poco consultati o non più in lavorazione, riducendo i costi di archiviazione. |
+| **Livello documentale**          | Nextcloud                                          | Gestisce documenti aziendali, versioning, permessi, condivisioni e workflow documentali.                |
+| **Livello analitico**            | Metabase                                           | Produce dashboard e report per monitorare storage, commesse, costi, tempi e produzione tecnica.         |
+| **Livello sicurezza e gestione** | Sistema di autenticazione, ruoli, backup e logging | Controlla accessi, autorizzazioni, tracciabilità, protezione dei dati e continuità operativa.           |
+
+
 ### 4.1.9 Deployment diagram
+```
++-------------------------------------------------------------+
+|                        Utenti aziendali                     |
+| Direzione | Project Manager | Tecnici | Amministrazione | IT |
++-----------------------------+-------------------------------+
+                              |
+                              v
++-------------------------------------------------------------+
+|                 Portale interno / Interfaccia               |
+|       Ricerca commesse, dataset, documenti, dashboard        |
++-----------------------------+-------------------------------+
+                              |
+          +-------------------+-------------------+
+          |                   |                   |
+          v                   v                   v
++------------------+  +------------------+  +------------------+
+| PostgreSQL       |  | Nextcloud        |  | Metabase         |
+| + PostGIS        |  | Sistema          |  | Business         |
+| Database         |  | documentale      |  | Intelligence     |
+| metadati         |  |                  |  |                  |
++--------+---------+  +------------------+  +---------+--------+
+         |                                           |
+         |                                           |
+         v                                           |
++-----------------------------+                      |
+| NAS aziendale locale        |<---------------------+
+| Dati recenti e in lavoro    |
+| RAW, ortofoto, mappe        |
++-------------+---------------+
+              |
+              v
++-----------------------------+
+| Cloud object storage        |
+| / Cold storage              |
+| Archivio storico            |
+| dataset poco consultati     |
++-----------------------------+
+
++-----------------------------+
+| Backup e sicurezza          |
+| backup periodici, logging,  |
+| controllo accessi, recovery |
++-----------------------------+
+```
+
+I nodi dal punto di vista del deployment sono i seguenti:
+
+| Nodo                                    | Componenti ospitati                                        | Descrizione                                                                                |
+| --------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **Client aziendali**                    | Browser, strumenti tecnici, software GIS o fotogrammetrici | Utilizzati dagli utenti per accedere al sistema, elaborare dati e consultare informazioni. |
+| **Server applicativo interno**          | Portale interno, eventuali API di integrazione             | Gestisce l’accesso centralizzato alle funzioni del sistema.                                |
+| **Server database**                     | PostgreSQL + PostGIS                                       | Memorizza metadati, relazioni tra entità, geometrie e stati delle lavorazioni.             |
+| **NAS locale**                          | File tecnici recenti e in lavorazione                      | Conserva i dataset pesanti usati quotidianamente.                                          |
+| **Cloud object storage / cold storage** | Archivio storico                                           | Conserva dati poco consultati, riducendo i costi rispetto allo storage operativo.          |
+| **Server documentale**                  | Nextcloud                                                  | Gestisce documenti aziendali, versioni, permessi e condivisioni.                           |
+| **Server BI**                           | Metabase                                                   | Espone dashboard e report collegati al database.                                           |
+| **Sistema di backup**                   | Backup NAS, database e documentale                         | Garantisce continuità operativa e possibilità di ripristino.                               |
+
+Come citavamo prima, gli utenti non accedono direttamente a tutte le componenti infrastrutturali, ma utilizzano interfacce controllate. 
+Ad esempio, un project manager potrà consultare lo stato di una commessa tramite il portale interno o le dashboard, senza
+dover navigare manualmente tra cartelle NAS o bucket cloud.
+
+Il responsabile IT, invece, avrà il compito di monitorare il corretto funzionamento dell’infrastruttura, gestire backup, 
+ermessi, sicurezza e procedure di migrazione dei dati dal NAS verso il cloud storage.
+
 ### 4.1.10 Diagramma BPMN TO BE
+
+BOZZA SCRITTA MALE
+```
+[Start]
+   |
+   v
+[Apertura nuova commessa]
+   |
+   v
+[Registrazione cliente, commessa e area di rilievo nel database]
+   |
+   v
+[Pianificazione missione di volo]
+   |
+   v
+[Acquisizione dati tramite drone/aeromobile]
+   |
+   v
+[Caricamento dati RAW su NAS locale]
+   |
+   v
+[Registrazione metadati dataset nel database]
+   |
+   v
+[Elaborazione tecnica dei dati]
+   |
+   v
+[Controllo qualità]
+   |
+   v
++-------------------------------+
+| Output conforme?              |
++-------------------------------+
+      | Sì                  | No
+      v                     v
+[Produzione output        [Correzione /
+ finale]                  nuova elaborazione]
+      |                     |
+      +----------<----------+
+      |
+      v
+[Caricamento documenti e report in Nextcloud]
+      |
+      v
+[Approvazione project manager]
+      |
+      v
++-------------------------------+
+| Documento/output approvato?   |
++-------------------------------+
+      | Sì                  | No
+      v                     v
+[Consegna al cliente]     [Revisione documento/output]
+      |                     |
+      +----------<----------+
+      |
+      v
+[Aggiornamento stato commessa nel database]
+      |
+      v
+[Valutazione frequenza di utilizzo dataset]
+      |
+      v
++-------------------------------+
+| Dataset ancora operativo?     |
++-------------------------------+
+      | Sì                  | No
+      v                     v
+[Mantenimento su NAS]     [Spostamento in cloud/cold storage]
+      |                     |
+      +----------+----------+
+                 |
+                 v
+      [Aggiornamento posizione file nel database]
+                 |
+                 v
+      [Aggiornamento dashboard BI]
+                 |
+                 v
+              [End]
+```
+
+MACROAREE
+
+|                         | Attività principali                                                                   |
+| ------------------------------- | ------------------------------------------------------------------------------------- |
+| **Commerciale / Direzione**     | Apertura commessa, definizione cliente, approvazione economica.                       |
+| **Project Manager**             | Pianificazione attività, controllo avanzamento, validazione output e documenti.       |
+| **Tecnici / operatori di volo** | Acquisizione dati, caricamento dataset, registrazione informazioni operative.         |
+| **Area elaborazione dati**      | Elaborazione, mosaicizzazione, ortorettifica, controllo qualità tecnico.              |
+| **Sistema informativo**         | Registrazione metadati, aggiornamento stati, collegamento file, monitoraggio storage. |
+| **Sistema documentale**         | Gestione report, versioni, approvazioni e documenti ufficiali.                        |
+| **IT**                          | Gestione NAS, cloud storage, backup, migrazione dati e sicurezza.                     |
+| **Business Intelligence**       | Aggiornamento dashboard e indicatori direzionali.                                     |
+
 
 ## 4.2 Dimensione tecnologica
 ### 4.2.1 Nuovo application portfolio
