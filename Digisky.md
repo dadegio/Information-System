@@ -193,7 +193,7 @@ La struttura logica del database può essere organizzata intorno ad alcune entit
 informativi più importanti dei vari processi.
 
 | Entità               | Descrizione                                                                                                                    |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | **Cliente**          | Contiene l’anagrafica dei clienti, i referenti e le informazioni commerciali principali.                                       |
 | **Commessa**         | Rappresenta un progetto o incarico affidato all’azienda. È collegata a un cliente e contiene stato, scadenze e responsabilità. |
 | **Area di rilievo**  | Descrive l’area geografica interessata dalla commessa, includendo coordinate, poligoni o superfici rilevate.                   |
@@ -245,7 +245,7 @@ lavorazione, sarà inoltre possibile stimare meglio la redditività dei progetti
 una possibile organizzazione delle dashboard:
 
 | Dashboard                         | Descrizione                                                  | Indicatori principali                                                                                     |
-| --------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+|-----------------------------------|--------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | **Storage e costi**               | Monitora l’utilizzo dello spazio e i costi di archiviazione. | TB totali, spazio su NAS, spazio su cloud, crescita mensile, costo per TB, dati per cliente.              |
 | **Commesse**                      | Monitora lo stato di avanzamento dei progetti.               | Commesse attive, commesse concluse, commesse in ritardo, output da validare, tempi di consegna.           |
 | **Produzione tecnica**            | Analizza le attività operative e i dati prodotti.            | Missioni svolte, GB prodotti per missione, sensori utilizzati, elaborazioni completate, rilavorazioni.    |
@@ -285,7 +285,7 @@ con lo strumento più adatto.
 Una possibile classificazione dei documenti gestiti è la seguente:
 
 | Categoria               | Documenti gestiti                                                        | Utenti principali                        |
-| ----------------------- | ------------------------------------------------------------------------ | ---------------------------------------- |
+|-------------------------|--------------------------------------------------------------------------|------------------------------------------|
 | **Commerciale**         | offerte, preventivi, contratti, documenti cliente                        | direzione, commerciale, amministrazione  |
 | **Tecnica**             | report tecnici, manuali, documenti di commessa, certificazioni operative | tecnici, project manager, direzione      |
 | **Amministrativa**      | fatture, ordini, documenti fornitori, comunicazioni amministrative       | amministrazione, direzione               |
@@ -332,7 +332,7 @@ archiviati, ricercati, elaborati e utilizzati per prendere decisioni.
 Le unità organizzative coinvolte possono essere individuate principalmente nelle seguenti aree:
 
 | Unità organizzativa                       | Ruolo nel sistema TO BE                                                                                                                                              |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Direzione**                             | Definisce le priorità strategiche, monitora costi, redditività delle commesse e andamento generale tramite dashboard di Business Intelligence.                       |
 | **Project Management**                    | Coordina le commesse, controlla lo stato di avanzamento, verifica le consegne e utilizza il database per monitorare missioni, dataset, output e documenti collegati. |
 | **Area tecnica / operatori di volo**      | Produce i dati tramite droni e aeromobili, registra le missioni di volo, carica i dataset sul NAS e aggiorna le informazioni operative nel sistema.                  |
@@ -372,7 +372,7 @@ La logica generale del modello è la seguente:
 Il modello tecnologico può essere rappresentato attraverso i seguenti livelli.
 
 | Livello                          | Componente                                         | Funzione                                                                                                |
-| -------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|----------------------------------|----------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | **Livello utente**               | Portale interno / interfaccia applicativa          | Permette agli utenti di cercare commesse, dataset, documenti, output e informazioni operative.          |
 | **Livello dati strutturati**     | PostgreSQL + PostGIS                               | Gestisce metadati, relazioni tra entità, informazioni geografiche e stato dei processi.                 |
 | **Livello storage operativo**    | NAS aziendale locale                               | Conserva dati recenti, pesanti e frequentemente utilizzati nelle attività tecniche quotidiane.          |
@@ -427,26 +427,6 @@ Il modello tecnologico può essere rappresentato attraverso i seguenti livelli.
 | controllo accessi, recovery |
 +-----------------------------+
 ```
-
-I nodi dal punto di vista del deployment sono i seguenti:
-
-| Nodo                                    | Componenti ospitati                                        | Descrizione                                                                                |
-| --------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| **Client aziendali**                    | Browser, strumenti tecnici, software GIS o fotogrammetrici | Utilizzati dagli utenti per accedere al sistema, elaborare dati e consultare informazioni. |
-| **Server applicativo interno**          | Portale interno, eventuali API di integrazione             | Gestisce l’accesso centralizzato alle funzioni del sistema.                                |
-| **Server database**                     | PostgreSQL + PostGIS                                       | Memorizza metadati, relazioni tra entità, geometrie e stati delle lavorazioni.             |
-| **NAS locale**                          | File tecnici recenti e in lavorazione                      | Conserva i dataset pesanti usati quotidianamente.                                          |
-| **Cloud object storage / cold storage** | Archivio storico                                           | Conserva dati poco consultati, riducendo i costi rispetto allo storage operativo.          |
-| **Server documentale**                  | Nextcloud                                                  | Gestisce documenti aziendali, versioni, permessi e condivisioni.                           |
-| **Server BI**                           | Metabase                                                   | Espone dashboard e report collegati al database.                                           |
-| **Sistema di backup**                   | Backup NAS, database e documentale                         | Garantisce continuità operativa e possibilità di ripristino.                               |
-
-Come citavamo prima, gli utenti non accedono direttamente a tutte le componenti infrastrutturali, ma utilizzano interfacce controllate. 
-Ad esempio, un project manager potrà consultare lo stato di una commessa tramite il portale interno o le dashboard, senza
-dover navigare manualmente tra cartelle NAS o bucket cloud.
-
-Il responsabile IT, invece, avrà il compito di monitorare il corretto funzionamento dell’infrastruttura, gestire backup, 
-ermessi, sicurezza e procedure di migrazione dei dati dal NAS verso il cloud storage.
 
 ### 4.1.10 Diagramma BPMN TO BE
 
@@ -533,8 +513,8 @@ BOZZA SCRITTA MALE
 
 MACROAREE
 
-|                         | Attività principali                                                                   |
-| ------------------------------- | ------------------------------------------------------------------------------------- |
+|                                 | Attività principali                                                                   |
+|---------------------------------|---------------------------------------------------------------------------------------|
 | **Commerciale / Direzione**     | Apertura commessa, definizione cliente, approvazione economica.                       |
 | **Project Manager**             | Pianificazione attività, controllo avanzamento, validazione output e documenti.       |
 | **Tecnici / operatori di volo** | Acquisizione dati, caricamento dataset, registrazione informazioni operative.         |
@@ -547,11 +527,151 @@ MACROAREE
 
 ## 4.2 Dimensione tecnologica
 ### 4.2.1 Nuovo application portfolio
+Il nuovo application portfolio rappresenta l’insieme delle applicazioni e dei componenti tecnologici che Digisky dovrebbe 
+utilizzare, a nostro avviso, nella situazione TO BE.
+
+| Applicazione / componente                 | Vendor / tecnologia                                                            | Funzione principale                                                                            | Stato                        | Motivazione                                                                                                                    |
+|-------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| **Google Drive / Google Workspace**       | Google                                                                         | Collaborazione su documenti leggeri, email, calendari e file condivisi                         | Esistente, da ridimensionare | Rimane utile per la produttività quotidiana, ma non deve più essere usato come archivio principale per dataset tecnici pesanti |
+| **NAS aziendale locale**                  | Vendor hardware da definire                                                    | Archiviazione di dati tecnici recenti e in lavorazione: RAW, ortofoto, mappe, output intermedi | Nuovo o da potenziare        | Garantisce accesso rapido ai tecnici durante elaborazione, mosaicizzazione e controllo qualità                                 |
+| **Cloud object storage / cold storage**   | AWS S3 Glacier, Azure Blob Archive, Google Cloud Storage Archive o equivalente | Archiviazione di dataset storici o poco consultati                                             | Nuovo                        | Riduce i costi di conservazione dei dati non più usati quotidianamente                                                         |
+| **PostgreSQL + PostGIS**                  | Open source                                                                    | Database centralizzato per metadati tecnici, gestionali e geografici                           | Nuovo                        | Permette di indicizzare commesse, missioni, dataset, posizioni file, aree geografiche e stati di lavorazione                   |
+| **Nextcloud**                             | Open source / self-hosted o managed                                            | Sistema documentale per documenti aziendali, versioning, permessi e condivisione controllata   | Nuovo                        | Separa la gestione dei documenti aziendali dai dataset tecnici pesanti                                                         |
+| **Metabase**                              | Open source / SaaS                                                             | Business Intelligence, dashboard e report automatici                                           | Nuovo                        | Permette di monitorare storage, costi, commesse, produzione tecnica e performance operative                                    |
+| **ETL / script di sincronizzazione**      | Sviluppo interno o tool dedicati                                               | Importazione, migrazione e aggiornamento dati tra file, database e storage                     | Nuovo                        | Automatizza il passaggio dai file non strutturati a dati interrogabili                                                         |
+| **Sistema di backup e disaster recovery** | Soluzione cloud / NAS backup / provider esterno                                | Backup periodici, recovery e protezione dei dati                                               | Nuovo o da potenziare        | Garantisce continuità operativa e protezione da perdita dati                                                                   |
+| **Identity & Access Management**          | Google Workspace, LDAP, SSO o sistema equivalente                              | Gestione utenti, ruoli, permessi e autenticazione                                              | Esistente o da potenziare    | Permette accessi controllati a NAS, database, documentale e dashboard                                                          |
+
+Il cambiamento principale consiste nel passaggio da una logica file-based a una logica data-driven. I file pesanti continuano
+a esistere, ma non sono più l’unico punto di accesso all’informazione: vengono descritti, classificati e resi ricercabili 
+tramite metadati salvati nel database.
+
 ### 4.2.2 Funzioni software richieste
+
+| Funzione software richiesta            | Descrizione                                                                                                    | Criticità AS IS risolta                                                   |
+|----------------------------------------|----------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Archiviazione dati tecnici recenti** | Salvare su NAS locale i dataset pesanti ancora in lavorazione                                                  | Accesso lento o disordinato ai file operativi                             |
+| **Archiviazione dati storici**         | Spostare su cloud object storage o cold storage i dataset poco consultati                                      | Costi elevati dovuti al mantenimento di tutti i dati nello stesso storage |
+| **Gestione metadati**                  | Registrare informazioni su cliente, commessa, missione, dataset, output, posizione file e stato di lavorazione | Impossibilità di interrogare i dati in modo strutturato                   |
+| **Gestione dati geografici**           | Salvare aree di rilievo, coordinate, poligoni e geometrie tramite PostGIS                                      | Difficoltà nel collegare dataset e commesse a informazioni territoriali   |
+| **Ricerca dataset**                    | Cercare dataset per cliente, commessa, data, area geografica, stato, dimensione o posizione                    | Ricerca manuale tra cartelle e sottocartelle                              |
+| **Tracciamento posizione file**        | Mantenere aggiornato il percorso del file anche quando viene spostato da NAS a cloud                           | Perdita di controllo sulla localizzazione dei dataset                     |
+| **Validazione dati e metadati**        | Controllare completezza, formato e coerenza delle informazioni inserite                                        | Errori manuali e dati incompleti                                          |
+| **Gestione documentale**               | Gestire documenti aziendali, report, contratti, certificazioni e documenti HR                                  | Confusione tra documenti aziendali e dataset tecnici pesanti              |
+| **Versioning documentale**             | Conservare versioni successive dei documenti ufficiali                                                         | Duplicazione di file e incertezza sulla versione corretta                 |
+| **Workflow approvativi**               | Gestire revisione e approvazione di report tecnici e documenti ufficiali                                       | Invio di documenti non validati o versioni non definitive                 |
+| **Dashboard BI**                       | Visualizzare indicatori su storage, costi, commesse, tempi e produzione tecnica                                | Analisi manuale e poco tempestiva                                         |
+| **Report automatici**                  | Generare report periodici senza consolidamento manuale                                                         | Elevato effort amministrativo e direzionale                               |
+| **Controllo accessi per ruolo**        | Limitare l’accesso a dati, documenti e dashboard in base al ruolo aziendale                                    | Rischi di accesso non autorizzato                                         |
+| **Audit log**                          | Registrare accessi, modifiche, download, spostamenti e approvazioni                                            | Bassa tracciabilità                                                       |
+| **Backup e recovery**                  | Proteggere NAS, database, documentale e cloud storage                                                          | Rischio di perdita dati                                                   |
+
+Le funzioni centrali del nuovo sistema sono quindi tre: gestione intelligente dei dataset tecnici, gestione strutturata dei metadati e analisi tramite Business Intelligence.
+
 ### 4.2.3 Analisi di copertura
+
+L’analisi di copertura confronta le funzioni software richieste con le componenti tecnologiche proposte, verificando se il nuovo sistema è in grado di rispondere alle necessità individuate.
+
+| Funzione richiesta                 | Componente proposta                       | Livello di copertura | Osservazioni                                                                     |
+|------------------------------------|-------------------------------------------|----------------------|----------------------------------------------------------------------------------|
+| Archiviazione dati tecnici recenti | NAS aziendale locale                      | Alta                 | Soluzione adatta a file pesanti e frequentemente utilizzati                      |
+| Archiviazione dati storici         | Cloud object storage / cold storage       | Alta                 | Permette di ridurre i costi per dataset poco consultati                          |
+| Gestione metadati                  | PostgreSQL                                | Alta                 | Richiede progettazione accurata del modello dati                                 |
+| Gestione dati geografici           | PostGIS                                   | Alta                 | Particolarmente adatto per aree di rilievo, mappe e dati territoriali            |
+| Ricerca dataset                    | PostgreSQL + portale interno              | Alta                 | Permette ricerca per commessa, cliente, stato, posizione e attributi tecnici     |
+| Tracciamento posizione file        | PostgreSQL + script di sincronizzazione   | Alta                 | Il database mantiene il riferimento aggiornato alla posizione del dataset        |
+| Validazione dati                   | Database + logiche applicative            | Media / alta         | Dipende dalla qualità delle regole definite in fase di progettazione             |
+| Gestione documentale               | Nextcloud                                 | Alta                 | Copre documenti aziendali, report, contratti, certificazioni e documenti HR      |
+| Versioning documentale             | Nextcloud                                 | Alta                 | Permette di evitare duplicazioni e versioni non controllate                      |
+| Workflow approvativi               | Nextcloud / workflow integrati            | Media                | Da verificare in base alla configurazione scelta                                 |
+| Dashboard BI                       | Metabase                                  | Alta                 | Si collega direttamente al database e permette dashboard operative e direzionali |
+| Report automatici                  | Metabase                                  | Alta                 | Utile per report periodici su storage, commesse e costi                          |
+| Controllo accessi                  | IAM / SSO / ruoli applicativi             | Alta                 | Richiede definizione formale di ruoli e permessi                                 |
+| Audit log                          | Nextcloud + database + sistemi di logging | Media / alta         | Da configurare in modo coerente tra i diversi sistemi                            |
+| Backup e recovery                  | Sistema di backup dedicato                | Alta                 | Richiede policy di frequenza, retention e test di ripristino                     |
+
+
+La copertura complessiva della soluzione è alta. I principali punti da progettare con attenzione sono il data model, le
+regole di migrazione dei dataset, la classificazione documentale, i permessi per ruolo e le policy di archiviazione tra NAS e cold storage.
+
 ### 4.2.4 Analisi di integrazione
+
+L’integrazione tra le componenti è fondamentale per evitare che il nuovo sistema generi nuovi silos informativi: infatti 
+la nostra soluzione funziona **solo se NAS, cloud storage, database, sistema documentale e BI comunicano in modo coerente.**
+
+| Integrazione                                     | Descrizione                                                                                         | Obiettivo                                                    |
+|--------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| **NAS → PostgreSQL/PostGIS**                     | Quando un nuovo dataset viene caricato sul NAS, vengono registrati nel database i relativi metadati | Rendere il dataset ricercabile e collegato alla commessa     |
+| **PostgreSQL/PostGIS → NAS**                     | Il database conserva il riferimento alla posizione fisica del dataset sul NAS                       | Permettere agli utenti di sapere dove si trova il file       |
+| **NAS → cloud object storage**                   | I dataset storici o poco consultati vengono spostati progressivamente nel cloud storage             | Ridurre l’occupazione del NAS e abbassare i costi            |
+| **Cloud object storage → PostgreSQL/PostGIS**    | Dopo lo spostamento, il database aggiorna il percorso del dataset                                   | Evitare perdita di tracciabilità                             |
+| **PostgreSQL/PostGIS → Metabase**                | Metabase legge dati tecnici, gestionali e geografici dal database                                   | Generare dashboard e report automatici                       |
+| **Nextcloud → PostgreSQL/PostGIS**               | I documenti di commessa vengono collegati alle entità presenti nel database                         | Collegare report, contratti e documenti ai progetti corretti |
+| **Software paghe / HR → Nextcloud o portale HR** | I cedolini e documenti HR vengono archiviati in area riservata                                      | Automatizzare e rendere sicura la gestione documentale HR    |
+| **Identity provider → tutti i sistemi**          | Autenticazione centralizzata per utenti e gruppi                                                    | Garantire accessi coerenti e controllati                     |
+| **NAS / database / Nextcloud → backup**          | Copie periodiche dei dati e dei documenti                                                           | Garantire continuità operativa e recupero dati               |
+
+Una possibile rappresentazione dell’integrazione è la seguente:
+
+![Foto](mermaid-diagram.png)
+
+Chiaramente l’integrazione dovrebbe essere implementata gradualmente. Una prima fase potrebbe riguardare il caricamento
+dei nuovi dataset sul NAS con registrazione manuale o semi-automatica dei metadati nel database per poi magari
+introdurre l’automazione dello spostamento verso cold storage e l’aggiornamento automatico delle dashboard.
+
 ### 4.2.5 Outsourcing o sviluppo interno
+
+La scelta tra outsourcing e sviluppo interno deve essere valutata considerando competenze disponibili, criticità dei sistemi, costi, tempi di implementazione e necessità di personalizzazione.
+
+Noi pensiamo che la soluzione più adatta sia un approccio ibrido: alcune componenti possono essere installate e configurate internamente, mentre altre 
+più infrastrutturali o specialistiche, come configurazione storage, sicurezza, backup e ottimizzazione cloud, possono essere tranquillamente esternalizzate.
+
+| Area                                    | Scelta consigliata                                    | Motivazione                                                                                                                                         |
+|-----------------------------------------|-------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **NAS aziendale**                       | Acquisto e configurazione con supporto esterno        | Richiede corretta configurazione di storage, RAID, rete, backup e permessi                                                                          |
+| **Cloud object storage / cold storage** | Provider cloud esterno                                | Soluzione più efficiente per archiviazione scalabile e costi ottimizzati                                                                            |
+| **PostgreSQL + PostGIS**                | Configurazione interna con supporto esterno iniziale  | Il modello dati deve essere personalizzato sui processi Digisky, ma l’installazione e l’ottimizzazione possono richiedere competenze specialistiche |
+| **Portale interno / interfaccia**       | Sviluppo interno o misto                              | È la componente più specifica, perché deve riflettere il modo in cui Digisky cerca commesse, dataset e output                                       |
+| **Metabase**                            | Configurazione interna                                | È uno strumento relativamente semplice da collegare al database, ma richiede definizione dei KPI                                                    |
+| **Nextcloud**                           | Installazione gestita internamente o servizio managed | Può essere self-hosted, ma per sicurezza e manutenzione può convenire una gestione supportata                                                       |
+| **Script ETL e automazioni**            | Sviluppo interno con eventuale consulenza             | Le regole di migrazione e classificazione dipendono dai dati aziendali                                                                              |
+| **Backup e disaster recovery**          | Supporto esterno specialistico                        | È una componente critica per la continuità operativa                                                                                                |
+| **Cybersecurity e access control**      | Supporto esterno specialistico                        | Necessario per dati sensibili, documenti HR e protezione dei dataset aziendali                                                                      |
+
+
 ### 4.2.6 Gap analysis
+
+Osservando le situazioni AS IS e TO BE:
+
+| Area                           | Situazione AS IS                                                                     | Situazione TO BE                                                    | Gap da colmare                                                                         | Priorità     |
+|--------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------------------------------------------|--------------|
+| **Archiviazione dati pesanti** | Dataset tecnici salvati principalmente su Google Drive o in cartelle non ottimizzate | NAS locale per dati recenti e cloud object storage per dati storici | Acquisto/configurazione NAS, scelta cloud storage, definizione policy di archiviazione | Alta         |
+| **Gestione metadati**          | Informazioni su commesse, dataset e file disperse in cartelle, nomi file o fogli     | PostgreSQL/PostGIS come indice centrale dei dati                    | Progettazione data model e inserimento metadati                                        | Alta         |
+| **Dati geografici**            | Gestione non strutturata di aree, mappe e dati territoriali                          | PostGIS per geometrie, coordinate e aree di rilievo                 | Modellazione geografica e collegamento ai dataset                                      | Alta         |
+| **Ricerca informazioni**       | Ricerca manuale tra cartelle e file                                                  | Ricerca tramite portale e query su database                         | Creazione interfaccia e standardizzazione metadati                                     | Alta         |
+| **Costi storage**              | Tutti o molti dati mantenuti su storage costoso o non specializzato                  | Tiering tra NAS e cold storage                                      | Censimento dati, regole di spostamento, monitoraggio costi                             | Alta         |
+| **Documenti aziendali**        | Documenti e dataset tecnici mescolati nello stesso ambiente                          | Nextcloud per documenti, NAS/cloud per dati tecnici                 | Classificazione documentale e migrazione                                               | Media / alta |
+| **Versioning**                 | Versioni multiple gestite tramite copie di file                                      | Versioning documentale controllato                                  | Adozione sistema documentale e regole di naming                                        | Media        |
+| **Workflow approvativi**       | Approvazioni informali o tramite scambio manuale di file                             | Workflow su documenti tecnici e report                              | Configurazione processi di revisione e approvazione                                    | Media        |
+| **Business Intelligence**      | Analisi manuale tramite file o controlli puntuali                                    | Metabase collegato a PostgreSQL/PostGIS                             | Definizione KPI, dashboard e fonti dati                                                | Alta         |
+| **Cedolini e documenti HR**    | Caricamento manuale o gestione tramite cartelle                                      | Area HR riservata su documentale o portale dedicato                 | Automazione caricamento, permessi e notifiche                                          | Media        |
+| **Sicurezza e accessi**        | Permessi distribuiti tra cartelle e strumenti diversi                                | Accessi per ruolo e autenticazione centralizzata                    | Definizione ruoli, gruppi e policy                                                     | Alta         |
+| **Backup e recovery**          | Da verificare, probabilmente dipendente dai servizi esistenti                        | Backup strutturato di NAS, database e documentale                   | Piano di backup, retention e test di ripristino                                        | Alta         |
+| **Competenze utenti**          | Abitudine a lavorare direttamente su Drive e cartelle                                | Utilizzo di database, portale, documentale e dashboard              | Formazione e change management                                                         | Alta         |
+| **Data governance**            | Regole non sempre formalizzate                                                       | Responsabilità chiare su dati, documenti e dataset                  | Definizione data owner, procedure e standard                                           | Alta         |
+
+
+Suggeriamo, in conclusione, come primo passo il censimento dei dati attualmente presenti su Google Drive, distinguendo tra:
+- dataset tecnici recenti;
+- dataset tecnici storici; 
+- documenti aziendali; 
+- documenti di commessa; 
+- documenti amministrativi e HR; 
+- file duplicati o obsoleti.
+
+A partire da questo censimento sarà possibile progettare correttamente il database, dimensionare il NAS, scegliere il cloud
+storage più adatto e definire le dashboard iniziali su Metabase.
+
 
 ## 4.3 TCO e valutazione economica
 ### 4.3.1 Costi di costruzione/acquisizione
@@ -585,33 +705,3 @@ MACROAREE
 ## 5.2 Benefici per i dipendenti
 ## 5.3 Rischi e limiti
 ## 5.4 Valutazione finale
-
-
-Nella gestione dei metadati tecnici pensiamo che la soluzione migliore sia un database PostgreSQL con estensione PostGIS: 
-al suo interno non vengono quindi archiviati i file pesanti, ma le informazioni che permettono di descriverli, ricercarli 
-e collegarli alle attività aziendali.
-
-Per esempio, per ogni dataset il database può memorizzare:
-
-
-
-L’utilizzo di PostGIS è invece legato a ragioni meramente funzionali: è un'estensione perfetta del classico PostgresSQL 
-attraverso cui è possibile associare alle missioni e ai dataset informazioni spaziali come coordinate, poligoni, 
-aree rilevate, bounding box e tracciati di volo. Questo consente di effettuare ricerche non solo testuali, ma anche geografiche, 
-ad esempio individuando tutte le missioni svolte in una determinata area o tutti i dataset collegati a una specifica zona.
-
-Accanto allo storage tecnico e al database proponiamo l'introduzione un sistema documentale separato. Questo sistema non ha lo scopo 
-di conservare i file aerofotogrammetrici pesanti, ma di gestire in modo ordinato documenti aziendali e di progetto, come contratti, 
-offerte, report tecnici, certificazioni, manuali, documenti amministrativi e documenti HR.
-
-La soluzione viene completata dall’introduzione di strumenti di Business Intelligence, collegati principalmente al database PostgreSQL. 
-Questi strumenti permettono di creare dashboard e report utili per monitorare lo stato delle commesse, lo spazio occupato, 
-la crescita dei dati, i costi di archiviazione, i tempi di lavorazione e la produttività interna.
-
-In questo modo la direzione e i responsabili di progetto possono ottenere informazioni come:
-- quanti TB sono occupati da ciascun cliente
-- quali commesse generano più dati
-- quanto costa archiviare una determinata commessa
-- quali dataset non vengono consultati da molto tempo
-- quali lavori sono in ritardo
-- quanto tempo passa tra acquisizione, elaborazione e consegna
