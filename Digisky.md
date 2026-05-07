@@ -197,7 +197,7 @@ storage principale: enum[CLOUD_OBJECT_STORAGE, COLD_STORAGE]
 copia locale NAS: bool
 posizione file cloud: uri
 posizione copia NAS: path
-stato di elaborazione: enum[DONE, PROCESSING, FAILED]stato di elaborazione: enum[DONE, PROCESSING, FAILED]
+stato di elaborazione: enum[DONE, PROCESSING, FAILED]
 data di consegna: date
 responsabile tecnico: str
 ```
@@ -213,13 +213,15 @@ output generati: int
 documenti collegati: array
 stato di avanzamento: enum[DONE, PROCESSING, FAILED]
 spazio occupato: int
-posizione attuale dei file: path
+posizione attuale dei file: uri/path
+classe di storage: enum[HOT_WARM, COLD_ARCHIVE]
+copia locale NAS: bool
 ```
 
 Per la sua realizzazione, si propone l’utilizzo di PostgreSQL con estensione PostGIS. In particolare, è un 
-database relazionale open source adatto alla gestione di dati strutturati, mentre L’estensione PostGIS permette di 
+database relazionale open source adatto alla gestione di dati strutturati, mentre l’estensione PostGIS permette di 
 aggiungere al database funzionalità geografiche e spaziali. Questo aspetto è particolarmente importante per un’azienda 
-che lavora con rilievi aerei, mappe e dati territoriali, consentendo ricerche più avanzate rispetto a un normale database gestionale
+che lavora con rilievi aerei, mappe e dati territoriali, consentendo ricerche più avanzate rispetto a un normale database gestionale.
 
 La struttura logica del database può essere organizzata intorno ad alcune entità principali, che rappresentano gli oggetti 
 informativi più importanti dei vari processi.
@@ -257,8 +259,10 @@ della commessa possono essere utilizzati per ottenere una visione complessiva de
 Ad esempio, attraverso una dashboard dedicata allo storage, sarà possibile visualizzare informazioni come:
 ```
 spazio totale utilizzato: int
-spazio disponibile sul NAS: int
-spazio occupato nel cloud: int
+spazio occupato nello storage cloud operativo: int
+spazio occupato nel cold/archive storage: int
+spazio occupato nella cache NAS locale: int
+dataset replicati sul NAS: array
 crescita mensile dello storage: float
 spazio occupato per cliente: array
 spazio occupato per commessa: array
@@ -324,10 +328,9 @@ Una possibile classificazione dei documenti gestiti è la seguente:
 | **Qualità e sicurezza** | procedure, verbali, certificazioni, documenti normativi                  | direzione, qualità, responsabili tecnici |
 | **HR**                  | contratti dipendenti, attestati, comunicazioni interne                   | HR, dipendenti autorizzati               |
 
-Grande vantaggio offerto da un approccio del genere è il **versioning** che per verrebbe introdotto: con un sistema documentale, 
-il documento mantiene una sola identità e le modifiche vengono 
-tracciate come versioni successive, evitando il rischio di doppioni o fogli svolazzanti
-In questo modo è possibile sapere quale sia la versione più aggiornata, chi l’ha modificata e quando.
+Un ulteriore vantaggio offerto da questo approccio è il **versioning**: con un sistema documentale, il documento mantiene
+una sola identità e le modifiche vengono tracciate come versioni successive, evitando il rischio di duplicati o versioni 
+non controllate. In questo modo è possibile sapere quale sia la versione più aggiornata, chi l’ha modificata e quando.
 
 
 Il sistema verrebbe gestito chiaramente seguendo una struttura gerarchica e di controllo degli accessi, per evitare modifiche 
@@ -364,21 +367,21 @@ archiviati, ricercati, elaborati e utilizzati per prendere decisioni.
 
 Le unità organizzative coinvolte possono essere individuate principalmente nelle seguenti aree:
 
-| Unità organizzativa                       | Ruolo nel sistema TO BE                                                                                                                                              |
-|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Direzione**                             | Definisce le priorità strategiche, monitora costi, redditività delle commesse e andamento generale tramite dashboard di Business Intelligence.                       |
-| **Project Management**                    | Coordina le commesse, controlla lo stato di avanzamento, verifica le consegne e utilizza il database per monitorare missioni, dataset, output e documenti collegati. |
-| **Area tecnica / operatori di volo**      | Produce i dati tramite droni e aeromobili, registra le missioni di volo, carica i dataset sul NAS e aggiorna le informazioni operative nel sistema.                  |
-| **Area elaborazione dati**                | Gestisce le fasi di post-processing, mosaicizzazione, ortorettifica, controllo qualità e produzione degli output finali.                                             |
-| **Amministrazione**                       | Gestisce documenti amministrativi, contratti, fatture, ordini e può consultare informazioni economiche collegate alle commesse.                                      |
-| **Commerciale**                           | Accede a documenti cliente, offerte, preventivi e informazioni sulle commesse utili per la gestione del rapporto commerciale.                                        |
-| **IT / responsabile sistemi informativi** | Gestisce l’infrastruttura tecnica, il NAS, il database, il sistema documentale, i backup, gli accessi e l’integrazione tra i vari componenti.                        |
-| **Qualità e sicurezza**                   | Gestisce procedure, certificazioni, documenti normativi e controlla che i flussi documentali seguano regole definite.                                                |
-| **HR**                                    | Utilizza il sistema documentale per la gestione dei documenti relativi al personale, con accessi riservati e controllati.                                            |
+| Unità organizzativa                       | Ruolo nel sistema TO BE                                                                                                                                                       |
+|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Direzione**                             | Definisce le priorità strategiche, monitora costi, redditività delle commesse e andamento generale tramite dashboard di Business Intelligence.                                |
+| **Project Management**                    | Coordina le commesse, controlla lo stato di avanzamento, verifica le consegne e utilizza il database per monitorare missioni, dataset, output e documenti collegati.          |
+| **Area tecnica / operatori di volo**      | Produce i dati tramite droni e aeromobili, registra le missioni di volo, carica i dataset sul cloud object storage e aggiorna/verifica le informazioni operative nel sistema. |
+| **Area elaborazione dati**                | Gestisce le fasi di post-processing, mosaicizzazione, ortorettifica, controllo qualità e produzione degli output finali.                                                      |
+| **Amministrazione**                       | Gestisce documenti amministrativi, contratti, fatture, ordini e può consultare informazioni economiche collegate alle commesse.                                               |
+| **Commerciale**                           | Accede a documenti cliente, offerte, preventivi e informazioni sulle commesse utili per la gestione del rapporto commerciale.                                                 |
+| **IT / responsabile sistemi informativi** | Gestisce l’infrastruttura tecnica, il NAS, il database, il sistema documentale, i backup, gli accessi e l’integrazione tra i vari componenti.                                 |
+| **Qualità e sicurezza**                   | Gestisce procedure, certificazioni, documenti normativi e controlla che i flussi documentali seguano regole definite.                                                         |
+| **HR**                                    | Utilizza il sistema documentale per la gestione dei documenti relativi al personale, con accessi riservati e controllati.                                                     |
 
 Nel nuovo modello, ogni area mantiene le proprie responsabilità, ma lavora su un sistema informativo più ordinato e integrato. 
-Questo permette di ridurre la dispersione delle informazioni, limitare la duplicazione dei file e rendere più chiaro chi deve p
-rodurre, validare, consultare o archiviare un determinato dato.
+Questo permette di ridurre la dispersione delle informazioni, limitare la duplicazione dei file e rendere più chiaro chi deve 
+produrre, validare, consultare o archiviare un determinato dato.
 
 Un aspetto importante è la definizione dei ruoli e dei permessi. Non tutti gli utenti devono avere accesso agli stessi contenuti:
 ad esempio, un tecnico potrà accedere ai dataset di una missione e ai report tecnici, ma non necessariamente ai documenti 
@@ -420,6 +423,33 @@ La logica generale del modello è la seguente:
 
 ### 4.1.9 Deployment diagram
 
+Il deployment diagram rappresenta la distribuzione logica dei principali componenti tecnologici della soluzione TO BE e le relazioni tra utenti, applicazioni, database e sistemi di storage.
+
+Nel modello proposto, il componente centrale per la conservazione dei dataset tecnici non è più il NAS locale, ma il cloud
+object storage hot/warm, che svolge il ruolo di storage principale dei file di produzione. Il NAS Synology già presente 
+in azienda viene invece utilizzato come cache locale o replica selettiva dei dataset più utilizzati in sede.
+
+Il database PostgreSQL/PostGIS rappresenta il punto centrale per la gestione dei metadati: non contiene direttamente i 
+file pesanti, ma mantiene le informazioni relative a clienti, commesse, missioni, dataset, aree geografiche, stati di 
+lavorazione e posizione dei file nei diversi storage. Gli strumenti di Business Intelligence, i software interni e il 
+portale applicativo possono quindi interrogare il database per recuperare dati aggiornati e coerenti.
+
+![depoyment](mermaid-diagram-deployment.png)
+
+In questo modello, i dataset prodotti dai piloti e dagli operatori vengono caricati direttamente verso il cloud object 
+storage tramite il portale o strumenti di upload dedicati. Successivamente, se un dataset deve essere elaborato in sede, 
+può essere replicato in modo selettivo sul NAS Synology locale. In questo modo il NAS continua a garantire rapidità di 
+accesso ai tecnici, ma non rappresenta più il punto critico dell’architettura.
+
+Il cold/archive storage viene utilizzato per conservare i dataset storici o raramente consultati, riducendo i costi di 
+archiviazione. Il database mantiene aggiornata la posizione dei file, distinguendo tra storage operativo cloud, eventuale 
+copia locale su NAS e archivio storico.
+
+Metabase si collega al database PostgreSQL/PostGIS per produrre dashboard e report su costi, storage, commesse e produzione
+tecnica. Nextcloud gestisce invece i documenti aziendali e di commessa, separandoli dai dataset tecnici pesanti.
+
+Il deployment proposto permette quindi di migliorare l’accessibilità dei dati da remoto, ridurre la dipendenza dalla sede
+fisica, aumentare la continuità operativa e integrare in modo più efficace i software interni dell’azienda.
 
 ### 4.1.10 Diagramma BPMN TO BE
 
@@ -509,8 +539,6 @@ cold/archive storage, l’integrazione con i software interni, la classificazion
 L’integrazione tra le componenti è fondamentale per evitare che il nuovo sistema generi nuovi silos informativi: infatti 
 la nostra soluzione funziona **solo se NAS, cloud storage, database, sistema documentale e BI comunicano in modo coerente.**
 
-L’integrazione tra le componenti è fondamentale per evitare che il nuovo sistema generi nuovi silos informativi. La soluzione funziona solo se cloud storage, NAS, database, sistema documentale, BI e software interni comunicano in modo coerente.
-
 | Integrazione                                            | Descrizione                                                                                                        | Obiettivo                                                                    |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
 | **Cloud object storage → PostgreSQL/PostGIS**           | Quando un nuovo dataset viene caricato sul cloud, vengono registrati o aggiornati nel database i relativi metadati | Rendere il dataset ricercabile e collegato alla commessa                     |
@@ -533,10 +561,6 @@ utilizzati in sede. Infine, potrebbero essere automatizzati lo spostamento verso
 delle dashboard e l’integrazione con i software interni di pianificazione e visualizzazione.
 
 ![image](mermaid-diagram.png)
-
-Chiaramente l’integrazione dovrebbe essere implementata gradualmente. Una prima fase potrebbe riguardare il caricamento
-dei nuovi dataset sul NAS con registrazione manuale o semi-automatica dei metadati nel database per poi magari
-introdurre l’automazione dello spostamento verso cold storage e l’aggiornamento automatico delle dashboard.
 
 ### 4.2.5 Outsourcing o sviluppo interno
 
@@ -591,10 +615,6 @@ Suggeriamo, in conclusione, come primo passo il censimento dei dati attualmente 
 - documenti di commessa;
 - documenti amministrativi e HR;
 - file duplicati o obsoleti.
-
-A partire da questo censimento sarà possibile progettare correttamente il database, definire quali dataset mantenere nello
-storage cloud operativo, quali replicare sul NAS come cache locale, quali spostare verso cold/archive storage e quali documenti
-migrare nel sistema documentale. Sarà inoltre possibile definire le dashboard iniziali su Metabase e le regole di integrazione con i software interni.
 
 A partire da questo censimento sarà possibile progettare correttamente il database, dimensionare il NAS, scegliere il cloud
 storage più adatto e definire le dashboard iniziali su Metabase.
@@ -780,8 +800,8 @@ ritardi e inefficienze nei processi di consegna e validazione.
 
 ### 4.3.6 Confronto costi-benefici
 
-Il confronto costi-benefici mostra che la soluzione proposta comporta costi ricorrenti superiori rispetto a una gestione 
-basata esclusivamente sul NAS locale. Tuttavia, il solo NAS non risolve le principali criticità emerse dall’analisi: difficoltà
+Il confronto costi-benefici mostra che la soluzione proposta introduce nuovi costi ricorrenti rispetto a una gestione basata
+esclusivamente sul NAS locale.Tuttavia, il solo NAS non risolve le principali criticità emerse dall’analisi: difficoltà
 di caricamento da postazioni esterne, dipendenza dalla WAN aziendale, rischio di indisponibilità della sede e limitata business continuity.
 
 Una soluzione basata su **Google Drive + NAS sincronizzato** avrebbe il vantaggio di mantenere un modello già conosciuto
