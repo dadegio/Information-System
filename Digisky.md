@@ -601,12 +601,258 @@ storage più adatto e definire le dashboard iniziali su Metabase.
 
 
 ## 4.3 TCO e valutazione economica
+
+La valutazione economica della soluzione **TO BE** deve considerare non solo i costi di acquisto o configurazione delle 
+singole componenti tecnologiche, ma l’intero costo di possesso del sistema informativo nel tempo. Per questo motivo viene 
+utilizzato il concetto di **TCO**, cioè **Total Cost of Ownership**, che comprende costi di costruzione, deployment, 
+operation, manutenzione, migrazione, dismissione e formazione degli utenti.
+
+Nel caso in analisi, la valutazione economica assume particolare rilevanza perché l’azienda gestisce grandi volumi di dati
+tecnici, che possono raggiungere o superare i **100 TB**. La scelta dello storage incide quindi in modo significativo sui
+costi ricorrenti. Tuttavia, la soluzione non può essere valutata solo in base al costo per TB, poiché deve considerare anche
+accessibilità da remoto, continuità operativa, integrazione con i software interni, sicurezza e tracciabilità dei dati.
+
+La soluzione proposta prevede un modello **ibrido e cloud-first**: il **cloud object storage** viene utilizzato come 
+storage principale dei dataset tecnici, mentre il **NAS Synology** già presente in azienda viene riposizionato come cache
+locale o replica operativa dei dati più utilizzati in sede. A supporto dello storage vengono introdotti **PostgreSQL/PostGIS** 
+come database centralizzato dei metadati, **Nextcloud** come sistema documentale e **Metabase** come strumento di Business Intelligence.
+
+
 ### 4.3.1 Costi di costruzione/acquisizione
+
+I costi di costruzione e acquisizione comprendono le spese necessarie per progettare e predisporre la nuova architettura 
+informativa. In questa fase il NAS Synology, essendo già presente, non viene considerato come nuovo investimento hardware principale, 
+ma come componente da riconfigurare per svolgere funzioni di cache locale o replica selettiva.
+
+Le principali voci di costo iniziale riguardano la configurazione dello storage cloud, la progettazione del database centralizzato
+dei metadati, lo sviluppo o la configurazione di interfacce applicative, la predisposizione degli strumenti di Business Intelligence
+e l’integrazione con i software interni dell’azienda.
+
+| Voce di costo                                 | Descrizione                                                                                                                | Tipologia             |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Cloud object storage**                      | Configurazione dello storage cloud principale per dataset tecnici, bucket, permessi, classi di storage e policy di accesso | Iniziale + ricorrente |
+| **Cold/archive storage**                      | Predisposizione di classi di storage economiche per dataset storici o poco consultati                                      | Iniziale + ricorrente |
+| **PostgreSQL + PostGIS**                      | Installazione e configurazione del database centralizzato per metadati tecnici, gestionali e geografici                    | Iniziale              |
+| **Progettazione data model**                  | Definizione di entità, relazioni, attributi e regole di integrità del database                                             | Iniziale              |
+| **Portale interno / interfaccia applicativa** | Sviluppo o configurazione dell’interfaccia per ricerca, upload e consultazione dei dataset                                 | Iniziale              |
+| **API e connettori software interni**         | Collegamento tra database, storage cloud e software aziendali di pianificazione e visualizzazione                          | Iniziale              |
+| **Nextcloud**                                 | Installazione o configurazione del sistema documentale                                                                     | Iniziale + ricorrente |
+| **Metabase**                                  | Installazione e configurazione delle dashboard di Business Intelligence                                                    | Iniziale              |
+| **IAM / SSO**                                 | Configurazione di utenti, gruppi, ruoli e permessi di accesso                                                              | Iniziale              |
+| **NAS Synology**                              | Riconfigurazione come cache locale o replica selettiva dei dataset più utilizzati                                          | Iniziale              |
+| **Backup e disaster recovery**                | Predisposizione di policy di backup, retention e ripristino                                                                | Iniziale + ricorrente |
+
+
 ### 4.3.2 Costi di deployment
+
+I costi di deployment riguardano le attività necessarie per portare il nuovo sistema in produzione. Questa fase comprende
+la configurazione operativa delle componenti, la migrazione iniziale dei dati, il caricamento dei metadati nel database 
+e il test dei flussi principali.
+
+Nel caso di DigiSky, il deployment è particolarmente delicato perché l’azienda dispone già di dati distribuiti tra **Google Drive**, 
+**NAS Synology** e cartelle operative. Prima della migrazione risulta quindi necessario effettuare un censimento degli archivi esistenti, 
+distinguendo tra dataset tecnici recenti, dataset storici, documenti aziendali, documenti di commessa, file duplicati e file obsoleti.
+
+Le principali attività di deployment sono:
+
+| Attività                                  | Descrizione                                                                  |
+|-------------------------------------------|------------------------------------------------------------------------------|
+| **Censimento dei dati esistenti**         | Analisi dei dati presenti su Google Drive, NAS e altri archivi               |
+| **Classificazione dei dataset**           | Separazione tra dati recenti, dati in lavorazione, dati storici e documenti  |
+| **Deduplicazione**                        | Identificazione ed eliminazione di copie inutili o obsolete                  |
+| **Migrazione verso cloud object storage** | Trasferimento dei dataset tecnici nello storage cloud principale             |
+| **Migrazione verso cold/archive storage** | Spostamento dei dataset storici verso classi di storage più economiche       |
+| **Migrazione documentale**                | Trasferimento dei documenti aziendali verso Nextcloud                        |
+| **Popolamento database metadati**         | Inserimento di clienti, commesse, missioni, dataset, output e posizioni file |
+| **Configurazione upload remoto**          | Test del caricamento dataset da parte di piloti e operatori fuori sede       |
+| **Configurazione NAS cache**              | Sincronizzazione selettiva dei dataset utili alle lavorazioni interne        |
+| **Configurazione dashboard BI**           | Creazione delle prime dashboard su storage, commesse, costi e produzione     |
+| **Test di backup e recovery**             | Verifica delle procedure di ripristino dati                                  |
+| **Formazione utenti**                     | Addestramento di tecnici, project manager, amministrazione e direzione       |
+
+Una criticità rilevante riguarda la migrazione dei dati storici: non tutti i file devono essere trasferiti nello storage 
+operativo più costoso. I dataset poco consultati possono essere indirizzati direttamente verso cold/archive storage, mentre
+documenti amministrativi e report devono essere separati dai dataset tecnici e gestiti tramite il sistema documentale.
+
+Il deployment dovrebbe quindi essere graduale. Una prima fase può riguardare i nuovi dataset prodotti dopo l’avvio del
+progetto, caricati direttamente su cloud object storage e registrati nel database. Successivamente si può procedere alla
+migrazione progressiva dei dati storici, riducendo il rischio di interruzione operativa.
+
+
 ### 4.3.3 Costi di operation e manutenzione
+
+I costi di operation e manutenzione sono i costi ricorrenti necessari per mantenere attivo il sistema nel tempo. A differenza
+dei costi di costruzione, che sono prevalentemente una tantum, questi costi si ripetono mensilmente o annualmente.
+
+Nel modello **TO BE**, la voce principale di costo ricorrente è rappresentata dallo storage cloud. Il costo complessivo 
+dipende però dalla classe di storage utilizzata e dalla frequenza di accesso ai dati. Per questo motivo la soluzione non
+prevede di mantenere tutti i 100 TB nello storage più performante, ma di distribuire i dati su più livelli:
+
+- **dati recenti e in lavorazione** → cloud hot/warm;
+- **dati usati frequentemente in sede** → cache locale su NAS;
+- **dati storici o poco consultati** → cold/archive storage.
+
+| Voce di costo                   | Descrizione                                                                  |
+|---------------------------------|------------------------------------------------------------------------------|
+| **Storage cloud hot/warm**      | Costo mensile per conservare i dataset tecnici di produzione                 |
+| **Cold/archive storage**        | Costo mensile ridotto per dataset storici o raramente consultati             |
+| **Operazioni cloud**            | Costi legati a upload, download, richieste, consultazioni e lifecycle        |
+| **Egress / download dati**      | Costi di trasferimento dati dal cloud verso l’esterno o verso altri ambienti |
+| **Database PostgreSQL/PostGIS** | Hosting, manutenzione, backup e aggiornamenti del database                   |
+| **Nextcloud**                   | Hosting, aggiornamenti, manutenzione e spazio documentale                    |
+| **Metabase**                    | Hosting, aggiornamenti e manutenzione delle dashboard                        |
+| **NAS Synology**                | Manutenzione hardware, dischi, energia, rete locale e monitoraggio           |
+| **Backup e disaster recovery**  | Copie di sicurezza, retention, test di ripristino e replica                  |
+| **Sicurezza e IAM**             | Gestione ruoli, permessi, logging, audit e autenticazione                    |
+| **Supporto tecnico**            | Attività interne o consulenze esterne per manutenzione e miglioramenti       |
+
+Per rendere economicamente sostenibile la soluzione, è fondamentale applicare **policy di lifecycle**. I dataset appena 
+acquisiti o ancora in lavorazione vengono mantenuti in storage hot/warm, mentre i dataset conclusi e poco consultati vengono
+progressivamente spostati verso classi di storage più economiche. In questo modo l’azienda evita di pagare lo storage più 
+costoso per dati che non vengono utilizzati frequentemente.
+
+Il NAS Synology continua a generare costi di manutenzione, energia, sostituzione dischi e gestione. Il suo utilizzo come
+cache locale consente però di limitarne il ruolo critico e di evitare ulteriori investimenti rilevanti su storage locale.
+
 ### 4.3.4 Costi di migrazione/dismissione
+
+I costi di migrazione e dismissione riguardano il passaggio dall’attuale modello basato su Google Drive e NAS sincronizzato
+a un modello cloud-first con database centralizzato dei metadati.
+
+Non si prevede una dismissione completa di Google Workspace, poiché strumenti come Gmail, Calendar, Drive per documenti 
+leggeri e collaborazione rimangono utili per la produttività quotidiana. La dismissione riguarda invece l’utilizzo di Google
+Drive come archivio principale o semi-principale dei dataset tecnici pesanti.
+
+Le principali attività di migrazione/dismissione sono:
+
+| Attività                                 | Descrizione                                                                                      |
+|------------------------------------------|--------------------------------------------------------------------------------------------------|
+| **Ridimensionamento Google Drive**       | Riduzione dell’utilizzo di Drive per dataset RAW, ortofoto, mappe e output pesanti               |
+| **Migrazione dataset tecnici**           | Spostamento dei dati tecnici verso cloud object storage                                          |
+| **Separazione documenti/dataset**        | Distinzione tra documenti aziendali e file tecnici pesanti                                       |
+| **Migrazione documenti verso Nextcloud** | Spostamento di contratti, report, certificazioni e documenti di commessa                         |
+| **Creazione metadati mancanti**          | Inserimento nel database di informazioni non strutturate presenti nei nomi file o nelle cartelle |
+| **Deduplicazione**                       | Eliminazione di copie ridondanti o obsolete                                                      |
+| **Riorganizzazione permessi**            | Passaggio da permessi su cartelle a ruoli più strutturati                                        |
+| **Verifica post-migrazione**             | Controllo dell’integrità dei file e del corretto collegamento ai metadati                        |
+
+Una parte significativa del costo di migrazione è legata al lavoro umano necessario per classificare, normalizzare e validare
+correttamente i dati. Gli archivi attuali potrebbero infatti contenere file salvati con convenzioni di naming diverse, 
+strutture di cartelle non uniformi o informazioni implicite non ancora registrate in un database.
+
+È inoltre opportuno prevedere un periodo di coesistenza tra vecchio e nuovo sistema. Durante questa fase, Google Drive e 
+NAS continuano a essere disponibili, mentre i nuovi dataset vengono progressivamente gestiti secondo la nuova architettura.
+Questo approccio riduce il rischio di interruzione delle attività aziendali e consente una transizione più controllata.
+
 ### 4.3.5 Risparmi attesi
+
+I risparmi attesi derivano sia da una riduzione dei costi diretti di archiviazione, sia da un miglioramento dell’efficienza
+operativa. La nuova architettura consente infatti di evitare che tutti i dataset vengano conservati nello stesso ambiente,
+indipendentemente dalla loro frequenza di utilizzo.
+
+Il primo risparmio riguarda lo storage: grazie alle policy di lifecycle, il costo medio per TB si riduce mantenendo nello 
+storage più performante solo i dati operativi e spostando i dataset storici verso classi più economiche.
+
+Un secondo risparmio riguarda la riduzione delle duplicazioni. L’utilizzo combinato di Google Drive, NAS e cartelle operative
+può favorire la presenza di copie multiple dello stesso dataset o di versioni non più aggiornate. L’introduzione del database 
+dei metadati e di regole di archiviazione più strutturate consente di ridurre questi fenomeni.
+
+Un terzo risparmio riguarda il tempo di lavoro. Tecnici, project manager e amministrazione possono dedicare meno tempo alla 
+ricerca manuale dei file, alla verifica della versione corretta o alla ricostruzione dello stato di una commessa. Il database
+centralizzato permette infatti di individuare rapidamente dataset, output, documenti e informazioni operative.
+
+I principali risparmi attesi sono quindi:
+
+| Area di risparmio                           | Descrizione                                                                                    |
+|---------------------------------------------|------------------------------------------------------------------------------------------------|
+| **Riduzione uso improprio di Google Drive** | Drive resta utilizzato per documenti leggeri e collaborazione, non per dataset tecnici pesanti |
+| **Minore duplicazione dei file**            | Il database aiuta a identificare posizione, versione e stato dei dataset                       |
+| **Ottimizzazione storage**                  | I dati storici vengono spostati verso cold/archive storage                                     |
+| **Riduzione tempo di ricerca**              | Gli utenti cercano tramite portale e metadati, non tra cartelle distribuite                    |
+| **Meno interruzioni operative**             | Il cloud riduce la dipendenza dal NAS e dalla sede fisica                                      |
+| **Migliore controllo dei costi**            | Le dashboard permettono di monitorare costi per commessa, cliente e storage                    |
+| **Migliore pianificazione**                 | La crescita dei dati diventa misurabile e prevedibile                                          |
+
+I risparmi non sono quindi solo economici, ma anche organizzativi. La maggiore tracciabilità dei dati permette di ridurre errori,
+ritardi e inefficienze nei processi di consegna e validazione.
+
+---
+
 ### 4.3.6 Confronto costi-benefici
+
+Il confronto costi-benefici mostra che la soluzione proposta comporta costi ricorrenti superiori rispetto a una gestione 
+basata esclusivamente sul NAS locale. Tuttavia, il solo NAS non risolve le principali criticità emerse dall’analisi: difficoltà
+di caricamento da postazioni esterne, dipendenza dalla WAN aziendale, rischio di indisponibilità della sede e limitata business continuity.
+
+Una soluzione basata su **Google Drive + NAS sincronizzato** avrebbe il vantaggio di mantenere un modello già conosciuto
+dagli utenti, ma continuerebbe a presentare limiti nella gestione di dataset tecnici pesanti, nella tracciabilità dei dati
+e nel controllo delle versioni.
+
+La soluzione **cloud-first**, invece, introduce costi ricorrenti maggiori, ma offre benefici più rilevanti in termini di
+accessibilità, scalabilità, continuità operativa e integrazione applicativa. Il valore aggiunto non deriva solo dallo storage
+cloud, ma dalla combinazione tra storage, database dei metadati, cache locale e strumenti di monitoraggio.
+
+Il confronto può essere sintetizzato nel modo seguente:
+
+| Alternativa                              | Vantaggi                                                                                     | Limiti                                                                                      |
+|------------------------------------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| **Solo NAS locale**                      | Costi ricorrenti più bassi, accesso veloce in sede, infrastruttura già presente              | Dipendenza dalla sede, limite WAN, minore business continuity, accesso remoto problematico  |
+| **Google Drive + NAS sincronizzato**     | Soluzione già utilizzata, semplice per utenti abituati a Drive                               | Poco adatta a dataset tecnici pesanti, rischio duplicazioni, organizzazione non strutturata |
+| **Cloud-first + NAS cache**              | Accessibilità remota, business continuity, scalabilità, migliore tracciabilità               | Costi cloud ricorrenti, necessità di progettare policy, permessi e lifecycle                |
+| **Cloud-first + database metadati + BI** | Oltre ai vantaggi cloud, consente controllo gestionale, dashboard, KPI e ricerca strutturata | Richiede investimento iniziale in progettazione, formazione e change management             |
+
+---
+
+#### Stima indicativa dei costi di storage
+
+Ai soli fini della stima, si possono considerare alcuni costi indicativi di storage mensile per classi di archiviazione cloud.
+La stima non rappresenta un preventivo definitivo, poiché il costo reale dipende dal provider scelto, dalla regione, dal numero 
+di operazioni, dai download, dalle politiche di backup e dalla frequenza di recupero dei dati.
+
+I valori seguenti permettono comunque di confrontare diversi scenari di archiviazione:
+
+| Classe di storage   | Uso previsto                                |           Costo indicativo |
+|---------------------|---------------------------------------------|---------------------------:|
+| **Standard / hot**  | Dataset recenti e frequentemente utilizzati |  circa **0,022 $/GB/mese** |
+| **Nearline / warm** | Dataset consultati saltuariamente           |  circa **0,011 $/GB/mese** |
+| **Coldline**        | Dataset raramente consultati                | circa **0,0044 $/GB/mese** |
+| **Archive**         | Dataset storici quasi mai consultati        | circa **0,0014 $/GB/mese** |
+
+Considerando un volume complessivo pari a circa **100 TB**, cioè circa **102.400 GB**, mantenere tutti i dati nello storage
+più performante avrebbe un costo indicativo pari a:
+
+```text
+100 TB in Standard / hot storage:
+102.400 GB × 0,022 $/GB/mese = circa 2.253 $/mese
+Costo annuo: circa 27.034 $/anno
+```
+Questo scenario garantirebbe la massima semplicità gestionale, ma non sarebbe economicamente efficiente, perché manterrebbe
+nello storage più costoso anche dataset storici o raramente consultati.
+
+Una soluzione più coerente con il modello TO BE consiste invece nel distribuire i dati tra più classi di storage, mantenendo
+in hot/warm storage solo i dataset effettivamente utilizzati e spostando progressivamente i dati storici verso classi più economiche.
+
+| Scenario                    | Distribuzione dati                             | Costo mensile stimato | Costo annuo stimato | Risparmio rispetto a tutto Standard |
+|-----------------------------|------------------------------------------------|----------------------:|--------------------:|------------------------------------:|
+| **A – Tutto hot**           | 100 TB Standard                                |      **2.253 $/mese** |   **27.034 $/anno** |                                   — |
+| **B – Bilanciato**          | 20 TB Standard, 30 TB Nearline, 50 TB Archive  |        **860 $/mese** |   **10.322 $/anno** |                       circa **62%** |
+| **C – Prudente**            | 30 TB Standard, 40 TB Nearline, 30 TB Coldline |      **1.262 $/mese** |   **15.139 $/anno** |                       circa **44%** |
+| **D – Archivio prevalente** | 10 TB Standard, 20 TB Nearline, 70 TB Archive  |        **551 $/mese** |    **6.611 $/anno** |                       circa **76%** |
+
+
+Dal confronto emerge dunque che la soluzione cloud-first non deve essere interpretata come mantenimento di tutti i dati 
+nello storage cloud più costoso. La sostenibilità economica dipende dalla corretta classificazione dei dataset e dall’applicazione
+di policy di lifecycle.
+
+Nel caso di DigiSky, uno scenario bilanciato permetterebbe di ridurre il costo indicativo dello storage da circa 27.000$/anno
+a circa 10.300 $/anno, con un risparmio superiore al 60% rispetto allo scenario in cui tutti i dati vengano mantenuti in storage Standard.
+
+Questi valori non includono costi di operazioni, download, recupero da archive storage, backup, database, portale, Nextcloud, 
+Metabase, sviluppo delle API e formazione. Devono quindi essere interpretati come una stima parziale, utile soprattutto a
+mostrare il beneficio economico delle policy di lifecycle.
+
+Il vantaggio della soluzione proposta non è semplicemente “usare il cloud”, ma usare il cloud in modo differenziato: storage
+più veloce per i dati operativi, storage più economico per i dati storici e NAS locale come cache dei dataset più utilizzati in sede.
 
 ## 4.4 Piano di cambiamento
 ### 4.4.1 Tipologia di cambiamento
