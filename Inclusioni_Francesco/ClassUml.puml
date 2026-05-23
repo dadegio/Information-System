@@ -1,0 +1,76 @@
+@startuml
+title UML Class Diagram AS IS - Digisky
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor White
+  BorderColor #2F5597
+  ArrowColor #333333
+}
+
+class Client <<Entity>> {
+  +idClient: Integer
+  +name: String
+  +email: String
+  +company: String
+}
+
+class ServiceRequest <<Entity>> {
+  +idRequest: Integer
+  +requestDate: Date
+  +serviceType: String
+  +status: String
+}
+
+class DroneMission <<Entity>> {
+  +idMission: Integer
+  +missionDate: Date
+  +area: String
+  +operator: String
+}
+
+class SurveyData <<Entity>> {
+  +idData: Integer
+  +filePath: String
+  +dataType: String
+  +acquisitionDate: Date
+}
+
+class Report <<Entity>> {
+  +idReport: Integer
+  +creationDate: Date
+  +format: String
+  +version: String
+}
+
+class Department <<Entity>> {
+  +idDepartment: Integer
+  +name: String
+  +role: String
+  +manager: String
+}
+
+class GoogleDriveArchive <<Archive>> {
+  +idArchive: Integer
+  +folderName: String
+  +storageType: String
+  +accessPermissions: String
+}
+
+Client "1" --> "0..*" ServiceRequest : submits
+ServiceRequest "1" --> "0..1" DroneMission : generates
+DroneMission "1" --> "1..*" SurveyData : produces
+SurveyData "1..*" --> "1" Report : used to create
+Report "0..*" --> "1" GoogleDriveArchive : stored in
+Department "1..*" --> "1" GoogleDriveArchive : accesses
+
+note right of GoogleDriveArchive
+AS IS issue:
+unstructured storage,
+manual file upload,
+document duplication,
+lack of centralized database.
+end note
+
+@enduml
