@@ -45,45 +45,49 @@ Aeritalia e alla presenza nei network aerospaziali regionali e dell’ESA Busine
 - Supporto a innovazione, R&D e test in volo, anche tramite una propria flotta di aeromobili equipaggiati con sistemi 
 avionici, pensata per validare tecnologie e dispositivi in condizioni operative reali.
 
+---
+# Mancano info
 ## 2. Analisi organizzativa
 ### 2.1 Modello organizzativo
 ### 2.2 Organigramma
 ### 2.3 Unità organizzative principali
 ### 2.4 Attori coinvolti nel progetto
 
+---
+
+# Mancano info
+
+## 3. Sistema Informativo AS IS
+
+### 3.1 Descrizione dell’area IT || Aspettare info ||
+#### 3.1.1 Spese IT e rapporto spese IT / spese totali
+#### 3.1.2 Strategia IT attuale
+#### 3.1.3 Sistema informativo attuale
+#### 3.1.4 Application portfolio attuale
+#### 3.1.5 Architettura hardware-software attuale
+
+### 3.2 Situazione AS IS || Aspettare info ||
+#### 3.2.1 Processo AS IS di gestione e analisi dei dati
+#### 3.2.2 Unità organizzative coinvolte
+#### 3.2.3 Diagramma UML
+#### 3.2.4 Diagramma BPMN
+#### 3.2.5 Debolezze della situazione attuale
+
+### 3.3 Processi chiave (derivati dal BPMN)
+#### 3.3.1 Elenco dei processi chiave aziendali
+#### 3.3.2 Selezione dei processi da analizzare
+#### 3.3.3 Criticità principali
+
+### 3.4 Analisi delle problematiche
+#### 3.4.1 Difficoltà nell’analisi efficace dei dati
+#### 3.4.2 Memorizzazione dati non strutturata su Google Drive
+#### 3.4.3 Costi elevati di archiviazione e gestione
+#### 3.4.4 Assenza di database strutturati
+#### 3.4.5 Processi interni manuali e ripetitivi
+
 -------------------------------------------------------
 
-# 3. Sistema Informativo AS IS
-
-## 3.1 Descrizione dell’area IT || Aspettare info ||
-### 3.1.1 Spese IT e rapporto spese IT / spese totali
-### 3.1.2 Strategia IT attuale
-### 3.1.3 Sistema informativo attuale
-### 3.1.4 Application portfolio attuale
-### 3.1.5 Architettura hardware-software attuale
-
-## 3.2 Situazione AS IS || Aspettare info ||
-### 3.2.1 Processo AS IS di gestione e analisi dei dati
-### 3.2.2 Unità organizzative coinvolte
-### 3.2.3 Diagramma UML
-### 3.2.4 Diagramma BPMN
-### 3.2.5 Debolezze della situazione attuale
-
-## 3.3 Processi chiave (derivati dal BPMN)
-### 3.3.1 Elenco dei processi chiave aziendali
-### 3.3.2 Selezione dei processi da analizzare
-### 3.3.3 Criticità principali
-
-## 3.4 Analisi delle problematiche
-### 3.4.1 Difficoltà nell’analisi efficace dei dati
-### 3.4.2 Memorizzazione dati non strutturata su Google Drive
-### 3.4.3 Costi elevati di archiviazione e gestione
-### 3.4.4 Assenza di database strutturati
-### 3.4.5 Processi interni manuali e ripetitivi
-
--------------------------------------------------------
-
-# 4. Situazione TO BE
+## 4. Situazione TO BE
 
 La soluzione proposta prevede l’introduzione di un’architettura informativa ibrida, pensata per gestire in modo più efficiente
 grandi volumi di dati, ridurre la dipendenza da Google Drive e migliorare l’organizzazione complessiva delle informazioni 
@@ -167,7 +171,7 @@ In sintesi, la nuova architettura segue una logica cloud-first per i file tecnic
 come supporto locale. Questo consente di ridurre la dipendenza da Google Drive, migliorare l’accessibilità dei dataset 
 da postazioni esterne, aumentare la business continuity e rendere i dati più facilmente integrabili con i software interni dell’azienda.
 
-### 4.1.2 Introduzione di un database centralizzato
+#### 4.1.2 Introduzione di un database centralizzato
 
 L'idea di introdurre un database centralizzato ha l’obiettivo di organizzare in modo strutturato le informazioni relative a clienti, 
 commesse, missioni di volo, dataset, elaborazioni e output finali. Il database centralizzato non ha lo scopo di sostituire 
@@ -241,7 +245,7 @@ informativi più importanti dei vari processi.
 | **Utente**           | Contiene le informazioni sugli utenti autorizzati e sui rispettivi ruoli.                                                      |
 
 
-### 4.1.3 Introduzione di strumenti di Business Intelligence
+#### 4.1.3 Introduzione di strumenti di Business Intelligence
 
 L’introduzione di strumenti di Business Intelligence ha l’obiettivo di trasformare i dati raccolti dal sistema informativo 
 in informazioni utili per il controllo e il miglioramento dei processi aziendali.
@@ -296,7 +300,7 @@ i costi iniziali, mantenendo comunque la possibilità di realizzare dashboard op
 dagli utenti autorizzati. In questo modo DigiSky potrà passare da una gestione reattiva, basata su controlli manuali e 
 verifiche occasionali, a una gestione più proattiva come dicevamo prima e basata su dati aggiornati.
 
-### 4.1.4 Introduzione di un sistema documentale
+#### 4.1.4 Introduzione di un sistema documentale
 
 L’introduzione di un sistema documentale ha l’obiettivo di separare la gestione dei documenti aziendali dalla gestione 
 dei dataset tecnici pesanti. Nel contesto analizzato, infatti, non tutti i file hanno la stessa natura: da un lato esistono
@@ -360,7 +364,7 @@ soluzione TO BE, che prevede cloud object storage come storage principale dei da
 replica operativa, PostgreSQL/PostGIS per i metadati e strumenti di BI per il monitoraggio.
 
 
-### 4.1.7 Unità organizzative coinvolte nel TO BE
+#### 4.1.7 Unità organizzative coinvolte nel TO BE
 L’introduzione della nuova architettura informativa TO BE non riguarda esclusivamente l’area tecnica o informatica, ma 
 coinvolge diverse unità organizzative aziendali. La soluzione proposta, infatti, modifica il modo in cui i dati vengono prodotti, 
 archiviati, ricercati, elaborati e utilizzati per prendere decisioni.
@@ -391,7 +395,7 @@ commesse e sui costi dello storage, senza dover accedere manualmente alle cartel
 Il modello TO BE introduce quindi una maggiore responsabilizzazione degli utenti, perché ogni unità organizzativa opera su 
 dati più tracciabili, aggiornati e collegati ai processi aziendali.
 
-### 4.1.8 Modello tecnologico TO BE
+#### 4.1.8 Modello tecnologico TO BE
 
 Il modello tecnologico TO BE si basa su un’architettura composta da più livelli, ognuno dei quali ha una funzione specifica. 
 L’obiettivo non è concentrare tutte le informazioni in un unico strumento, come accade oggi con Google Drive, ma distribuire 
@@ -421,7 +425,7 @@ La logica generale del modello è la seguente:
 | **Livello sicurezza e gestione**         | Sistema di autenticazione, ruoli, backup e logging | Controlla accessi, autorizzazioni, tracciabilità, protezione dei dati e continuità operativa.                                      |
 
 
-### 4.1.9 Deployment diagram
+#### 4.1.9 Deployment diagram
 
 Il deployment diagram rappresenta la distribuzione logica dei principali componenti tecnologici della soluzione TO BE e le relazioni tra utenti, applicazioni, database e sistemi di storage.
 
@@ -434,7 +438,7 @@ file pesanti, ma mantiene le informazioni relative a clienti, commesse, missioni
 lavorazione e posizione dei file nei diversi storage. Gli strumenti di Business Intelligence, i software interni e il 
 portale applicativo possono quindi interrogare il database per recuperare dati aggiornati e coerenti.
 
-![depoyment](mermaid-diagram-deployment.png)
+![deployment](mermaid-diagram-deployment.png)
 
 In questo modello, i dataset prodotti dai piloti e dagli operatori vengono caricati direttamente verso il cloud object 
 storage tramite il portale o strumenti di upload dedicati. Successivamente, se un dataset deve essere elaborato in sede, 
@@ -451,12 +455,12 @@ tecnica. Nextcloud gestisce invece i documenti aziendali e di commessa, separand
 Il deployment proposto permette quindi di migliorare l’accessibilità dei dati da remoto, ridurre la dipendenza dalla sede
 fisica, aumentare la continuità operativa e integrare in modo più efficace i software interni dell’azienda.
 
-### 4.1.10 Diagramma BPMN TO BE
+#### 4.1.10 Diagramma BPMN TO BE
 
 DA FARE BENE
 
-## 4.2 Dimensione tecnologica
-### 4.2.1 Nuovo application portfolio
+### 4.2 Dimensione tecnologica
+#### 4.2.1 Nuovo application portfolio
 Il nuovo application portfolio rappresenta l’insieme delle applicazioni e dei componenti tecnologici che Digisky dovrebbe 
 utilizzare, a nostro avviso, nella situazione TO BE.
 
@@ -479,7 +483,7 @@ I file pesanti continuano a esistere, ma non sono più gestiti principalmente tr
 vengono conservati in cloud object storage, descritti tramite metadati nel database e resi ricercabili attraverso il portale
 e gli strumenti interni. Il NAS locale rimane utile come cache o replica operativa, ma non rappresenta più il punto centrale dell’architettura.
 
-### 4.2.2 Funzioni software richieste
+#### 4.2.2 Funzioni software richieste
 
 | Funzione software richiesta                 | Descrizione                                                                                                    | Criticità AS IS risolta                                                                       |
 |---------------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
@@ -505,7 +509,7 @@ e gli strumenti interni. Il NAS locale rimane utile come cache o replica operati
 Le funzioni centrali del nuovo sistema sono quindi quattro: gestione cloud dei dataset tecnici, gestione strutturata dei
 metadati, integrazione con i software interni e analisi tramite Business Intelligence.
 
-### 4.2.3 Analisi di copertura
+#### 4.2.3 Analisi di copertura
 
 L’analisi di copertura confronta le funzioni software richieste con le componenti tecnologiche proposte, verificando se il nuovo sistema è in grado di rispondere alle necessità individuate.
 
@@ -534,7 +538,7 @@ La copertura complessiva della soluzione è alta. I principali punti da progetta
 regole di caricamento dei dataset sul cloud, la sincronizzazione selettiva verso il NAS, le policy di lifecycle verso 
 cold/archive storage, l’integrazione con i software interni, la classificazione documentale, i permessi per ruolo e le policy di backup e recovery.
 
-### 4.2.4 Analisi di integrazione
+#### 4.2.4 Analisi di integrazione
 
 L’integrazione tra le componenti è fondamentale per evitare che il nuovo sistema generi nuovi silos informativi: infatti 
 la nostra soluzione funziona **solo se NAS, cloud storage, database, sistema documentale e BI comunicano in modo coerente.**
@@ -562,7 +566,7 @@ delle dashboard e l’integrazione con i software interni di pianificazione e vi
 
 ![image](mermaid-diagram.png)
 
-### 4.2.5 Outsourcing o sviluppo interno
+#### 4.2.5 Outsourcing o sviluppo interno
 
 La scelta tra outsourcing e sviluppo interno deve essere valutata considerando competenze disponibili, criticità dei sistemi, costi, tempi di implementazione e necessità di personalizzazione.
 
@@ -583,7 +587,7 @@ più infrastrutturali o specialistiche, come configurazione storage, sicurezza, 
 | **Backup e disaster recovery**               | Supporto esterno specialistico                             | È una componente critica per la continuità operativa                                                                                                |
 | **Cybersecurity e access control**           | Supporto esterno specialistico                             | Necessario per dati sensibili, documenti HR e protezione dei dataset aziendali                                                                      |
 
-### 4.2.6 Gap analysis
+#### 4.2.6 Gap analysis
 
 Osservando le situazioni AS IS e TO BE:
 
@@ -620,7 +624,7 @@ A partire da questo censimento sarà possibile progettare correttamente il datab
 storage più adatto e definire le dashboard iniziali su Metabase.
 
 
-## 4.3 TCO e valutazione economica
+### 4.3 TCO e valutazione economica
 
 La valutazione economica della soluzione **TO BE** deve considerare non solo i costi di acquisto o configurazione delle 
 singole componenti tecnologiche, ma l’intero costo di possesso del sistema informativo nel tempo. Per questo motivo viene 
@@ -638,7 +642,7 @@ locale o replica operativa dei dati più utilizzati in sede. A supporto dello st
 come database centralizzato dei metadati, **Nextcloud** come sistema documentale e **Metabase** come strumento di Business Intelligence.
 
 
-### 4.3.1 Costi di costruzione/acquisizione
+#### 4.3.1 Costi di costruzione/acquisizione
 
 I costi di costruzione e acquisizione comprendono le spese necessarie per progettare e predisporre la nuova architettura 
 informativa. In questa fase il NAS Synology, essendo già presente, non viene considerato come nuovo investimento hardware principale, 
@@ -663,7 +667,7 @@ e l’integrazione con i software interni dell’azienda.
 | **Backup e disaster recovery**                | Predisposizione di policy di backup, retention e ripristino                                                                | Iniziale + ricorrente |
 
 
-### 4.3.2 Costi di deployment
+#### 4.3.2 Costi di deployment
 
 I costi di deployment riguardano le attività necessarie per portare il nuovo sistema in produzione. Questa fase comprende
 la configurazione operativa delle componenti, la migrazione iniziale dei dati, il caricamento dei metadati nel database 
@@ -699,7 +703,7 @@ progetto, caricati direttamente su cloud object storage e registrati nel databas
 migrazione progressiva dei dati storici, riducendo il rischio di interruzione operativa.
 
 
-### 4.3.3 Costi di operation e manutenzione
+#### 4.3.3 Costi di operation e manutenzione
 
 I costi di operation e manutenzione sono i costi ricorrenti necessari per mantenere attivo il sistema nel tempo. A differenza
 dei costi di costruzione, che sono prevalentemente una tantum, questi costi si ripetono mensilmente o annualmente.
@@ -734,7 +738,7 @@ costoso per dati che non vengono utilizzati frequentemente.
 Il NAS Synology continua a generare costi di manutenzione, energia, sostituzione dischi e gestione. Il suo utilizzo come
 cache locale consente però di limitarne il ruolo critico e di evitare ulteriori investimenti rilevanti su storage locale.
 
-### 4.3.4 Costi di migrazione/dismissione
+#### 4.3.4 Costi di migrazione/dismissione
 
 I costi di migrazione e dismissione riguardano il passaggio dall’attuale modello basato su Google Drive e NAS sincronizzato
 a un modello cloud-first con database centralizzato dei metadati.
@@ -764,7 +768,7 @@ strutture di cartelle non uniformi o informazioni implicite non ancora registrat
 NAS continuano a essere disponibili, mentre i nuovi dataset vengono progressivamente gestiti secondo la nuova architettura.
 Questo approccio riduce il rischio di interruzione delle attività aziendali e consente una transizione più controllata.
 
-### 4.3.5 Risparmi attesi
+#### 4.3.5 Risparmi attesi
 
 I risparmi attesi derivano sia da una riduzione dei costi diretti di archiviazione, sia da un miglioramento dell’efficienza
 operativa. La nuova architettura consente infatti di evitare che tutti i dataset vengano conservati nello stesso ambiente,
@@ -798,7 +802,7 @@ ritardi e inefficienze nei processi di consegna e validazione.
 
 ---
 
-### 4.3.6 Confronto costi-benefici
+#### 4.3.6 Confronto costi-benefici
 
 Il confronto costi-benefici mostra che la soluzione proposta introduce nuovi costi ricorrenti rispetto a una gestione basata
 esclusivamente sul NAS locale.Tuttavia, il solo NAS non risolve le principali criticità emerse dall’analisi: difficoltà
@@ -823,7 +827,7 @@ Il confronto può essere sintetizzato nel modo seguente:
 
 ---
 
-#### Stima indicativa dei costi di storage
+##### Stima indicativa dei costi di storage
 
 Ai soli fini della stima, si possono considerare alcuni costi indicativi di storage mensile per classi di archiviazione cloud.
 La stima non rappresenta un preventivo definitivo, poiché il costo reale dipende dal provider scelto, dalla regione, dal numero 
@@ -874,27 +878,27 @@ mostrare il beneficio economico delle policy di lifecycle.
 Il vantaggio della soluzione proposta non è semplicemente “usare il cloud”, ma usare il cloud in modo differenziato: storage
 più veloce per i dati operativi, storage più economico per i dati storici e NAS locale come cache dei dataset più utilizzati in sede.
 
-## 4.4 Piano di cambiamento
-### 4.4.1 Tipologia di cambiamento
-### 4.4.2 Rischi principali
-### 4.4.3 Piano di formazione
-### 4.4.4 Piano di migrazione dei dati
-### 4.4.5 Strategia di adozione graduale
+### 4.4 Piano di cambiamento
+#### 4.4.1 Tipologia di cambiamento
+#### 4.4.2 Rischi principali
+#### 4.4.3 Piano di formazione
+#### 4.4.4 Piano di migrazione dei dati
+#### 4.4.5 Strategia di adozione graduale
 
 ----------
 
-## 4.5 KPI
-### 4.5.1 Obiettivi di business / CSF
-### 4.5.2 KPI di efficienza
-### 4.5.3 KPI di servizio
-### 4.5.4 KPI di qualità
-### 4.5.5 Confronto AS IS vs TO BE
+### 4.5 KPI
+#### 4.5.1 Obiettivi di business / CSF
+#### 4.5.2 KPI di efficienza
+#### 4.5.3 KPI di servizio
+#### 4.5.4 KPI di qualità
+#### 4.5.5 Confronto AS IS vs TO BE
 
 --------------------------------------------
 
-# 5. Conclusione
+## 5. Conclusione
 
-## 5.1 Benefici per Digisky
-## 5.2 Benefici per i dipendenti
-## 5.3 Rischi e limiti
-## 5.4 Valutazione finale
+### 5.1 Benefici per Digisky
+### 5.2 Benefici per i dipendenti
+### 5.3 Rischi e limiti
+### 5.4 Valutazione finale
