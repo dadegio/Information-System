@@ -938,7 +938,7 @@ ridurre errori, ritardi e inefficienze nei processi di consegna e validazione.
 #### 4.3.6 Confronto costi-benefici
 
 Il confronto costi-benefici mostra che la soluzione proposta introduce nuovi costi ricorrenti rispetto a una gestione
-basata esclusivamente sul NAS locale.Tuttavia, il solo NAS non risolve le principali criticità emerse dall'analisi:
+basata esclusivamente sul NAS locale. Tuttavia, il solo NAS non risolve le principali criticità emerse dall'analisi:
 difficoltà di caricamento da postazioni esterne, dipendenza dalla WAN aziendale, rischio di indisponibilità della sede e
 limitata business continuity.
 
@@ -1017,9 +1017,31 @@ più utilizzati in sede.
 
 ### 4.4 Piano di cambiamento
 
+L'introduzione della nuova architettura informativa in DigiSky non rappresenta semplicemente un aggiornamento
+tecnologico, ma un percorso di trasformazione che ridefinisce le modalità operative dei dipendenti e la gestione del
+patrimonio informativo aziendale. Per garantire il successo di questa iniziativa, viene definito un piano di cambiamento
+strutturato.
+
 #### 4.4.1 Tipologia di cambiamento
 
+Facendo riferimento ai modelli di teoria organizzativa, l'intervento proposto si configura come un **cambiamento di
+secondo ordine**: il cambiamento non altera la macrostruttura organizzativa di DigiSky, tuttavia, esso modifica
+radicalmente i processi di lavoro quotidiani, le regole di interazione con i dati, i flussi di comunicazione (da
+destrutturati/informali tramite cartelle condivise a strutturati tramite database di metadati) e le competenze
+tecnologiche richieste. Si passa da un approccio "file-centric" (in cui l'informazione è identificata dalla sua
+posizione fisica in una cartella Drive) a uno "data-centric" (in cui l'informazione è descritta da metadati
+centralizzati e ricercabile in modo logico).
+
 #### 4.4.2 Rischi principali
+
+Trattandosi di un cambiamento di secondo livello, occorre tenere a mente di alcuni rischi di natura organizzativa e
+tecnica che potrebbero ostacolare l'adozione o ridurre l'efficacia della soluzione.
+
+I dipendenti DigiSky, essendo stati da anni abituati all'uso flessibile, seppur disordinato, di Google Drive, potrebbero
+percepire l'obbligo di utilizzare un portale per registrare le missioni e compilare metadati aggiuntivi come un carico
+burocratico aggiuntivo, che potrebbe comportare un _rallentamento rispetto all'attività precedente_. Nelle prime
+settimane di utilizzo, l'azienda potrebbe riscontrare un _momentaneo calo di produttività_, dovuto alla necessità dei
+tecnici di adattarsi ai nuovi strumenti.
 
 #### 4.4.3 Piano di formazione
 
