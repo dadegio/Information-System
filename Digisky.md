@@ -1069,8 +1069,46 @@ tecnici di adattarsi ai nuovi strumenti.
 
 ### 5.1 Benefici per Digisky
 
+Il nuovo approccio proposto dalla soluzione TO BE ha il potenziale di apportare a DigiSky rilevanti vantaggi competitivi
+e organizzativi.
+
+In primo luogo, l'introduzione di policy di lifecycle e del tiering dello storage garantisce la sostenibilità e il
+controllo dei costi, consentendo di gestire in modo efficiente e (relativamente) economico la vasta quantità di dati
+tecnici e abbattendo i costi di archiviazione di oltre il 60% rispetto a un modello a tariffa unica Standard.
+
+Parallelamente, lo spostamento dello storage primario in cloud assicura la continuità operativa ed elimina i single
+point of failure; DigiSky non dipende più dalla sede fisica di Torino Aeritalia, dalla stabilità della connettività WAN
+locale o da blackout elettrici che inibiscono l'accesso al NAS, poiché la business continuity e il disaster recovery
+sono ora garantiti direttamente dalle policy del provider cloud.
+
+Infine, la transizione abilita una vera e propria gestione intelligente e decision-making guidato dai dati. I file non
+sono più elementi isolati in cartelle condivise, ma risorse indicizzate all'interno del database geografico
+PostgreSQL/PostGIS, che permette di effettuare query complesse e apre la strada a nuove opportunità di business basate
+sull'analisi storica, alimentando direttamente gli strumenti di Business Intelligence tramite Metabase per un
+monitoraggio in tempo reale di costi, marginalità e saturazione delle risorse.
+
 ### 5.2 Benefici per i dipendenti
 
-### 5.3 Rischi e limiti
+L'approccio più strutturato TO BE introduce una serie di benefici sostanziali per il personale, migliorando
+l'operatività quotidiana e l'efficienza dei flussi di lavoro.
 
-### 5.4 Valutazione finale
+Da un lato, si assiste a una netta riduzione delle attività ripetitive e a basso valore: tecnici e piloti vengono
+infatti liberati dalle mansioni manuali di upload ridondanti, dalla rinomina arbitraria dei file e dalla ricerca di dati
+dispersi in cartelle disordinate.
+
+Dall'altro, la nuova architettura garantisce una maggiore flessibilità e ottimizzazione dei trasferimenti da remoto.
+Consentendo ai piloti e agli operatori fuori sede di caricare i file direttamente sul cloud object storage, si eliminano
+i colli di bottiglia della vecchia infrastruttura: i caricamenti non sono più vincolati alla connessione esterna della
+sede fisica, limitata a circa 100 Mbit/s, bypassando così le storiche lentezze della WAN locale e velocizzando la
+disponibilità del dato grezzo.
+
+### 5.3 Valutazione finale
+
+In conclusione, il progetto TO BE risponde in modo completo e bilanciato a tutte le criticità emerse nell'analisi AS IS
+di DigiSky. L'architettura proposta coniuga la scalabilità e l'accessibilità del cloud con l'efficienza prestazionale
+della cache locale su NAS, mantenendo un focus rigoroso sul contenimento dei costi tramite il lifecycle management dello
+storage. L'investimento iniziale richiesto per la progettazione del database PostgreSQL/PostGIS, la configurazione del
+portale metadati, Nextcloud e Metabase, e la formazione del personale viene ampiamente compensato dai risparmi sui costi
+di storage e dal recupero di efficienza del personale tecnico. Il progetto rappresenta quindi una scelta strategica e ad
+alto rendimento, in grado di trasformare il sistema informativo di DigiSky in un reale abilitatore di crescita e
+innovazione tecnologica.
