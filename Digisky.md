@@ -90,7 +90,7 @@ In particolare:
 
 
 #### 3.1.3 Architettura hardware-software attuale
-![](./img/deployment_diagram.png)
+![](./img/deployment_diagram_as_is.png)
 
 #### 3.1.4 Settore IT
 L'attuale settore IT di *DigiSky* è fortemente condizionato dalle dimensioni contenute dell'azienda. Contando su un organico di una decina di persone, non esiste una divisione IT strutturata o dedicata. La gestione dell'infrastruttura ricade quindi in modo trasversale sulle figure tecniche già operative su altri fronti lavorativi. Questo porta inevitabilmente a una strategia che può essere definita come fortemente reattiva ed informale. Il sistema informativo viene quindi visto come un semplice magazzino digitale piuttosto che come uno strumento che può portare all'ottimizzazione e valorizzazione dei processi.
@@ -119,23 +119,24 @@ I principali processi aziendali di Digisky possono essere suddivisi in processi 
 * Supporto tecnico interno
 
 ### 3.2 Processo chiave: acquisizione dati
-#### 3.2.1 Introduzione || Sincronizzare i nomi delle tasks con l'effettivo BPMN ||
+#### 3.2.1 Introduzione
 Tra i processi individuati, il progetto si concentra sul **processo di acquisizione dati tramite rilievi aerei**. 
-Questo processo è stato selezionato poiché risulta essere il più critico per il core business dell'organizzazione (modello Skymetry) e rappresenta l'attività maggiormente influenzata dalle limitazioni dell’attuale sistema informativo.
+Questo processo è stato selezionato poiché risulta essere il più critico per il core business dell'organizzazione e rappresenta l'attività maggiormente influenzata dalle limitazioni dell’attuale sistema informativo.
 
 Di seguito vengono descritte le fasi chiave, gli input, gli output e le unità organizzative coinvolte:
 
 | Fase | Descrizione | Input | Output | Unità coinvolte |
 | :--- | :--- | :--- | :--- | :--- |
-| **Gestione richiesta cliente** | Registrazione della richiesta di servizio o rilievo da parte del cliente | Richiesta cliente | Richiesta registrata | Amministrazione |
-| **Pianificazione missione** | Organizzazione e pianificazione delle attività di volo con i droni | Richiesta registrata | Piano missione | Linea Volo |
-| **Acquisizione dati** | Raccolta dati sul campo tramite droni e strumenti di rilievo | Piano missione | Dati grezzi | Linea Volo |
-| **Elaborazione geomatica** | Elaborazione tecnica e trasformazione dei dati spaziali raccolti | Dati grezzi | Dati elaborati | Geomatica |
-| **Archiviazione dati** | Salvataggio e organizzazione dei file aziendali operativi | Dati elaborati e documenti | File archiviati | IT / Sistemi |
-| **Condivisione informazioni** | Trasferimento e condivisione manuale dei dati tra i reparti aziendali | File archiviati | Dati condivisi | IT, Geomatica, Amministrazione |
-| **Analisi e reportistica** | Analisi finale dei dati elaborati e generazione del report tecnico da consegnare | Dati elaborati | Report finale | Geomatica, Amministrazione |
-#### 3.2.3 Diagramma UML
-#### 3.2.4 Diagramma BPMN
+| **Definizione dei requisiti e della commessa** | Ricezione della richiesta dal cliente, definizione delle specifiche del progetto e invio della proposta per l'accettazione. | Definizione dei requisiti e della commessa | Proposta di commessa (in attesa di conferma) | Amministrazione |
+| **Preparazione missione** | Organizzazione logistica e tecnica delle attività di volo.. | Commessa accettata | Piano di missione | Linea volo |
+| **Acquisizione dati** | Esecuzione fisica del volo e raccolta delle informazioni sul campo. | Piano di missione | Dati grezzi | Linea volo |
+| **Controllo qualità dei dati** | Verifica dell'integrità, della precisione e della correttezza dei dati grezzi appena raccolti. | Dati grezzi | Dati controllati e validati | Geomatica |
+| **Creazione dei reports** | Elaborazione tecnica dei dati validati, generazione del report finale e invio al cliente per l'approvazione (fase soggetta a iterazione in caso di rifiuto). | Dati controllati (e/o feedback di rifiuto cliente) | Report generato (in attesa di approvazione) | Geomatica |
+| **Archiviazione dei reports** | Salvataggio definitivo e archiviazione dei report a seguito dell'approvazione esplicita del cliente, portando a compimento la richiesta. | Report approvati | Report archiviati | Geomatica |
+#### 3.2.2 Diagramma UML
+![](./img/class_as_is.png)
+#### 3.2.3 Diagramma BPMN
+![](./img/bpmn_as_is.png)
 
 ### 3.3 Analisi delle problematiche
 Nella situazione attuale, l'**archiviazione dei dati** rappresenta un problema per l'intero processo perchè fa utilizza un modello di archiviazione non strutturato basato interamente su Google Drive. Questo comporta numerose criticità sia per il processo preso in analisi ma anche per altri che necessitano di andare ad analizzare vecchi reports o dati spaziali perchè diventa difficile trovarli. Gli effetti negativi dovuti a questo tipo di archiviazione possono essere così riassunti:
