@@ -215,7 +215,7 @@ esempio una soluzione compatibile con S3 in classe hot/warm, più adatta a garan
 scalabilità, integrazione con i software interni e continuità operativa.
 
 La soluzione TO BE non consiste quindi nella semplice sostituzione di Google Drive con un altro archivio, ma nella
-costruzione di un sistema più strutturato, composto da più elementi specializzati:
+costruzione di un sistema strutturato, composto da più elementi specializzati:
 
 - Dataset tecnici di produzione → cloud object storage;
 - Dataset in lavorazione presso la sede → NAS Synology come cache locale o replica selettiva;
@@ -1025,8 +1025,8 @@ strutturato.
 #### 4.4.1 Tipologia di cambiamento
 
 Facendo riferimento ai modelli di teoria organizzativa, l'intervento proposto si configura come un **cambiamento di
-secondo ordine**: il cambiamento non altera la macrostruttura organizzativa di DigiSky, tuttavia, esso modifica
-radicalmente i processi di lavoro quotidiani, le regole di interazione con i dati, i flussi di comunicazione (da
+secondo ordine**: il cambiamento non altera la macrostruttura organizzativa di DigiSky, tuttavia, esso modifica i
+processi di lavoro quotidiani, le regole di interazione con i dati, i flussi di comunicazione (da
 destrutturati/informali tramite cartelle condivise a strutturati tramite database di metadati) e le competenze
 tecnologiche richieste. Si passa da un approccio "file-centric" (in cui l'informazione è identificata dalla sua
 posizione fisica in una cartella Drive) a uno "data-centric" (in cui l'informazione è descritta da metadati
@@ -1055,13 +1055,31 @@ tecnici di adattarsi ai nuovi strumenti.
 
 #### 4.5.1 Obiettivi di business / CSF
 
-#### 4.5.2 KPI di efficienza
+I fattori critici di successo identificati per DigiSky sono:
 
-#### 4.5.3 KPI di servizio
+- **CSF1 (Efficienza dei costi)**: Contenimento e ottimizzazione dei costi ricorrenti di archiviazione dei dataset di
+  grandi dimensioni.
+- **CSF2 (Tempestività operativa)**: Riduzione dei tempi morti nel passaggio dei dati tra le diverse fasi del processo
+  (acquisizione → elaborazione → consegna).
+- **CSF3 (Soddisfazione del cliente)**: Miglioramento dei tempi di consegna e dell'affidabilità degli output finali
+  forniti ai clienti.
 
-#### 4.5.4 KPI di qualità
+#### 4.5.2 KPI di efficienza, servizio e qualità
 
-#### 4.5.5 Confronto AS IS vs TO BE
+| KPI                                          | Tipo       | Definizione                                                                                                                                                                         | Unità di Misura | CSF di riferimento |
+| :------------------------------------------- | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------- | :----------------- |
+| Numero annuale di commesse soddisfatte       | Generale   |                                                                                                                                                                                     |                 |                    |
+| Costo unitario di archiviazione              | Efficienza | Costo annuo totale dello storage diviso per il volume totale di dati conservati.                                                                                                    | $/TB/Anno       | CSF1               |
+| Tempo medio di ricerca dati                  | Efficienza | Tempo medio necessario per individuare e recuperare documenti e dati operativi all'interno dell'archivio.                                                                           | Minuti          | CSF3               |
+| Tasso di duplicazione dei file memorizzati   | Qualità    | Percentuale di file duplicati, obsoleti o incoerenti presenti all'interno dei sistemi di storage.                                                                                   | %               | CSF1, CSF3         |
+| Tempo di condivisione dei dati               | Efficienza | Tempo medio richiesto per condividere i dati e i dataset tra i diversi reparti aziendali.                                                                                           | Minuti          | CSF2               |
+| Lead Time di disponibilità del dato grezzo   | Servizio   | Tempo che intercorre tra la fine delle operazioni di volo di acquisizione e l'effettiva disponibilità dei dati grezzi pronti sul cloud object storage per l'elaborazione geomatica. | Ore             | CSF2               |
+| Lead Time di generazione del report          | Servizio   | Tempo che intercorre tra la disponibililtà dei dati grezzi su cloud e la realizzazione di un report da consegnare al clinete.                                                       | Ore             | CSF2, CSF3         |
+| Tasso di errore/contestazione nelle consegne | Qualità    | Percentuale di consegne rifiutate o contestate dal cliente a causa di versioni non aggiornate del report o di file di output errati.                                                | %               | CSF3               |
+
+#### 4.5.3 Confronto AS IS vs TO BE
+
+<!-- TODO -->
 
 ---
 
