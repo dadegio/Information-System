@@ -55,17 +55,47 @@ avionici, pensata per validare tecnologie e dispositivi in condizioni operative 
 
 ---
 
-# Mancano info
-
 ## 3. Sistema Informativo AS IS
+### 3.1 Descrizione dell’area IT e del sistema informativo
+#### 3.1.1 Situazione attuale
+Il sistema informativo AS IS si presenta come una struttura a silos privo di un unico e centralizzato database. Non è presente nemmeno un software gestionale integrato come *ERP* o *PLM* che permette di facilitare le operazioni aziendali quotidiane e lo sviluppo di nuovi prodotti. Questo sistema comporta numerosi problemi, tra cui:
+* difficoltà a consegnare documenti tra reparti. Questo succede perchè non esiste nessun workflow informatico che notifica all'utente la disponibilità dei dati. Tutto avviene tramite comunicazioni informali come email, messaggi o a voce.
+* difficoltà a trovare i dati all'interno delle cartelle. Poichè non c'è un database, i metadati dei documenti non sono salvati in campi strutturati e interrogabili, costringendo gli operatori a ricerche manuali e dispendiose.
+* difficoltà ad avere dati consistenti. Siccome ogni unità organizzativa pubblica i propri documenti sul proprio storage, è molto facile avere gli stessi dati presenti in documenti  di differenti unità. Può quindi succedere che ci sia inconsistenza tra i documenti se un reparto modifica il proprio, creando una situazione in cui è difficile capire quale siano i dati più aggiornati.
 
-### 3.1 Descrizione dell’area IT e del sistema informativo || Aspettare info ||
-#### 3.1.1 Spese IT e rapporto spese IT / spese totali
-#### 3.1.2 Strategia IT attuale
-#### 3.1.3 Sistema informativo attuale
-#### 3.1.4 Application portfolio attuale
-#### 3.1.5 Architettura hardware-software attuale
-#### 3.1.6 Elenco dei processi chiave aziendali
+L'infrastruttura tecnologica e di archiviazione attuale di *DigiSky* si basa su un modello ibrido non ottimizzato, che tenta di far convivere soluzioni locali e cloud. Le piattaforme di archiviazione e i dispositivi su cui si poggia attualmente l'azienda sono i seguenti:
+* **Google Drive**: è la piattaforma cloud principale utilizzata per l'archiviazione di quasi tutta la documentazione aziendale. Attualmente contiene promiscuamente documenti amministrativi (fatture, contratti), file di gestione delle commesse (fogli Excel) e anche output pesanti delle elaborazioni geomatiche (come mappe, report finali ed ortofoto).
+* **NAS** (network attached storage): contiene i dataset grezzi e in fase di elaborazione che sono utilizzati dal team di geomatica, che necessita di accedere rapidamente a moli enormi di foto (RAW) tramite la rete LAN aziendale ad alta velocità. E' presente presso la sede operativa all'Aeroporto Torino Aeritalia.
+* **Supporti di memoria fisici e mobili**: a causa dell'impossibilità di caricare i file pesanti da remoto via rete, i tecnici della linea volo sono spesso costretti a utilizzare supporti fisici (SD Card ad alta capacità degli aerei/droni, SSD esterni portatili) come mezzo di archiviazione temporaneo. I dati vengono trasportati fisicamente in sede per essere poi trasferiti manualmente sul NAS o Google Drive. 
+* **Workstation locali**: macchine ad altissime prestazioni (dotate di potenti CPU e GPU per il rendering spaziale) utilizzate dal team di geomatica. Dispongono di storage locale ad altissima velocità (dischi NVMe) utilizzato esclusivamente come memoria di transito temporanea per far girare i software di fotogrammetria, prima di salvare l'output nuovamente sul NAS o su Drive.
+
+#### 3.1.2 Application portfolio attuale
+L'insieme dei software utilizzati da DigiSky si possono dividere in:
+* **software tecnici e geomatici**. Il team di geomatica utilizza potenti software di elaborazione fotogrammetrica e suite GIS per trasformare i dati grezzi in ortofoto, modelli 3D e mappe tematiche. Parallelamente, per la progettazione avionica vengono impiegati software CAD 3D.
+* **software proprietari**. Vegono utilizzati per il supporto ai propri brevetti e servizi. Gli strumenti principali offerti sono per la pianificazione della missione di volo dei droni, per la calibrazione dei sensori e per la gestione delle operazioni aeree.
+* **software di produttività individuale**. Questa categoria comprende gli applicativi della suite Google Workspace (principalmente Google Docs, Google Sheets e Google Slides) utilizzati quotidianamente dal personale per la redazione di testi, report, fogli di calcolo e presentazioni. 
+
+In particolare:
+| Applicazione | Venditore | Funzionalità principali |
+| :--- | :--- | :--- |
+| Agisoft Metashape | Agisoft LLC | Elaborazione fotogrammetrica per trasformare i dati grezzi in ortofoto, modelli 3D e nuvole di punti. |
+| QGIS | OSGeo (Progetto Open Source) | Analisi spaziale avanzata, integrazione cartografica e disegno di mappe tematiche. |
+| Pix4Dmapper | Pix4D SA | Procedure di modellazione spaziale e fotogrammetrica per i rilievi aerei. |
+| Software CAD 3D | Autodesk | Progettazione avionica e realizzazione di componenti su misura (es. supporti per sensori SmartBay). |
+| SkyGate | Interno (DigiSky S.r.l.) | Calibrazione e validazione di sistemi e sensori per applicazioni aeronautiche e spaziali. |
+| SmartBay | Interno (DigiSky S.r.l.) | Gestione software e supporto all'hardware brevettato per l'imbarco rapido dei sensori sui velivoli. |
+| Microsoft Excel | Microsoft Corporation | Tracciamento dello stato delle commesse e gestione operativa. |
+| Google Workspace | Google LLC | Redazione di testi, report, presentazioni, fogli di calcolo; archiviazione e collaborazione in cloud. |
+| DiskStation Manager (DSM) | Synology Inc. | Sistema operativo per la gestione del NAS locale. |
+
+
+#### 3.1.3 Architettura hardware-software attuale
+![](./img/deployment_diagram_as_is.png)
+
+#### 3.1.4 Settore IT
+L'attuale settore IT di *DigiSky* è fortemente condizionato dalle dimensioni contenute dell'azienda. Contando su un organico di una decina di persone, non esiste una divisione IT strutturata o dedicata. La gestione dell'infrastruttura ricade quindi in modo trasversale sulle figure tecniche già operative su altri fronti lavorativi. Questo porta inevitabilmente a una strategia che può essere definita come fortemente reattiva ed informale. Il sistema informativo viene quindi visto come un semplice magazzino digitale piuttosto che come uno strumento che può portare all'ottimizzazione e valorizzazione dei processi.
+
+#### 3.1.5 Elenco dei processi chiave aziendali
 I principali processi aziendali di Digisky possono essere suddivisi in processi operativi, amministrativi e di supporto tecnologico.
 
 **Processi operativi principali:**
@@ -89,23 +119,24 @@ I principali processi aziendali di Digisky possono essere suddivisi in processi 
 * Supporto tecnico interno
 
 ### 3.2 Processo chiave: acquisizione dati
-#### 3.2.1 Introduzione || Sincronizzare i nomi delle tasks con l'effettivo BPMN ||
+#### 3.2.1 Introduzione
 Tra i processi individuati, il progetto si concentra sul **processo di acquisizione dati tramite rilievi aerei**. 
-Questo processo è stato selezionato poiché risulta essere il più critico per il core business dell'organizzazione (modello Skymetry) e rappresenta l'attività maggiormente influenzata dalle limitazioni dell’attuale sistema informativo.
+Questo processo è stato selezionato poiché risulta essere il più critico per il core business dell'organizzazione e rappresenta l'attività maggiormente influenzata dalle limitazioni dell’attuale sistema informativo.
 
 Di seguito vengono descritte le fasi chiave, gli input, gli output e le unità organizzative coinvolte:
 
 | Fase | Descrizione | Input | Output | Unità coinvolte |
 | :--- | :--- | :--- | :--- | :--- |
-| **Gestione richiesta cliente** | Registrazione della richiesta di servizio o rilievo da parte del cliente | Richiesta cliente | Richiesta registrata | Amministrazione |
-| **Pianificazione missione** | Organizzazione e pianificazione delle attività di volo con i droni | Richiesta registrata | Piano missione | Linea Volo |
-| **Acquisizione dati** | Raccolta dati sul campo tramite droni e strumenti di rilievo | Piano missione | Dati grezzi | Linea Volo |
-| **Elaborazione geomatica** | Elaborazione tecnica e trasformazione dei dati spaziali raccolti | Dati grezzi | Dati elaborati | Geomatica |
-| **Archiviazione dati** | Salvataggio e organizzazione dei file aziendali operativi | Dati elaborati e documenti | File archiviati | IT / Sistemi |
-| **Condivisione informazioni** | Trasferimento e condivisione manuale dei dati tra i reparti aziendali | File archiviati | Dati condivisi | IT, Geomatica, Amministrazione |
-| **Analisi e reportistica** | Analisi finale dei dati elaborati e generazione del report tecnico da consegnare | Dati elaborati | Report finale | Geomatica, Amministrazione |
-#### 3.2.3 Diagramma UML
-#### 3.2.4 Diagramma BPMN
+| **Definizione dei requisiti e della commessa** | Ricezione della richiesta dal cliente, definizione delle specifiche del progetto e invio della proposta per l'accettazione. | Definizione dei requisiti e della commessa | Proposta di commessa (in attesa di conferma) | Amministrazione |
+| **Preparazione missione** | Organizzazione logistica e tecnica delle attività di volo.. | Commessa accettata | Piano di missione | Linea volo |
+| **Acquisizione dati** | Esecuzione fisica del volo e raccolta delle informazioni sul campo. | Piano di missione | Dati grezzi | Linea volo |
+| **Controllo qualità dei dati** | Verifica dell'integrità, della precisione e della correttezza dei dati grezzi appena raccolti. | Dati grezzi | Dati controllati e validati | Geomatica |
+| **Creazione dei reports** | Elaborazione tecnica dei dati validati, generazione del report finale e invio al cliente per l'approvazione (fase soggetta a iterazione in caso di rifiuto). | Dati controllati (e/o feedback di rifiuto cliente) | Report generato (in attesa di approvazione) | Geomatica |
+| **Archiviazione dei reports** | Salvataggio definitivo e archiviazione dei report a seguito dell'approvazione esplicita del cliente, portando a compimento la richiesta. | Report approvati | Report archiviati | Geomatica |
+#### 3.2.2 Diagramma UML
+![](./img/class_as_is.png)
+#### 3.2.3 Diagramma BPMN
+![](./img/bpmn_as_is.png)
 
 ### 3.3 Analisi delle problematiche
 Nella situazione attuale, l'**archiviazione dei dati** rappresenta un problema per l'intero processo perchè fa utilizza un modello di archiviazione non strutturato basato interamente su Google Drive. Questo comporta numerose criticità sia per il processo preso in analisi ma anche per altri che necessitano di andare ad analizzare vecchi reports o dati spaziali perchè diventa difficile trovarli. Gli effetti negativi dovuti a questo tipo di archiviazione possono essere così riassunti:
