@@ -1024,30 +1024,67 @@ strutturato.
 
 #### 4.4.1 Tipologia di cambiamento
 
-Facendo riferimento ai modelli di teoria organizzativa, l'intervento proposto si configura come un **cambiamento di
-secondo ordine**: il cambiamento non altera la macrostruttura organizzativa di DigiSky, tuttavia, esso modifica i
-processi di lavoro quotidiani, le regole di interazione con i dati, i flussi di comunicazione (da
-destrutturati/informali tramite cartelle condivise a strutturati tramite database di metadati) e le competenze
-tecnologiche richieste. Si passa da un approccio "file-centric" (in cui l'informazione è identificata dalla sua
-posizione fisica in una cartella Drive) a uno "data-centric" (in cui l'informazione è descritta da metadati
-centralizzati e ricercabile in modo logico).
+L'intervento proposto si configura come un _cambiamento di secondo ordine_, in quanto non altera la macrostruttura
+organizzativa di DigiSky ma apporta significative modifiche ai processi di lavoro quotidiani, le regole di interazione
+con i dati, i flussi di comunicazione (da destrutturati/informali tramite cartelle condivise a strutturati tramite
+database di metadati) e le competenze tecnologiche richieste. Si passa da un approccio "file-centric" (in cui
+l'informazione è identificata dalla sua posizione fisica in una cartella Drive) a uno "data-centric" (in cui
+l'informazione è descritta da metadati centralizzati e ricercabile in modo logico).
 
 #### 4.4.2 Rischi principali
 
 Trattandosi di un cambiamento di secondo livello, occorre tenere a mente di alcuni rischi di natura organizzativa e
 tecnica che potrebbero ostacolare l'adozione o ridurre l'efficacia della soluzione.
 
-I dipendenti DigiSky, essendo stati da anni abituati all'uso flessibile, seppur disordinato, di Google Drive, potrebbero
-percepire l'obbligo di utilizzare un portale per registrare le missioni e compilare metadati aggiuntivi come un carico
-burocratico aggiuntivo, che potrebbe comportare un _rallentamento rispetto all'attività precedente_. Nelle prime
-settimane di utilizzo, l'azienda potrebbe riscontrare un _momentaneo calo di produttività_, dovuto alla necessità dei
-tecnici di adattarsi ai nuovi strumenti.
+I dipendenti DigiSky, abituati da anni all'uso flessibile, seppur disordinato, di Google Drive, potrebbero percepire
+l'obbligo di utilizzare un portale per registrare le missioni e compilare metadati aggiuntivi come un carico aggiuntivo,
+che potrebbe comportare un _rallentamento rispetto all'attività precedente_. Nelle prime settimane di utilizzo,
+l'azienda potrebbe riscontrare un _momentaneo calo di produttività_, dovuto alla necessità dei tecnici di adattarsi ai
+nuovi strumenti.
 
 #### 4.4.3 Piano di formazione
 
+Per mitigare le problematiche legate alla curva di apprendimento e alla resistenza al cambiamento, si prevede un
+programma di formazione mirato e strutturato in base ai diversi profili aziendali.
+
+Per quanto riguarda l'_amministrazione_, il focus viene posto sull'utilizzo del portale interno per la gestione delle
+commesse e sull'associazione dei clienti, oltre che sulla consultazione delle dashboard di Metabase per monitorare
+l'avanzamento dei progetti, lo spazio occupato e i costi di storage associati a ciascun cliente.
+
+Per la _linea volo_, la formazione si focalizza sulle procedure di upload diretto dei dataset grezzi sul cloud object
+storage da remoto o direttamente sul campo.
+
+I tecnici del **reparto geomatica** vengono formati sull'accesso ai dataset grezzi in cloud tramite integrazioni GIS e
+sulla registrazione a database degli output finali con i relativi metadati geografici e spaziali gestiti tramite
+PostGIS. Ciò consente di ottimizzare i tempi di calcolo e di strutturare la consegna degli elaborati finali.
+
+Infine, la sessione per l'_IT e gli amministratori di sistema_ affronta la gestione delle policy IAM e dei permessi di
+accesso, il monitoraggio del database PostgreSQL/PostGIS e la configurazione delle regole di lifecycle per il tiering
+automatico dello storage cloud (Standard, Nearline e Archive).
+
 #### 4.4.4 Piano di migrazione dei dati
 
-#### 4.4.5 Strategia di adozione graduale
+La migrazione di oltre 100 TB di dati da una struttura non ordinata a un'architettura ibrida e strutturata richiede un
+approccio a fasi per evitare l'interruzione dei servizi operativi.
+
+Il processo ha inizio con una fase di _censimento e deduplicazione_, per identificare file duplicati, obsoleti o
+temporanei (come log e copie di backup intermedie), con lo scopo di ridurre il volume complessivo da migrare. I restanti
+file vengono poi suddivisi in tre categorie: dataset attivi degli ultimi 6 mesi, dataset storici e documentazione di
+progetto o amministrativa.
+
+Si passa poi alla _predisposizione dell'ambiente TO BE_, che prevede l'attivazione dei bucket sul cloud object storage
+(suddivisi nelle classi Standard, Nearline e Archive), la configurazione del database PostgreSQL/PostGIS e del
+documentale Nextcloud, oltre alla riconfigurazione del NAS Synology affinché operi esclusivamente come cache locale per
+le commesse attive.
+
+Segue la _migrazione asincrona e scaglionata_, in cui la documentazione amministrativa e di commessa viene trasferita
+immediatamente su Nextcloud in cartelle standardizzate. I dataset storici vengono caricati direttamente nelle classi di
+storage più economiche tramite procedure batch pianificate nei fine settimana, mentre i dataset delle commesse attive
+sono invece migrati nello storage Standard e registrati dettagliatamente in PostgreSQL.
+
+Il processo si conclude con la _verifica dell'integrità_, volta a garantire la correttezza del trasferimento per
+scongiurare perdite o corruzioni di dati e la validazione del corretto puntamento logico tra i record del database e gli
+URI dei file sul cloud.
 
 ---
 
