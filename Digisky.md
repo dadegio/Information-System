@@ -96,7 +96,7 @@ attualmente l'azienda sono i seguenti:
   commesse (fogli Excel) e anche output pesanti delle elaborazioni geomatiche (come mappe, report finali ed ortofoto).
 - **NAS** (network attached storage): contiene i dataset grezzi e in fase di elaborazione che sono utilizzati dal team
   di geomatica, che necessita di accedere rapidamente a moli enormi di foto (RAW) tramite la rete LAN aziendale ad alta
-  velocità. E' presente presso la sede operativa all'Aeroporto Torino Aeritalia.
+  velocità. È presente presso la sede operativa all'Aeroporto Torino Aeritalia.
 - **Supporti di memoria fisici e mobili**: a causa dell'impossibilità di caricare i file pesanti da remoto via rete, i
   tecnici della linea volo sono spesso costretti a utilizzare supporti fisici (SD Card ad alta capacità degli
   aerei/droni, SSD esterni portatili) come mezzo di archiviazione temporaneo. I dati vengono trasportati fisicamente in
@@ -1178,10 +1178,6 @@ I fattori critici di successo identificati per DigiSky sono:
 | Lead Time di disponibilità del dato grezzo   | Servizio   | Tempo che intercorre tra la fine delle operazioni di volo di acquisizione e l'effettiva disponibilità dei dati grezzi pronti sul cloud object storage per l'elaborazione geomatica. | Ore             | CSF2               |
 | Lead Time di generazione del report          | Servizio   | Tempo che intercorre tra la disponibililtà dei dati grezzi su cloud e la realizzazione di un report da consegnare al clinete.                                                       | Ore             | CSF2, CSF3         |
 | Tasso di errore/contestazione nelle consegne | Qualità    | Percentuale di consegne rifiutate o contestate dal cliente a causa di versioni non aggiornate del report o di file di output errati.                                                | %               | CSF3               |
-
-#### 4.5.3 Confronto AS IS vs TO BE
-
-<!-- TODO -->
 
 ---
 
