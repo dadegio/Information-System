@@ -145,34 +145,6 @@ inevitabilmente a una strategia che può essere definita come fortemente reattiv
 viene quindi visto come un semplice magazzino digitale piuttosto che come uno strumento che può portare
 all'ottimizzazione e valorizzazione dei processi.
 
-#### 3.1.5 Elenco dei processi chiave aziendali
-
-I principali processi aziendali di Digisky possono essere suddivisi in processi operativi, amministrativi e di supporto
-tecnologico.
-
-**Processi operativi principali:**
-
-- Pianificazione delle missioni con droni
-- Acquisizione dati tramite rilievi aerei
-- Elaborazione dati geomatici
-- Analisi e interpretazione dei dati raccolti
-- Produzione di report tecnici e mappe
-- Gestione clienti e commesse
-
-**Processi amministrativi:**
-
-- Gestione documentazione interna
-- Gestione HR e dipendenti
-- Contabilità e fatturazione
-- Gestione contratti e fornitori
-
-**Processi IT e supporto:**
-
-- Gestione infrastruttura IT
-- Archiviazione e gestione dati
-- Backup e sicurezza informatica
-- Supporto tecnico interno
-
 ### 3.2 Processo chiave: acquisizione dati
 
 #### 3.2.1 Introduzione
@@ -200,8 +172,53 @@ Di seguito vengono descritte le fasi chiave, gli input, gli output e le unità o
 
 ![](./img/bpmn_as_is.png)
 
-### 3.3 Analisi delle problematiche
+### 3.3 Processi chiave
 
+#### 3.3.1 Elenco dei processi chiave aziendali
+I principali processi aziendali di Digisky possono essere suddivisi in processi operativi, amministrativi e di supporto tecnologico.
+
+**Processi operativi principali**
+* Pianificazione delle missioni con droni
+* Acquisizione dati tramite rilievi aerei
+* Elaborazione dati geomatici
+* Analisi e interpretazione dei dati raccolti
+* Produzione di report tecnici e mappe
+* Gestione clienti e commesse
+
+**Processi amministrativi**
+* Gestione documentazione interna
+* Gestione HR e dipendenti
+* Contabilità e fatturazione
+* Gestione contratti e fornitori
+
+**Processi IT e supporto**
+* Gestione infrastruttura IT
+* Archiviazione e gestione dati
+* Backup e sicurezza informatica
+* Supporto tecnico interno
+
+---
+
+### 3.3.2 Selezione del processo da analizzare
+Tra i processi individuati, il progetto si concentra in modo specifico sul **Processo di acquisizione ed elaborazione dati con drone**. 
+
+Questo processo è stato selezionato poiché risulta essere il più critico per l'organizzazione aziendale e rappresenta l'attività maggiormente influenzata dalle limitazioni dell’attuale sistema informativo. In particolare, l’analisi si concentra sulla gestione dei dati e sulle modalità di archiviazione e condivisione delle informazioni tra le diverse divisioni aziendali (IT, Geomatica, Linea Volo, Amministrazione).
+
+Di seguito vengono descritte le fasi chiave, gli input, gli output e le unità organizzative coinvolte (in allineamento con il modello BPMN AS IS):
+
+| Processo | Descrizione | Input | Output | Unità coinvolte |
+|---|---|---|---|---|
+| **Gestione richiesta cliente** | Registrazione della richiesta di servizio o rilievo da parte del cliente | Richiesta cliente | Richiesta registrata | Amministrazione |
+| **Pianificazione missione drone** | Organizzazione e pianificazione delle attività di volo | Richiesta registrata | Piano missione | Linea Volo |
+| **Acquisizione dati** | Raccolta dati tramite droni e strumenti di rilievo | Piano missione | Dati grezzi | Linea Volo |
+| **Elaborazione geomatica** | Elaborazione tecnica e trasformazione dei dati raccolti | Dati grezzi | Dati elaborati | Geomatica |
+| **Archiviazione dati** | Salvataggio e organizzazione dei file aziendali | Dati elaborati e documenti | File archiviati | IT / Systems |
+| **Condivisione informazioni** | Condivisione manuale dei dati tra reparti aziendali | File archiviati | Dati condivisi | IT / Systems, Geomatica, Amministrazione |
+| **Analisi dati e reportistica** | Analisi finale dei dati e generazione del report tecnico | Dati elaborati | Report finale | Geomatica, Amministrazione |
+
+---
+
+#### 3.3.3 Criticità principali
 Nella situazione attuale, l'**archiviazione dei dati** rappresenta un problema per l'intero processo perché utilizza un
 modello di archiviazione non strutturato basato interamente su Google Drive. Questo comporta numerose criticità sia per
 il processo preso in analisi ma anche per altri che necessitano di andare ad analizzare vecchi reports o dati spaziali
@@ -218,7 +235,11 @@ riassunti:
 | **Ricerca lenta delle info**          | Accesso ai documenti       | Ritardi significativi nelle attività operative e nel decision-making.              |
 | **Scarsa integrazione software**      | Intero sistema informativo | Minore efficienza globale e isolamento dei dati (silos informativi).               |
 
-#### 3.3.1 Difficoltà nell'analisi efficace dei dati
+---
+
+### 3.4 Analisi delle problematiche
+
+#### 3.4.1 Difficoltà nell'analisi efficace dei dati
 
 Digisky gestisce una grande quantità di dati provenienti da rilievi aerei, elaborazioni geomatiche e attività operative
 interne. Attualmente, l'assenza di strumenti centralizzati di Business Intelligence e di analisi avanzata rende
@@ -226,27 +247,27 @@ complessa l'elaborazione efficace delle informazioni. Le attività di analisi ri
 tempi elevati, riducendo la rapidità decisionale. La mancanza di dashboard integrate limita inoltre la possibilità di
 ottenere informazioni aggiornate in tempo reale.
 
-#### 3.3.2 Memorizzazione dati non strutturata su Google Drive
+#### 3.4.2 Memorizzazione dati non strutturata su Google Drive
 
 Gran parte dei documenti aziendali e dei file operativi (inclusi i file di output dei rilevi) viene archiviata tramite
 Google Drive utilizzando cartelle condivise. Con la crescita del volume dei dati, questo sistema risulta sempre meno
 efficiente, generando difficoltà nella classificazione, problemi di versionamento e un'organizzazione non standardizzata
 tra i reparti.
 
-#### 3.3.3 Costi elevati di archiviazione e gestione
+#### 3.4.3 Costi elevati di archiviazione e gestione
 
 L'utilizzo di sistemi non strutturati genera costi indiretti legati principalmente al tempo impiegato dal personale per
 la gestione manuale. Le inefficienze riguardano la ricerca dei documenti, la manutenzione delle cartelle e l'invio
 manuale degli aggiornamenti, aumentando il carico operativo sia per il personale amministrativo sia per i reparti
 tecnici (come geomatica e linea volo).
 
-#### 3.3.4 Assenza di database strutturati
+#### 3.4.4 Assenza di database strutturati
 
 Attualmente i dati aziendali risultano distribuiti tra file Excel, documenti condivisi e archivi cloud senza una
 struttura relazionale. Questa situazione comporta l'impossibilità di effettuare query avanzate, problemi di consistenza
 (dati duplicati o non aggiornati) e difficoltà di integrazione con nuovi software aziendali.
 
-#### 3.3.5 Processi interni manuali e ripetitivi
+#### 3.4.5 Processi interni manuali e ripetitivi
 
 Molte attività vengono svolte manualmente, soprattutto nei passaggi di stato del processo (es. passaggio di consegne tra
 linea volo e geomatica). Tra le attività ripetitive figurano l'inserimento manuale dei dati, l'invio manuale dei file
