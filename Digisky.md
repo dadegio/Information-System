@@ -64,6 +64,7 @@ Le unità organizzative principali sono:
 * Amministrazione & HR: si occupa della contabilità, della fatturazione, della gestione contrattualistica con i clienti e fornitori, e della gestione documentale del personale (cedolini, visite mediche, certificazioni).
 * Linea Volo: si occupa della manutenzione della flotta, dell'integrazione hardware dei sensori, della richiesta dei permessi di volo e dell'esecuzione materiale delle missioni per l'acquisizione dei dati grezzi.
 * Geomatica: è l'unità di elaborazione che riceve i dati grezzi dalla linea volo e, tramite software specialistici e workstation ad alte prestazioni, si occupa del post-processing, della modellazione 3D, della generazione di ortofoto e del controllo qualità prima della consegna finale al cliente.
+* IT: gestisce l'infrastruttura tecnica come il NAS o le workstation. 
 
 ### 2.3 Business Model Canvas
 ![](./img/bpc.png)
@@ -142,13 +143,7 @@ In particolare:
 ![](./img/deployment_diagram_as_is.png)
 
 #### 3.1.4 Settore IT
-
-L'attuale settore IT di _DigiSky_ è fortemente condizionato dalle dimensioni contenute dell'azienda. Contando su un
-organico di una decina di persone, non esiste una divisione IT strutturata o dedicata. La gestione dell'infrastruttura
-ricade quindi in modo trasversale sulle figure tecniche già operative su altri fronti lavorativi. Questo porta
-inevitabilmente a una strategia che può essere definita come fortemente reattiva ed informale. Il sistema informativo
-viene quindi visto come un semplice magazzino digitale piuttosto che come uno strumento che può portare
-all'ottimizzazione e valorizzazione dei processi.
+L'attuale settore IT di DigiSky è dimensionato in proporzione all'organico complessivo dell'azienda. All'interno del team, la gestione dell'infrastruttura e dei sistemi informativi è affidata a una figura tecnica specializzata e dedicata esclusivamente al comparto IT. Tuttavia, pur potendo contare su personale interno competente, l'infrastruttura ibrida e non ottimizzata  assorbe la quasi totalità del loro tempo in attività a basso valore aggiunto. Gli specialisti IT sono quotidianamente impegnati nella manutenzione ordinaria, nella risoluzione dei problemi di sincronizzazione e, soprattutto, nella gestione manuale dei trasferimenti e dei backup dei dati pesanti. Il sistema informativo viene quindi visto come un semplice magazzino digitale piuttosto che come uno strumento che può portare all'ottimizzazione e valorizzazione dei processi.
 
 #### 3.1.5 Elenco dei processi chiave aziendali
 
@@ -560,15 +555,11 @@ Le unità organizzative coinvolte possono essere individuate principalmente nell
 
 | Unità organizzativa                       | Ruolo nel sistema TO BE                                                                                                                                                       |
 | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Direzione**                             | Definisce le priorità strategiche, monitora costi, redditività delle commesse e andamento generale tramite dashboard di Business Intelligence.                                |
-| **Project Management**                    | Coordina le commesse, controlla lo stato di avanzamento, verifica le consegne e utilizza il database per monitorare missioni, dataset, output e documenti collegati.          |
-| **Area tecnica / operatori di volo**      | Produce i dati tramite droni e aeromobili, registra le missioni di volo, carica i dataset sul cloud object storage e aggiorna/verifica le informazioni operative nel sistema. |
-| **Area elaborazione dati**                | Gestisce le fasi di post-processing, mosaicizzazione, ortorettifica, controllo qualità e produzione degli output finali.                                                      |
-| **Amministrazione**                       | Gestisce documenti amministrativi, contratti, fatture, ordini e può consultare informazioni economiche collegate alle commesse.                                               |
-| **Commerciale**                           | Accede a documenti cliente, offerte, preventivi e informazioni sulle commesse utili per la gestione del rapporto commerciale.                                                 |
-| **IT / responsabile sistemi informativi** | Gestisce l'infrastruttura tecnica, il NAS, il database, il sistema documentale, i backup, gli accessi e l'integrazione tra i vari componenti.                                 |
-| **Qualità e sicurezza**                   | Gestisce procedure, certificazioni, documenti normativi e controlla che i flussi documentali seguano regole definite.                                                         |
-| **HR**                                    | Utilizza il sistema documentale per la gestione dei documenti relativi al personale, con accessi riservati e controllati.                                                     |
+| **Direzione generale**                    | Definisce le priorità strategiche, monitora costi, redditività delle commesse e andamento generale tramite dashboard di Business Intelligence.                                |
+| **Linea Volo**                            | Produce i dati tramite droni e aeromobili, registra le missioni di volo, carica i dataset sul cloud object storage e aggiorna/verifica le informazioni operative nel sistema. |
+| **Geomatica**                             | Gestisce le fasi di post-processing, mosaicizzazione, ortorettifica, controllo qualità e produzione degli output finali.                                                      |
+| **Amministrazione & HR**                  | Gestisce documenti amministrativi, contratti, fatture, ordini e può consultare informazioni economiche collegate alle commesse.                                               |                                            |
+| **IT**                                    | Gestisce l'infrastruttura tecnica, il NAS, il database, il sistema documentale, i backup, gli accessi e l'integrazione tra i vari componenti.                                 |
 
 Nel nuovo modello, ogni area mantiene le proprie responsabilità, ma lavora su un sistema informativo più ordinato e
 integrato. Questo permette di ridurre la dispersione delle informazioni, limitare la duplicazione dei file e rendere più
@@ -660,9 +651,9 @@ dovrebbe utilizzare, a nostro avviso, nella situazione TO BE. I componenti che a
 | **Cloud Object Storage (Hot/Warm)** | AWS S3, Google Cloud Storage, Azure Blob | Deposito centrale e immutabile per l'archiviazione e l'indicizzazione dei dataset tecnici pesanti di produzione (immagini RAW, ortofoto, modelli 3D e mappe tematiche finali). | Nuovo | Garantisce accessibilità da remoto, scalabilità e maggiore business continuity rispetto al NAS locale |
 | **Cloud Object Storage (Cold)** | AWS S3 Glacier, Google Cloud Storage Archive, Azure Blob Archive | Archiviazione economica di dataset storici o raramente consultati | Nuovo | Riduce i costi di conservazione dei dati non più usati quotidianamente |
 | **DiskStation Manager** | Synology Inc. | Cache locale, replica selettiva e supporto operativo per i dataset utilizzati in sede | Esistente, da ridimensionare | Non viene eliminato, ma non rappresenta più lo storage principale; serve a velocizzare le lavorazioni interne |
-| **PostgreSQL + PostGIS** | Open source | Database centralizzato per metadati tecnici, gestionali e geografici | Nuovo | Permette di indicizzare commesse, missioni, dataset, posizioni file, aree geografiche e stati di lavorazione |
-| **Nextcloud** | Open source | Sistema documentale per documenti aziendali, versioning, permessi e condivisione controllata | Nuovo | Separa la gestione dei documenti aziendali dai dataset tecnici pesanti |
-| **Metabase** | Open source | Business Intelligence, dashboard e report automatici | Nuovo | Permette di monitorare storage, costi, commesse, Birdie produzione tecnica e performance operative |
+| **PostgreSQL + PostGIS** | AWS, Google Cloud, Microsoft Azure | Database centralizzato per metadati tecnici, gestionali e geografici | Nuovo | Permette di indicizzare commesse, missioni, dataset, posizioni file, aree geografiche e stati di lavorazione |
+| **Nextcloud** | Nextcloud GmbH, Hetzner | Sistema documentale per documenti aziendali, versioning, permessi e condivisione controllata | Nuovo | Separa la gestione dei documenti aziendali dai dataset tecnici pesanti |
+| **Metabase** | Metabase Inc. | Business Intelligence, dashboard e report automatici | Nuovo | Permette di monitorare storage, costi, commesse, Birdie produzione tecnica e performance operative |
 | **API / connettori per software interni** | Sviluppo interno o misto | Integrazione tra database centrale, storage cloud e software aziendali di pianificazione e visualizzazione | Nuovo | Consente ai software sviluppati internamente di accedere a metadati e posizione dei dataset |
 | **ETL / script di sincronizzazione** | Sviluppo interno | Migrazione, sincronizzazione selettiva, aggiornamento metadati e lifecycle dei dataset | Nuovo | Automatizza il collegamento tra cloud storage, NAS, cold storage e database |
 | **Sistema di backup e disaster recovery** | Soluzione cloud | Backup periodici, recovery e protezione dei dati | Da potenziare | Garantisce continuità operativa e protezione da perdita dati |
