@@ -53,19 +53,19 @@ soluzioni accessibili, versatili e ad alto contenuto tecnologico. La strategia a
 
 ---
 
-# Mancano info
-
 ## 2. Analisi organizzativa
-
 ### 2.1 Modello organizzativo
+Considerando le dimensioni contenute dell'azienda e l'elevata specializzazione tecnica richiesta, DigiSky adotta una struttura organizzativa funzionale.
+![](./img/organizational_chart.png)
 
-### 2.2 Organigramma
+### 2.2 Unità organizzative
+Le unità organizzative principali sono:
+* Direzione generale: definisce la strategia aziendale, gestisce le partnership strategiche, supervisiona le attività di R&D e partecipa ai bandi di ricerca.
+* Amministrazione & HR: si occupa della contabilità, della fatturazione, della gestione contrattualistica con i clienti e fornitori, e della gestione documentale del personale (cedolini, visite mediche, certificazioni).
+* Linea Volo: si occupa della manutenzione della flotta, dell'integrazione hardware dei sensori, della richiesta dei permessi di volo e dell'esecuzione materiale delle missioni per l'acquisizione dei dati grezzi.
+* Geomatica: è l'unità di elaborazione che riceve i dati grezzi dalla linea volo e, tramite software specialistici e workstation ad alte prestazioni, si occupa del post-processing, della modellazione 3D, della generazione di ortofoto e del controllo qualità prima della consegna finale al cliente.
 
-### 2.3 Unità organizzative principali
-
-### 2.4 Attori coinvolti nel progetto
-
-### 2.5 Business Model Canvas
+### 2.3 Business Model Canvas
 ![](./img/bpc.png)
 
 ---
