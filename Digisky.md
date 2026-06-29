@@ -65,6 +65,9 @@ soluzioni accessibili, versatili e ad alto contenuto tecnologico. La strategia a
 
 ### 2.4 Attori coinvolti nel progetto
 
+### 2.5 Business Model Canvas
+![](./img/bpc.png)
+
 ---
 
 ## 3. Sistema Informativo AS IS
@@ -120,17 +123,19 @@ L'insieme dei software utilizzati da DigiSky si possono dividere in:
   (principalmente Google Docs, Google Sheets e Google Slides) utilizzati quotidianamente dal personale per la redazione
   di testi, report, fogli di calcolo e presentazioni.
 
-In particolare: | Applicazione | Venditore | Funzionalità principali | | :--- | :--- | :--- | | Agisoft Metashape |
-Agisoft LLC | Elaborazione fotogrammetrica per trasformare i dati grezzi in ortofoto, modelli 3D e nuvole di punti. | |
-QGIS | OSGeo (Progetto Open Source) | Analisi spaziale avanzata, integrazione cartografica e disegno di mappe tematiche.
-| | Pix4Dmapper | Pix4D SA | Procedure di modellazione spaziale e fotogrammetrica per i rilievi aerei. | | Software CAD
-3D | Autodesk | Progettazione avionica e realizzazione di componenti su misura (es. supporti per sensori SmartBay). | |
-SkyGate | Interno (DigiSky S.r.l.) | Calibrazione e validazione di sistemi e sensori per applicazioni aeronautiche e
-spaziali. | | SmartBay | Interno (DigiSky S.r.l.) | Gestione software e supporto all'hardware brevettato per l'imbarco
-rapido dei sensori sui velivoli. | | Microsoft Excel | Microsoft Corporation | Tracciamento dello stato delle commesse e
-gestione operativa. | | Google Workspace | Google LLC | Redazione di testi, report, presentazioni, fogli di calcolo;
-archiviazione e collaborazione in cloud. | | DiskStation Manager (DSM) | Synology Inc. | Sistema operativo per la
-gestione del NAS locale. |
+In particolare: 
+| Applicazione | Venditore | Funzionalità principali | 
+| :--- | :--- | :--- | 
+| Agisoft Metashape |Agisoft LLC | Elaborazione fotogrammetrica per trasformare i dati grezzi in ortofoto, modelli 3D e nuvole di punti. | 
+|QGIS | OSGeo (Progetto Open Source) | Analisi spaziale avanzata, integrazione cartografica e disegno di mappe tematiche.|
+| Pix4Dmapper | Pix4D SA | Procedure di modellazione spaziale e fotogrammetrica per i rilievi aerei. |
+| Software CAD 3D | Autodesk | Progettazione avionica e realizzazione di componenti su misura (es. supporti per sensori SmartBay). |
+|SkyGate | Interno (DigiSky S.r.l.) | Calibrazione e validazione di sistemi e sensori per applicazioni aeronautiche e spaziali. |
+| SmartBay | Interno (DigiSky S.r.l.) | Gestione software e supporto all'hardware brevettato per l'imbarco rapido dei sensori sui velivoli. |
+| Microsoft Excel | Microsoft Corporation | Tracciamento dello stato delle commesse e gestione operativa. |
+| Google Workspace | Google | Redazione di testi, report, presentazioni, fogli di calcolo. |
+| Google Drive | Google | Archiviazione e collaborazione in cloud. |
+| DiskStation Manager (DSM) | Synology Inc. | Sistema operativo per la gestione del NAS locale. |
 
 #### 3.1.3 Architettura hardware-software attuale
 
@@ -144,6 +149,34 @@ ricade quindi in modo trasversale sulle figure tecniche già operative su altri 
 inevitabilmente a una strategia che può essere definita come fortemente reattiva ed informale. Il sistema informativo
 viene quindi visto come un semplice magazzino digitale piuttosto che come uno strumento che può portare
 all'ottimizzazione e valorizzazione dei processi.
+
+#### 3.1.5 Elenco dei processi chiave aziendali
+
+I principali processi aziendali di Digisky possono essere suddivisi in processi operativi, amministrativi e di supporto
+tecnologico.
+
+**Processi operativi principali:**
+
+- Pianificazione delle missioni con droni
+- Acquisizione dati tramite rilievi aerei
+- Elaborazione dati geomatici
+- Analisi e interpretazione dei dati raccolti
+- Produzione di report tecnici e mappe
+- Gestione clienti e commesse
+
+**Processi amministrativi:**
+
+- Gestione documentazione interna
+- Gestione HR e dipendenti
+- Contabilità e fatturazione
+- Gestione contratti e fornitori
+
+**Processi IT e supporto:**
+
+- Gestione infrastruttura IT
+- Archiviazione e gestione dati
+- Backup e sicurezza informatica
+- Supporto tecnico interno
 
 ### 3.2 Processo chiave: acquisizione dati
 
@@ -172,53 +205,8 @@ Di seguito vengono descritte le fasi chiave, gli input, gli output e le unità o
 
 ![](./img/bpmn_as_is.png)
 
-### 3.3 Processi chiave
+### 3.3 Analisi delle problematiche
 
-#### 3.3.1 Elenco dei processi chiave aziendali
-I principali processi aziendali di Digisky possono essere suddivisi in processi operativi, amministrativi e di supporto tecnologico.
-
-**Processi operativi principali**
-* Pianificazione delle missioni con droni
-* Acquisizione dati tramite rilievi aerei
-* Elaborazione dati geomatici
-* Analisi e interpretazione dei dati raccolti
-* Produzione di report tecnici e mappe
-* Gestione clienti e commesse
-
-**Processi amministrativi**
-* Gestione documentazione interna
-* Gestione HR e dipendenti
-* Contabilità e fatturazione
-* Gestione contratti e fornitori
-
-**Processi IT e supporto**
-* Gestione infrastruttura IT
-* Archiviazione e gestione dati
-* Backup e sicurezza informatica
-* Supporto tecnico interno
-
----
-
-### 3.3.2 Selezione del processo da analizzare
-Tra i processi individuati, il progetto si concentra in modo specifico sul **Processo di acquisizione ed elaborazione dati con drone**. 
-
-Questo processo è stato selezionato poiché risulta essere il più critico per l'organizzazione aziendale e rappresenta l'attività maggiormente influenzata dalle limitazioni dell’attuale sistema informativo. In particolare, l’analisi si concentra sulla gestione dei dati e sulle modalità di archiviazione e condivisione delle informazioni tra le diverse divisioni aziendali (IT, Geomatica, Linea Volo, Amministrazione).
-
-Di seguito vengono descritte le fasi chiave, gli input, gli output e le unità organizzative coinvolte (in allineamento con il modello BPMN AS IS):
-
-| Processo | Descrizione | Input | Output | Unità coinvolte |
-|---|---|---|---|---|
-| **Gestione richiesta cliente** | Registrazione della richiesta di servizio o rilievo da parte del cliente | Richiesta cliente | Richiesta registrata | Amministrazione |
-| **Pianificazione missione drone** | Organizzazione e pianificazione delle attività di volo | Richiesta registrata | Piano missione | Linea Volo |
-| **Acquisizione dati** | Raccolta dati tramite droni e strumenti di rilievo | Piano missione | Dati grezzi | Linea Volo |
-| **Elaborazione geomatica** | Elaborazione tecnica e trasformazione dei dati raccolti | Dati grezzi | Dati elaborati | Geomatica |
-| **Archiviazione dati** | Salvataggio e organizzazione dei file aziendali | Dati elaborati e documenti | File archiviati | IT / Systems |
-| **Condivisione informazioni** | Condivisione manuale dei dati tra reparti aziendali | File archiviati | Dati condivisi | IT / Systems, Geomatica, Amministrazione |
-| **Analisi dati e reportistica** | Analisi finale dei dati e generazione del report tecnico | Dati elaborati | Report finale | Geomatica, Amministrazione |
-
----
-
-#### 3.3.3 Criticità principali
 Nella situazione attuale, l'**archiviazione dei dati** rappresenta un problema per l'intero processo perché utilizza un
 modello di archiviazione non strutturato basato interamente su Google Drive. Questo comporta numerose criticità sia per
 il processo preso in analisi ma anche per altri che necessitano di andare ad analizzare vecchi reports o dati spaziali
@@ -235,11 +223,7 @@ riassunti:
 | **Ricerca lenta delle info**          | Accesso ai documenti       | Ritardi significativi nelle attività operative e nel decision-making.              |
 | **Scarsa integrazione software**      | Intero sistema informativo | Minore efficienza globale e isolamento dei dati (silos informativi).               |
 
----
-
-### 3.4 Analisi delle problematiche
-
-#### 3.4.1 Difficoltà nell'analisi efficace dei dati
+#### 3.3.1 Difficoltà nell'analisi efficace dei dati
 
 Digisky gestisce una grande quantità di dati provenienti da rilievi aerei, elaborazioni geomatiche e attività operative
 interne. Attualmente, l'assenza di strumenti centralizzati di Business Intelligence e di analisi avanzata rende
@@ -247,27 +231,27 @@ complessa l'elaborazione efficace delle informazioni. Le attività di analisi ri
 tempi elevati, riducendo la rapidità decisionale. La mancanza di dashboard integrate limita inoltre la possibilità di
 ottenere informazioni aggiornate in tempo reale.
 
-#### 3.4.2 Memorizzazione dati non strutturata su Google Drive
+#### 3.3.2 Memorizzazione dati non strutturata su Google Drive
 
 Gran parte dei documenti aziendali e dei file operativi (inclusi i file di output dei rilevi) viene archiviata tramite
 Google Drive utilizzando cartelle condivise. Con la crescita del volume dei dati, questo sistema risulta sempre meno
 efficiente, generando difficoltà nella classificazione, problemi di versionamento e un'organizzazione non standardizzata
 tra i reparti.
 
-#### 3.4.3 Costi elevati di archiviazione e gestione
+#### 3.3.3 Costi elevati di archiviazione e gestione
 
 L'utilizzo di sistemi non strutturati genera costi indiretti legati principalmente al tempo impiegato dal personale per
 la gestione manuale. Le inefficienze riguardano la ricerca dei documenti, la manutenzione delle cartelle e l'invio
 manuale degli aggiornamenti, aumentando il carico operativo sia per il personale amministrativo sia per i reparti
 tecnici (come geomatica e linea volo).
 
-#### 3.4.4 Assenza di database strutturati
+#### 3.3.4 Assenza di database strutturati
 
 Attualmente i dati aziendali risultano distribuiti tra file Excel, documenti condivisi e archivi cloud senza una
 struttura relazionale. Questa situazione comporta l'impossibilità di effettuare query avanzate, problemi di consistenza
 (dati duplicati o non aggiornati) e difficoltà di integrazione con nuovi software aziendali.
 
-#### 3.4.5 Processi interni manuali e ripetitivi
+#### 3.3.5 Processi interni manuali e ripetitivi
 
 Molte attività vengono svolte manualmente, soprattutto nei passaggi di stato del processo (es. passaggio di consegne tra
 linea volo e geomatica). Tra le attività ripetitive figurano l'inserimento manuale dei dati, l'invio manuale dei file
@@ -641,7 +625,7 @@ file pesanti, ma mantiene le informazioni relative a clienti, commesse, missioni
 lavorazione e posizione dei file nei diversi storage. Gli strumenti di Business Intelligence, i software interni e il
 portale applicativo possono quindi interrogare il database per recuperare dati aggiornati e coerenti.
 
-![deployment](mermaid-diagram-deployment.png)
+![](./img/deployment_diagram_to_be.png)
 
 In questo modello, i dataset prodotti dai piloti e dagli operatori vengono caricati direttamente verso il cloud object
 storage tramite il portale o strumenti di upload dedicati. Successivamente, se un dataset deve essere elaborato in sede,
@@ -668,21 +652,22 @@ DA FARE BENE
 #### 4.2.1 Nuovo application portfolio
 
 Il nuovo application portfolio rappresenta l'insieme delle applicazioni e dei componenti tecnologici che Digisky
-dovrebbe utilizzare, a nostro avviso, nella situazione TO BE.
+dovrebbe utilizzare, a nostro avviso, nella situazione TO BE. I componenti che andrebbero ad essere aggiunti o modificati sono:
 
-| Applicazione / componente                 | Vendor / tecnologia                                                            | Funzione principale                                                                                        | Stato                        | Motivazione                                                                                                                    |
-| ----------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Google Drive / Google Workspace**       | Google                                                                         | Collaborazione su documenti leggeri, email, calendari e file condivisi                                     | Esistente, da ridimensionare | Rimane utile per la produttività quotidiana, ma non deve più essere usato come archivio principale per dataset tecnici pesanti |
-| **Cloud object storage hot/warm**         | AWS S3, Google Cloud Storage, Azure Blob o equivalente                         | Storage principale dei dataset tecnici di produzione: RAW, ortofoto, mappe e output                        | Nuovo                        | Garantisce accessibilità da remoto, scalabilità e maggiore business continuity rispetto al NAS locale                          |
-| **NAS Synology locale**                   | Synology già presente in azienda                                               | Cache locale, replica selettiva e supporto operativo per i dataset utilizzati in sede                      | Esistente, da riposizionare  | Non viene eliminato, ma non rappresenta più lo storage principale; serve a velocizzare le lavorazioni interne                  |
-| **Cold / archive storage**                | AWS S3 Glacier, Google Cloud Storage Archive, Azure Blob Archive o equivalente | Archiviazione economica di dataset storici o raramente consultati                                          | Nuovo                        | Riduce i costi di conservazione dei dati non più usati quotidianamente                                                         |
-| **PostgreSQL + PostGIS**                  | Open source                                                                    | Database centralizzato per metadati tecnici, gestionali e geografici                                       | Nuovo                        | Permette di indicizzare commesse, missioni, dataset, posizioni file, aree geografiche e stati di lavorazione                   |
-| **Nextcloud**                             | Open source / self-hosted o managed                                            | Sistema documentale per documenti aziendali, versioning, permessi e condivisione controllata               | Nuovo                        | Separa la gestione dei documenti aziendali dai dataset tecnici pesanti                                                         |
-| **Metabase**                              | Open source / SaaS                                                             | Business Intelligence, dashboard e report automatici                                                       | Nuovo                        | Permette di monitorare storage, costi, commesse, produzione tecnica e performance operative                                    |
-| **API / connettori per software interni** | Sviluppo interno o misto                                                       | Integrazione tra database centrale, storage cloud e software aziendali di pianificazione e visualizzazione | Nuovo                        | Consente ai software sviluppati internamente di accedere a metadati e posizione dei dataset                                    |
-| **ETL / script di sincronizzazione**      | Sviluppo interno o tool dedicati                                               | Migrazione, sincronizzazione selettiva, aggiornamento metadati e lifecycle dei dataset                     | Nuovo                        | Automatizza il collegamento tra cloud storage, NAS, cold storage e database                                                    |
-| **Sistema di backup e disaster recovery** | Soluzione cloud / provider esterno / replica dedicata                          | Backup periodici, recovery e protezione dei dati                                                           | Nuovo o da potenziare        | Garantisce continuità operativa e protezione da perdita dati                                                                   |
-| **Identity & Access Management**          | Google Workspace, LDAP, SSO o sistema equivalente                              | Gestione utenti, ruoli, permessi e autenticazione                                                          | Esistente o da potenziare    | Permette accessi controllati a cloud storage, NAS, database, documentale e dashboard                                           |
+| Applicazione / componente | Vendor / tecnologia | Funzione principale | Stato | Motivazione |
+| :--- | :--- | :--- | :--- | :--- |
+| **Google Drive** | Google | Collaborazione su documenti leggeri, email, calendari e file condivisi | Esistente, da ridimensionare | Rimane utile per la produttività quotidiana, ma non deve più essere usato come archivio principale per dataset tecnici pesanti |
+| **Cloud Object Storage (Hot/Warm)** | AWS S3, Google Cloud Storage, Azure Blob | Deposito centrale e immutabile per l'archiviazione e l'indicizzazione dei dataset tecnici pesanti di produzione (immagini RAW, ortofoto, modelli 3D e mappe tematiche finali). | Nuovo | Garantisce accessibilità da remoto, scalabilità e maggiore business continuity rispetto al NAS locale |
+| **Cloud Object Storage (Cold)** | AWS S3 Glacier, Google Cloud Storage Archive, Azure Blob Archive | Archiviazione economica di dataset storici o raramente consultati | Nuovo | Riduce i costi di conservazione dei dati non più usati quotidianamente |
+| **DiskStation Manager** | Synology Inc. | Cache locale, replica selettiva e supporto operativo per i dataset utilizzati in sede | Esistente, da ridimensionare | Non viene eliminato, ma non rappresenta più lo storage principale; serve a velocizzare le lavorazioni interne |
+| **PostgreSQL + PostGIS** | Open source | Database centralizzato per metadati tecnici, gestionali e geografici | Nuovo | Permette di indicizzare commesse, missioni, dataset, posizioni file, aree geografiche e stati di lavorazione |
+| **Nextcloud** | Open source | Sistema documentale per documenti aziendali, versioning, permessi e condivisione controllata | Nuovo | Separa la gestione dei documenti aziendali dai dataset tecnici pesanti |
+| **Metabase** | Open source | Business Intelligence, dashboard e report automatici | Nuovo | Permette di monitorare storage, costi, commesse, Birdie produzione tecnica e performance operative |
+| **API / connettori per software interni** | Sviluppo interno o misto | Integrazione tra database centrale, storage cloud e software aziendali di pianificazione e visualizzazione | Nuovo | Consente ai software sviluppati internamente di accedere a metadati e posizione dei dataset |
+| **ETL / script di sincronizzazione** | Sviluppo interno | Migrazione, sincronizzazione selettiva, aggiornamento metadati e lifecycle dei dataset | Nuovo | Automatizza il collegamento tra cloud storage, NAS, cold storage e database |
+| **Sistema di backup e disaster recovery** | Soluzione cloud | Backup periodici, recovery e protezione dei dati | Da potenziare | Garantisce continuità operativa e protezione da perdita dati |
+| **Identity & Access Management** | Google Workspace, LDAP, SSO | Gestione utenti, ruoli, permessi e autenticazione | Da potenziare | Permette accessi controllati a cloud storage, NAS, database, documentale e dashboard |
+
 
 Il cambiamento principale consiste nel passaggio da una logica file-based e NAS-first a una logica data-driven e
 cloud-first. I file pesanti continuano a esistere, ma non sono più gestiti principalmente tramite cartelle locali o
