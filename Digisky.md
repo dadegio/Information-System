@@ -1,8 +1,8 @@
-# Progetto di Sistemi Informativi – Digisky
+# Progetto di Sistemi Informativi – DigiSky
 
 ## 1. Introduzione all'azienda
 
-### 1.1 Descrizione generale di Digisky
+### 1.1 Descrizione generale di DigiSky
 
 **DigiSky S.r.l.** è una società torinese attiva nel settore aerospaziale, con particolare specializzazione nell'Earth
 Observation, nel monitoraggio aereo del territorio, nei sistemi avionici e nelle missioni di rilievo digitale. L'azienda
@@ -37,37 +37,91 @@ missioni speciali. Le principali aree di attività includono:
   ai servizi di Earth Observation ad altissima risoluzione, la seconda alla calibrazione e validazione di sistemi per
   applicazioni aeronautiche e spaziali
 
-### 1.4 Obiettivi aziendali e strategia (DA RIVEDERE)
+### 1.4 Obiettivi aziendali e strategia
 
-L'azienda si pone come obiettivo principale quello di democratizzare le attività di monitoraggio aereo, offrendo
-soluzioni accessibili, versatili e ad alto contenuto tecnologico. La strategia aziendale si basa su quattro pilastri:
+L'azienda si pone come obiettivo principale quello di rendere più accessibili e utilizzabili le attività di monitoraggio aereo, offrendo soluzioni versatili, specializzate e ad alto contenuto tecnologico. DigiSky opera infatti in un settore in cui la capacità di acquisire, elaborare e valorizzare dati territoriali rappresenta un elemento centrale per la competitività.
 
-- Integrazione verticale della catena del valore, dalla progettazione avionica alla raccolta dati, pianificazione delle
-  missioni, operazioni di volo, validazione dei dati e produzione di mappe digitali tematiche.
-- **Uso di tecnologie proprietarie** (e.g. SmartBay e Skymetry) per differenziarsi nel mercato del telerilevamento e
-  della mappatura aerea.
-- Sfruttamento della posizione geografica nel settore aerospace, grazie alla sede operativa presso l'aeroporto Torino
-  Aeritalia e alla presenza nei network aerospaziali regionali e dell'ESA Business Network.
-- Supporto a innovazione, R&D e test in volo, anche tramite una propria flotta di aeromobili equipaggiati con sistemi
-  avionici, pensata per validare tecnologie e dispositivi in condizioni operative reali.
+La strategia aziendale si basa su quattro pilastri principali:
+
+* **Integrazione verticale della catena del valore**, dalla progettazione avionica alla raccolta dati, dalla pianificazione delle missioni fino alla validazione dei dati e alla produzione di mappe digitali tematiche.
+* **Uso di tecnologie proprietarie**, come SmartBay, Skymetry e SkyGate, per differenziarsi nel mercato del telerilevamento, della mappatura aerea e della validazione di sensori.
+* **Sfruttamento della posizione geografica e del contesto aerospaziale torinese**, grazie alla sede operativa presso l'aeroporto Torino Aeritalia e alla presenza in un ecosistema territoriale fortemente orientato all'aerospazio.
+* **Supporto ad attività di ricerca, sviluppo e test in volo**, anche tramite una propria flotta di aeromobili equipaggiati con sistemi avionici, utile per validare tecnologie e dispositivi in condizioni operative reali.
+
+Questa impostazione permette a DigiSky di posizionarsi non solo come fornitore di servizi di rilievo aereo, ma anche come azienda in grado di integrare competenze avioniche, geomatiche, informatiche e di analisi del dato.
+
+### 1.5 Business Model Canvas
+
+Il Business Model Canvas permette di rappresentare in modo sintetico il modello di business di DigiSky, evidenziando come l'azienda crea, distribuisce e cattura valore. Nel caso analizzato, il modello di business si basa sull'integrazione tra competenze aerospaziali, acquisizione dati, sistemi proprietari e servizi di elaborazione ad alto valore aggiunto.
+
+![](./img/bpc.png)
+
+
+| Blocco                     | Descrizione                                                                                                                                                                                                                                                                      |
+|:---------------------------| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Customer Segments**       | Aziende agricole, gestori di infrastrutture, utilities, enti pubblici, aziende aerospaziali, clienti industriali e organizzazioni che necessitano di rilievi, monitoraggio territoriale o validazione di sensori.                                                                |
+| **Value Proposition**      | DigiSky offre servizi di acquisizione, elaborazione e valorizzazione di dati aerei e territoriali. Il valore principale consiste nella possibilità di ottenere dati ad alta risoluzione, report tecnici, mappe digitali e servizi di validazione attraverso soluzioni integrate. |
+| **Channels**               | I servizi vengono proposti tramite contatti diretti con clienti industriali e istituzionali, partnership, partecipazione a reti del settore aerospaziale, progetti di ricerca e canali digitali aziendali.                                                                       |
+| **Customer Relationship** | La relazione è prevalentemente B2B e personalizzata. Le commesse richiedono analisi dei requisiti, definizione tecnica del servizio, pianificazione della missione, produzione degli output e supporto nella fase di interpretazione dei risultati.                              |
+| **Revenue Streams**         | I ricavi derivano da commesse di rilievo e monitoraggio, servizi di elaborazione dati, attività di progettazione e test avionici, servizi collegati alle business unit Skymetry e SkyGate e possibili attività di consulenza tecnica.                                            |
+| **Key Resources**          | Competenze tecniche specialistiche, flotta e strumenti di acquisizione, sensori, sistemi proprietari come SmartBay, Skymetry e SkyGate, infrastruttura IT, software geomatici, dataset prodotti e know-how aerospaziale.                                                         |
+| **Key Activities**         | Pianificazione missioni, acquisizione dati, gestione sensori, elaborazione geomatica, produzione di report e mappe, validazione dei dati, progettazione avionica, gestione delle commesse e archiviazione dei dataset.                                                           |
+| **Key Partners**          | Clienti industriali, enti di ricerca, realtà del settore aerospaziale, fornitori di software e hardware, provider cloud, fornitori di infrastruttura IT, aeroporti e soggetti coinvolti nelle autorizzazioni operative.                                                          |
+| **Cost Structure**         | Costi del personale tecnico, manutenzione della flotta e dei sensori, licenze software, infrastruttura IT, storage dei dati, costi cloud, attività di ricerca e sviluppo, sicurezza e gestione amministrativa.                                                                   |
+
+All'interno di questo modello, **Skymetry** rappresenta la business unit orientata ai servizi di Earth Observation e rilievo ad altissima risoluzione. Essa consente a DigiSky di offrire ai clienti dati territoriali elaborati e utilizzabili per decisioni operative, come monitoraggio agricolo, controllo infrastrutturale, analisi ambientale e gestione di asset distribuiti.
+
+**SkyGate**, invece, è collegata alla calibrazione, validazione e test di sistemi e sensori per applicazioni aeronautiche e spaziali. Questa business unit valorizza maggiormente le competenze avioniche e sperimentali dell'azienda, permettendo di servire clienti che necessitano di verificare tecnologie, payload o strumenti in condizioni operative controllate.
+
+Il Business Model Canvas mostra quindi come DigiSky non si limiti alla semplice acquisizione di immagini aeree, ma costruisca valore attraverso la combinazione di dati, competenze tecniche, sistemi proprietari, infrastruttura tecnologica e capacità di elaborazione.
+
 
 ---
 
 ## 2. Analisi organizzativa
+
 ### 2.1 Modello organizzativo
-Considerando le dimensioni contenute dell'azienda e l'elevata specializzazione tecnica richiesta, DigiSky adotta una struttura organizzativa funzionale.
+
+Considerando le dimensioni contenute dell'azienda e l'elevata specializzazione tecnica richiesta, DigiSky adotta una struttura organizzativa funzionale. Le diverse attività sono distribuite tra unità con responsabilità specifiche, ma fortemente collegate tra loro nello svolgimento delle commesse.
+
+L'organizzazione non è quindi molto gerarchica o complessa, ma si basa su pochi reparti specializzati che collaborano lungo il ciclo di vita del servizio: dalla richiesta del cliente, alla pianificazione della missione, fino all'acquisizione, elaborazione, consegna e archiviazione dei dati.
+
 ![](./img/organizational_chart.png)
 
 ### 2.2 Unità organizzative
-Le unità organizzative principali sono:
-* Direzione generale: definisce la strategia aziendale, gestisce le partnership strategiche, supervisiona le attività di R&D e partecipa ai bandi di ricerca.
-* Amministrazione & HR: si occupa della contabilità, della fatturazione, della gestione contrattualistica con i clienti e fornitori, e della gestione documentale del personale (cedolini, visite mediche, certificazioni).
-* Linea Volo: si occupa della manutenzione della flotta, dell'integrazione hardware dei sensori, della richiesta dei permessi di volo e dell'esecuzione materiale delle missioni per l'acquisizione dei dati grezzi.
-* Geomatica: è l'unità di elaborazione che riceve i dati grezzi dalla linea volo e, tramite software specialistici e workstation ad alte prestazioni, si occupa del post-processing, della modellazione 3D, della generazione di ortofoto e del controllo qualità prima della consegna finale al cliente.
-* IT: gestisce l'infrastruttura tecnica come il NAS o le workstation. 
 
-### 2.3 Business Model Canvas
-![](./img/bpc.png)
+Le unità organizzative principali sono:
+
+* **Direzione generale**: definisce la strategia aziendale, gestisce le partnership strategiche, supervisiona le attività di ricerca e sviluppo e partecipa ai bandi di ricerca.
+* **Amministrazione & HR**: si occupa della contabilità, della fatturazione, della gestione contrattualistica con clienti e fornitori e della gestione documentale del personale, come cedolini, visite mediche e certificazioni.
+* **Linea Volo**: si occupa della manutenzione della flotta, dell'integrazione hardware dei sensori, della richiesta dei permessi di volo e dell'esecuzione materiale delle missioni per l'acquisizione dei dati grezzi.
+* **Geomatica**: è l'unità di elaborazione che riceve i dati grezzi dalla linea volo e, tramite software specialistici e workstation ad alte prestazioni, si occupa del post-processing, della modellazione 3D, della generazione di ortofoto e del controllo qualità prima della consegna finale al cliente.
+* **IT**: gestisce l'infrastruttura tecnica aziendale, come NAS, workstation, sistemi di archiviazione, account, backup e supporto agli utenti.
+
+### 2.3 Ruoli coinvolti nei processi aziendali
+
+Nel processo analizzato, cioè l'acquisizione e gestione dei dati derivanti da rilievi aerei, i ruoli aziendali coinvolti sono diversi e intervengono in momenti differenti.
+
+| Ruolo                                  | Attività principali                                                                                              |
+| :------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
+| **Direzione generale**                 | Valuta le opportunità commerciali, definisce le priorità strategiche e monitora l'andamento delle commesse.      |
+| **Amministrazione**                    | Gestisce contratti, offerte, fatturazione, documentazione amministrativa e rapporti formali con il cliente.      |
+| **Responsabile missione / Linea Volo** | Pianifica la missione, organizza l'attività operativa, gestisce mezzi e sensori e coordina la raccolta dei dati. |
+| **Pilota / Operatore di volo**         | Esegue materialmente la missione e produce i dati grezzi tramite sensori, droni o aeromobili.                    |
+| **Tecnico geomatico**                  | Riceve i dati grezzi, li controlla, li elabora e produce output come ortofoto, mappe, modelli 3D e report.       |
+| **Responsabile IT**                    | Supporta l'accesso ai sistemi, gestisce storage, backup, permessi, infrastruttura tecnica e sicurezza dei dati.  |
+| **Cliente**                            | Fornisce i requisiti iniziali, riceve gli output finali e può richiedere eventuali modifiche o integrazioni.     |
+
+Questa distribuzione dei ruoli mostra come il processo non sia limitato a una singola area aziendale, ma richieda collaborazione tra amministrazione, linea volo, geomatica, IT e direzione.
+
+### 2.4 Criticità organizzative
+
+Dal punto di vista organizzativo, la principale criticità riguarda il coordinamento tra reparti diversi. Le informazioni passano spesso attraverso strumenti non strutturati, come email, messaggi, cartelle condivise o comunicazioni informali. Questo rende più difficile capire quale sia lo stato aggiornato di una commessa, dove siano salvati i file corretti e quale versione di un documento debba essere utilizzata.
+
+Un secondo problema riguarda la dipendenza da alcune figure chiave. In un'organizzazione piccola e specializzata, molte informazioni operative sono conosciute direttamente dai singoli tecnici o responsabili, ma non sempre vengono formalizzate in un sistema condiviso. Questo può generare difficoltà in caso di assenze, ritardi o passaggi di consegne.
+
+Infine, l'assenza di workflow digitali strutturati rende meno controllabile il processo. Ad esempio, il passaggio dei dati dalla linea volo alla geomatica o l'approvazione finale dei report possono avvenire senza una tracciabilità completa. Il sistema TO BE dovrà quindi supportare non solo l'archiviazione dei dati, ma anche una maggiore chiarezza organizzativa sui ruoli, sugli stati del processo e sulle responsabilità.
+
 
 ---
 
@@ -97,7 +151,7 @@ attualmente l'azienda sono i seguenti:
 
 - **Google Drive**: è la piattaforma cloud principale utilizzata per l'archiviazione di quasi tutta la documentazione
   aziendale. Attualmente contiene promiscuamente documenti amministrativi (fatture, contratti), file di gestione delle
-  commesse (fogli Excel) e anche output pesanti delle elaborazioni geomatiche (come mappe, report finali ed ortofoto).
+  commesse (fogli Excel) e anche output pesanti delle elaborazioni geomatiche (come mappe, report finali e ortofoto).
 - **NAS** (network attached storage): contiene i dataset grezzi e in fase di elaborazione che sono utilizzati dal team
   di geomatica, che necessita di accedere rapidamente a moli enormi di foto (RAW) tramite la rete LAN aziendale ad alta
   velocità. È presente presso la sede operativa all'Aeroporto Torino Aeritalia.
@@ -117,7 +171,7 @@ L'insieme dei software utilizzati da DigiSky si possono dividere in:
 - **software tecnici e geomatici**. Il team di geomatica utilizza potenti software di elaborazione fotogrammetrica e
   suite GIS per trasformare i dati grezzi in ortofoto, modelli 3D e mappe tematiche. Parallelamente, per la
   progettazione avionica vengono impiegati software CAD 3D.
-- **software proprietari**. Vegono utilizzati per il supporto ai propri brevetti e servizi. Gli strumenti principali
+- **software proprietari**. Vengono utilizzati per il supporto ai propri brevetti e servizi. Gli strumenti principali
   offerti sono per la pianificazione della missione di volo dei droni, per la calibrazione dei sensori e per la gestione
   delle operazioni aeree.
 - **software di produttività individuale**. Questa categoria comprende gli applicativi della suite Google Workspace
@@ -125,6 +179,7 @@ L'insieme dei software utilizzati da DigiSky si possono dividere in:
   di testi, report, fogli di calcolo e presentazioni.
 
 In particolare: 
+
 | Applicazione | Venditore | Funzionalità principali | 
 | :--- | :--- | :--- | 
 | Agisoft Metashape |Agisoft LLC | Elaborazione fotogrammetrica per trasformare i dati grezzi in ortofoto, modelli 3D e nuvole di punti. | 
@@ -147,7 +202,7 @@ L'attuale settore IT di DigiSky è dimensionato in proporzione all'organico comp
 
 #### 3.1.5 Elenco dei processi chiave aziendali
 
-I principali processi aziendali di Digisky possono essere suddivisi in processi operativi, amministrativi e di supporto
+I principali processi aziendali di DigiSky possono essere suddivisi in processi operativi, amministrativi e di supporto
 tecnologico.
 
 **Processi operativi principali:**
@@ -172,6 +227,44 @@ tecnologico.
 - Archiviazione e gestione dati
 - Backup e sicurezza informatica
 - Supporto tecnico interno
+
+#### 3.1.6 Spese IT e rapporto tra spese IT e spese totali
+
+Non disponendo di un bilancio IT dettagliato e separato, è possibile effettuare una stima ragionata delle spese informatiche attuali di DigiSky. Considerando il fatturato annuo pari a circa 1,74 milioni di euro e la natura tecnologica dell'azienda, si può stimare che le spese IT rappresentino circa il 4-5% del fatturato annuo.
+
+Questa percentuale comprende costi legati a licenze software, strumenti di produttività, manutenzione del NAS, workstation tecniche, dischi, backup, account cloud, sicurezza informatica, supporto agli utenti e tempo dedicato dal personale interno alla gestione dell'infrastruttura.
+
+Applicando questa stima, le spese IT annuali possono essere valutate indicativamente tra:
+
+```text
+1.740.000 € × 4% = circa 69.600 €
+1.740.000 € × 5% = circa 87.000 €
+```
+
+Si può quindi assumere un valore medio di circa **75.000 € annui** di spese IT complessive.
+
+| Voce                             |      Stima indicativa |
+| :------------------------------- | --------------------: |
+| Fatturato annuo DigiSky          |           1.740.000 € |
+| Incidenza stimata spese IT       |                  4-5% |
+| Spese IT annue stimate           | circa 70.000-87.000 € |
+| Valore medio assunto             |        circa 75.000 € |
+| Rapporto spese IT / spese totali |            circa 4-5% |
+
+Questa stima non rappresenta un dato contabile ufficiale, ma consente di inquadrare il peso economico dell'IT nel sistema informativo attuale. Il dato è rilevante perché molte delle spese sostenute oggi non producono un miglioramento diretto del processo, ma servono soprattutto a mantenere un'infrastruttura frammentata, basata su Google Drive, NAS locale, workstation e gestione manuale dei trasferimenti.
+
+
+#### 3.1.7 Outsourcing AS IS
+
+Nella situazione AS IS DigiSky utilizza principalmente soluzioni esterne per produttività individuale, cloud storage e software specialistici. Google Workspace e Google Drive sono servizi cloud forniti da Google, mentre alcuni software tecnici come Agisoft Metashape, Pix4Dmapper, QGIS e strumenti CAD sono forniti da vendor esterni o comunità open source. Il NAS Synology è invece gestito internamente, pur basandosi su tecnologia di un fornitore esterno.
+
+L’outsourcing non riguarda quindi l’intero sistema informativo, ma soprattutto applicazioni e servizi infrastrutturali. La gestione operativa quotidiana rimane interna, con un forte carico sul personale IT, che deve occuparsi di manutenzione, supporto agli utenti, sincronizzazioni, backup e gestione manuale dei trasferimenti.
+
+#### 3.1.8 IT strategy AS IS
+
+L’attuale strategia IT può essere definita prevalentemente reattiva e orientata alla continuità operativa. Il sistema informativo non nasce da un disegno integrato, ma dalla combinazione progressiva di strumenti diversi: Google Drive per la collaborazione, NAS locale per i dataset pesanti, workstation per l’elaborazione tecnica e software specialistici per le attività geomatiche.
+
+Questa strategia è solo parzialmente coerente con la strategia aziendale. DigiSky basa il proprio vantaggio competitivo sulla capacità di produrre e valorizzare dati territoriali ad alta qualità, ma il sistema informativo attuale non supporta in modo adeguato ricerca, tracciabilità, integrazione e controllo dei dati. L’IT viene quindi utilizzato soprattutto per conservare file e garantire continuità minima, più che come leva per ottimizzare i processi e valorizzare il patrimonio informativo aziendale.
 
 ### 3.2 Processo chiave: acquisizione dati
 
@@ -220,7 +313,7 @@ riassunti:
 
 #### 3.3.1 Difficoltà nell'analisi efficace dei dati
 
-Digisky gestisce una grande quantità di dati provenienti da rilievi aerei, elaborazioni geomatiche e attività operative
+DigiSky gestisce una grande quantità di dati provenienti da rilievi aerei, elaborazioni geomatiche e attività operative
 interne. Attualmente, l'assenza di strumenti centralizzati di Business Intelligence e di analisi avanzata rende
 complessa l'elaborazione efficace delle informazioni. Le attività di analisi richiedono spesso operazioni manuali e
 tempi elevati, riducendo la rapidità decisionale. La mancanza di dashboard integrate limita inoltre la possibilità di
@@ -228,7 +321,7 @@ ottenere informazioni aggiornate in tempo reale.
 
 #### 3.3.2 Memorizzazione dati non strutturata su Google Drive
 
-Gran parte dei documenti aziendali e dei file operativi (inclusi i file di output dei rilevi) viene archiviata tramite
+Gran parte dei documenti aziendali e dei file operativi (inclusi i file di output dei rilievi) viene archiviata tramite
 Google Drive utilizzando cartelle condivise. Con la crescita del volume dei dati, questo sistema risulta sempre meno
 efficiente, generando difficoltà nella classificazione, problemi di versionamento e un'organizzazione non standardizzata
 tra i reparti.
@@ -253,9 +346,60 @@ linea volo e geomatica). Tra le attività ripetitive figurano l'inserimento manu
 tra reparti e il controllo umano delle versioni. L'automazione di questi workflow rappresenta un elemento fondamentale
 per ridurre il rischio di errore umano e migliorare l'efficienza organizzativa.
 
+
+### 3.4 KPI AS IS
+Prima di descrivere la situazione TO BE è utile misurare lo stato attuale del processo attraverso alcuni KPI. Gli indicatori AS IS permettono di rendere più chiari i problemi emersi nell'analisi: tempi elevati di ricerca, trasferimenti manuali, duplicazione dei file, difficoltà di tracciabilità e costi indiretti legati alla gestione non strutturata dei dati.
+
+Il periodo di riferimento scelto per tutti gli indicatori è **un anno solare**, coerentemente con la misurazione annuale delle commesse, dei costi IT e dei volumi di dati prodotti.
+
+#### 3.4.1 Indicatori generali AS IS
+
+| Indicatore generale | Descrizione                                                    | Unità di misura |
+| :------------------ | :------------------------------------------------------------- | :-------------- |
+| **N_commesse**      | Numero di commesse gestite in un anno                          | numero/anno     |
+| **N_missioni**      | Numero di missioni di volo eseguite in un anno                 | numero/anno     |
+| **N_dataset**       | Numero di dataset prodotti dalle missioni                      | numero/anno     |
+| **TB_prodotti**     | Volume complessivo di dati tecnici prodotti e archiviati       | TB/anno         |
+| **N_report**        | Numero di report tecnici consegnati ai clienti                 | numero/anno     |
+| **N_utenti_SI**     | Numero di utenti interni che utilizzano il sistema informativo | numero          |
+
+Questi indicatori non misurano direttamente una performance, ma servono a dimensionare il processo e a interpretare correttamente gli altri KPI.
+
+#### 3.4.2 KPI di servizio, efficienza e qualità AS IS
+
+| CSF                           | Tipo       | KPI                      | Definizione                                                                                                        | Formula                                             | Unità     |
+| :---------------------------- | :--------- | :----------------------- | :----------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- | :-------- |
+| CSF1 - Efficienza dei costi   | Efficienza | **UC_storage_ASIS**      | Costo unitario annuo di archiviazione e gestione dei dati                                                          | costo annuo storage e gestione dati / TB conservati | €/TB/anno |
+| CSF1 - Efficienza dei costi   | Efficienza | **T_dup_ASIS**           | Percentuale stimata di file duplicati, obsoleti o incoerenti                                                       | file duplicati o obsoleti / file totali             | %         |
+| CSF2 - Tempestività operativa | Servizio   | **LT_dato_grezzo_ASIS**  | Tempo tra fine acquisizione dati e disponibilità dei dati grezzi per la geomatica                                  | tempo da fine missione a disponibilità su NAS/Drive | ore       |
+| CSF2 - Tempestività operativa | Servizio   | **LT_ricerca_ASIS**      | Tempo medio necessario per trovare un dataset, un report o un documento collegato a una commessa                   | tempo totale di ricerca / numero ricerche           | minuti    |
+| CSF2 - Tempestività operativa | Servizio   | **LT_condivisione_ASIS** | Tempo medio necessario per condividere dati tra linea volo, geomatica e altri reparti                              | tempo totale condivisioni / numero condivisioni     | ore       |
+| CSF3 - Soddisfazione cliente  | Servizio   | **LT_report_ASIS**       | Tempo tra disponibilità dei dati grezzi e generazione del report finale                                            | tempo da dati disponibili a report prodotto         | ore       |
+| CSF3 - Soddisfazione cliente  | Qualità    | **R_consegne_ASIS**      | Percentuale di consegne contestate o da correggere per file errati, versioni non aggiornate o problemi documentali | consegne contestate / consegne totali               | %         |
+
+#### 3.4.3 Valori stimati AS IS
+
+Poiché non sono disponibili misurazioni storiche puntuali, i valori AS IS sono stimati in modo ragionato sulla base delle criticità individuate. L'obiettivo non è fornire una misurazione contabile precisa, ma costruire una baseline utile per confrontare la situazione attuale con quella proposta nel TO BE.
+
+| KPI                      | Valore AS IS stimato | Motivazione                                                                                                    |
+| :----------------------- | :------------------- | :------------------------------------------------------------------------------------------------------------- |
+| **UC_storage_ASIS**      | 750 €/TB/anno        | Include storage, manutenzione NAS, licenze, supporto e tempo interno dedicato alla gestione manuale.           |
+| **T_dup_ASIS**           | 15%                  | La presenza di Google Drive, NAS, copie locali e supporti fisici aumenta la probabilità di duplicazioni.       |
+| **LT_dato_grezzo_ASIS**  | 8 ore                | I dati devono essere trasferiti manualmente da supporti fisici o caricati tramite connessione non ottimizzata. |
+| **LT_ricerca_ASIS**      | 25 minuti            | La ricerca avviene tra cartelle, nomi file e documenti non sempre strutturati.                                 |
+| **LT_condivisione_ASIS** | 4 ore                | La condivisione dipende da upload manuali, comunicazioni informali e sincronizzazioni.                         |
+| **LT_report_ASIS**       | 48 ore               | Il tempo comprende elaborazione, ricerca file, passaggi manuali e controlli di versione.                       |
+| **R_consegne_ASIS**      | 8%                   | Alcune consegne possono richiedere correzioni per problemi di versione, file mancanti o output non corretti.   |
+
+Questi KPI mostrano che il problema principale non è solo tecnologico, ma anche organizzativo. L'assenza di un database centrale e di workflow strutturati aumenta i tempi di attraversamento del processo, riduce la tracciabilità dei dati e genera costi indiretti difficili da controllare.
+
 ---
 
 ## 4. Situazione TO BE
+
+### 4.1 Descrizione e selezione del cambiamento
+
+#### 4.1.1 Architettura generale proposta
 
 La soluzione proposta prevede l'introduzione di un'architettura informativa ibrida, pensata per gestire in modo più
 efficiente grandi volumi di dati, ridurre la dipendenza da Google Drive e migliorare l'organizzazione complessiva delle
@@ -347,7 +491,21 @@ come supporto locale. Questo consente di ridurre la dipendenza da Google Drive, 
 da postazioni esterne, aumentare la business continuity e rendere i dati più facilmente integrabili con i software
 interni dell'azienda.
 
-#### 4.1.2 Introduzione di un database centralizzato
+
+#### 4.1.2 Selezione del cambiamento tramite PICK chart
+
+Prima di definire la soluzione TO BE, sono state considerate diverse alternative di intervento. Il PICK chart permette di confrontare le iniziative in base a due dimensioni: l’impatto atteso sul sistema informativo e lo sforzo richiesto per realizzarle.
+
+| Iniziativa | Impatto | Sforzo | Quadrante | Decisione |
+| :--- | :--- | :--- | :--- | :--- |
+| Migliorare naming e struttura delle cartelle su Google Drive | Basso | Basso | Possible | Utile come intervento minimo, ma non sufficiente a risolvere i problemi principali. |
+| Potenziare solo il NAS locale | Medio | Medio | Consider | Migliora le prestazioni in sede, ma non risolve accesso remoto, tracciabilità e business continuity. |
+| Introdurre cloud object storage con database dei metadati | Alto | Medio/alto | Implement | È la scelta principale perché risponde ai problemi di storage, ricerca, integrazione e accessibilità. |
+| Introdurre un ERP completo | Alto | Alto | Challenge | Soluzione troppo ampia rispetto al problema analizzato e più difficile da adottare per una PMI. |
+
+Dalla valutazione emerge che la soluzione più coerente è l’introduzione di cloud object storage, database centralizzato e strumenti di gestione documentale e analitica. Questa scelta richiede uno sforzo iniziale maggiore rispetto a una semplice riorganizzazione delle cartelle, ma produce un impatto più significativo sulle criticità individuate nell’AS IS.
+
+#### 4.1.3 Introduzione di un database centralizzato
 
 L'idea di introdurre un database centralizzato ha l'obiettivo di organizzare in modo strutturato le informazioni
 relative a clienti, commesse, missioni di volo, dataset, elaborazioni e output finali. Il database centralizzato non ha
@@ -420,7 +578,7 @@ oggetti informativi più importanti dei vari processi.
 | **Documento**        | Rappresenta il collegamento ai documenti gestiti nel sistema documentale.                                                      |
 | **Utente**           | Contiene le informazioni sugli utenti autorizzati e sui rispettivi ruoli.                                                      |
 
-#### 4.1.3 Introduzione di strumenti di Business Intelligence
+#### 4.1.4 Introduzione di strumenti di Business Intelligence
 
 L'introduzione di strumenti di Business Intelligence ha l'obiettivo di trasformare i dati raccolti dal sistema
 informativo in informazioni utili per il controllo e il miglioramento dei processi aziendali.
@@ -478,7 +636,7 @@ possibilità di realizzare dashboard operative e direzionali facilmente consulta
 modo DigiSky potrà passare da una gestione reattiva, basata su controlli manuali e verifiche occasionali, a una gestione
 più proattiva come dicevamo prima e basata su dati aggiornati.
 
-#### 4.1.4 Introduzione di un sistema documentale
+#### 4.1.5 Introduzione di un sistema documentale
 
 L'introduzione di un sistema documentale ha l'obiettivo di separare la gestione dei documenti aziendali dalla gestione
 dei dataset tecnici pesanti. Nel contesto analizzato, infatti, non tutti i file hanno la stessa natura: da un lato
@@ -545,7 +703,20 @@ con la logica generale della soluzione TO BE, che prevede cloud object storage c
 tecnici, NAS locale come cache o replica operativa, PostgreSQL/PostGIS per i metadati e strumenti di BI per il
 monitoraggio.
 
-#### 4.1.7 Unità organizzative coinvolte nel TO BE
+
+#### 4.1.6 Gestione dello storage cloud e del NAS
+
+Nel modello TO BE il cloud object storage diventa lo storage principale dei dataset tecnici di produzione. I file pesanti, come immagini RAW, ortofoto, mappe e modelli 3D, vengono quindi archiviati in un ambiente scalabile e accessibile anche da postazioni esterne. Il NAS Synology già presente in azienda non viene eliminato, ma viene riposizionato come cache locale o replica selettiva dei dataset più utilizzati in sede.
+
+Questa scelta consente di mantenere un accesso rapido ai dati durante le lavorazioni geomatiche, senza rendere il NAS il punto centrale e critico dell’architettura. Se il NAS non fosse temporaneamente disponibile, il dataset principale resterebbe comunque conservato nello storage cloud.
+
+#### 4.1.7 Gestione dei dati storici e lifecycle
+
+I dataset storici o consultati raramente possono essere spostati progressivamente verso classi di storage più economiche, come cold storage o archive storage. In questo modo l’azienda evita di mantenere tutti i dati nello spazio più performante e costoso, applicando una logica di archiviazione basata sulla frequenza di utilizzo.
+
+Le policy di lifecycle permettono quindi di distinguere tra dati recenti, dati in lavorazione, dati conclusi e dati storici. Questa distinzione è fondamentale perché consente di ridurre i costi ricorrenti senza perdere tracciabilità: il database PostgreSQL/PostGIS mantiene infatti aggiornata la posizione del file, distinguendo tra cloud operativo, NAS cache e archivio storico.
+
+#### 4.1.8 Unità organizzative coinvolte nel TO BE
 
 L'introduzione della nuova architettura informativa TO BE non riguarda esclusivamente l'area tecnica o informatica, ma
 coinvolge diverse unità organizzative aziendali. La soluzione proposta, infatti, modifica il modo in cui i dati vengono
@@ -558,7 +729,7 @@ Le unità organizzative coinvolte possono essere individuate principalmente nell
 | **Direzione generale**                    | Definisce le priorità strategiche, monitora costi, redditività delle commesse e andamento generale tramite dashboard di Business Intelligence.                                |
 | **Linea Volo**                            | Produce i dati tramite droni e aeromobili, registra le missioni di volo, carica i dataset sul cloud object storage e aggiorna/verifica le informazioni operative nel sistema. |
 | **Geomatica**                             | Gestisce le fasi di post-processing, mosaicizzazione, ortorettifica, controllo qualità e produzione degli output finali.                                                      |
-| **Amministrazione & HR**                  | Gestisce documenti amministrativi, contratti, fatture, ordini e può consultare informazioni economiche collegate alle commesse.                                               |                                            |
+| **Amministrazione & HR**                  | Gestisce documenti amministrativi, contratti, fatture, ordini e può consultare informazioni economiche collegate alle commesse.                                               |
 | **IT**                                    | Gestisce l'infrastruttura tecnica, il NAS, il database, il sistema documentale, i backup, gli accessi e l'integrazione tra i vari componenti.                                 |
 
 Nel nuovo modello, ogni area mantiene le proprie responsabilità, ma lavora su un sistema informativo più ordinato e
@@ -573,7 +744,7 @@ sull'andamento delle commesse e sui costi dello storage, senza dover accedere ma
 Il modello TO BE introduce quindi una maggiore responsabilizzazione degli utenti, perché ogni unità organizzativa opera
 su dati più tracciabili, aggiornati e collegati ai processi aziendali.
 
-#### 4.1.8 Modello tecnologico TO BE
+#### 4.1.9 Modello tecnologico TO BE
 
 Il modello tecnologico TO BE si basa su un'architettura composta da più livelli, ognuno dei quali ha una funzione
 specifica. L'obiettivo non è concentrare tutte le informazioni in un unico strumento, come accade oggi con Google Drive,
@@ -602,7 +773,7 @@ La logica generale del modello è la seguente:
 | **Livello analitico**                    | Metabase                                           | Produce dashboard e report per monitorare storage, commesse, costi, tempi e produzione tecnica.                                    |
 | **Livello sicurezza e gestione**         | Sistema di autenticazione, ruoli, backup e logging | Controlla accessi, autorizzazioni, tracciabilità, protezione dei dati e continuità operativa.                                      |
 
-#### 4.1.9 Deployment diagram
+#### 4.1.10 Deployment diagram
 
 Il deployment diagram rappresenta la distribuzione logica dei principali componenti tecnologici della soluzione TO BE e
 le relazioni tra utenti, applicazioni, database e sistemi di storage.
@@ -634,15 +805,22 @@ pesanti.
 Il deployment proposto permette quindi di migliorare l'accessibilità dei dati da remoto, ridurre la dipendenza dalla
 sede fisica, aumentare la continuità operativa e integrare in modo più efficace i software interni dell'azienda.
 
-#### 4.1.10 Diagramma BPMN TO BE
+#### 4.1.11 Diagramma BPMN TO BE
 
-DA FARE BENE
+![bpmn_to_be.png](diagrammi_source_code/bpmn_to_be.png)
+
+Il diagramma BPMN TO BE rappresenta il processo di acquisizione dati dopo l’introduzione della nuova architettura informativa. Rispetto alla situazione AS IS, il cambiamento principale riguarda la gestione dei dati grezzi e dei metadati: i dataset non vengono più trasferiti manualmente tramite supporti fisici o caricati in cartelle non strutturate, ma vengono caricati direttamente sul cloud object storage e registrati nel database PostgreSQL/PostGIS.
+
+Dopo l’acquisizione dei dati da parte della linea volo, il sistema prevede un upload automatico o guidato dei dataset sul cloud. Contestualmente, vengono registrati i metadati della commessa, della missione, dell’area geografica rilevata e della posizione dei file. Il reparto geomatica può quindi accedere ai dati tramite il portale, eventualmente usando il NAS locale come cache per le lavorazioni interne.
+
+Gli output finali e i report vengono archiviati in modo strutturato e collegati alla commessa. L’approvazione del cliente determina la chiusura del processo; in caso di rifiuto, il flusso torna alla fase di elaborazione e revisione del report. Questo BPMN TO BE riduce le attività manuali, migliora la tracciabilità dei file, rende più chiaro lo stato della commessa e permette di alimentare automaticamente le dashboard di Business Intelligence.
+
 
 ### 4.2 Dimensione tecnologica
 
 #### 4.2.1 Nuovo application portfolio
 
-Il nuovo application portfolio rappresenta l'insieme delle applicazioni e dei componenti tecnologici che Digisky
+Il nuovo application portfolio rappresenta l'insieme delle applicazioni e dei componenti tecnologici che DigiSky
 dovrebbe utilizzare, a nostro avviso, nella situazione TO BE. I componenti che andrebbero ad essere aggiunti o modificati sono:
 
 | Applicazione / componente | Vendor / tecnologia | Funzione principale | Stato | Motivazione |
@@ -653,7 +831,7 @@ dovrebbe utilizzare, a nostro avviso, nella situazione TO BE. I componenti che a
 | **DiskStation Manager** | Synology Inc. | Cache locale, replica selettiva e supporto operativo per i dataset utilizzati in sede | Esistente, da ridimensionare | Non viene eliminato, ma non rappresenta più lo storage principale; serve a velocizzare le lavorazioni interne |
 | **PostgreSQL + PostGIS** | AWS, Google Cloud, Microsoft Azure | Database centralizzato per metadati tecnici, gestionali e geografici | Nuovo | Permette di indicizzare commesse, missioni, dataset, posizioni file, aree geografiche e stati di lavorazione |
 | **Nextcloud** | Nextcloud GmbH, Hetzner | Sistema documentale per documenti aziendali, versioning, permessi e condivisione controllata | Nuovo | Separa la gestione dei documenti aziendali dai dataset tecnici pesanti |
-| **Metabase** | Metabase Inc. | Business Intelligence, dashboard e report automatici | Nuovo | Permette di monitorare storage, costi, commesse, Birdie produzione tecnica e performance operative |
+| **Metabase** | Metabase Inc. | Business Intelligence, dashboard e report automatici | Nuovo | Permette di monitorare storage, costi, commesse, produzione tecnica e performance operative |
 | **API / connettori per software interni** | Sviluppo interno o misto | Integrazione tra database centrale, storage cloud e software aziendali di pianificazione e visualizzazione | Nuovo | Consente ai software sviluppati internamente di accedere a metadati e posizione dei dataset |
 | **ETL / script di sincronizzazione** | Sviluppo interno | Migrazione, sincronizzazione selettiva, aggiornamento metadati e lifecycle dei dataset | Nuovo | Automatizza il collegamento tra cloud storage, NAS, cold storage e database |
 | **Sistema di backup e disaster recovery** | Soluzione cloud | Backup periodici, recovery e protezione dei dati | Da potenziare | Garantisce continuità operativa e protezione da perdita dati |
@@ -666,7 +844,22 @@ Google Drive: vengono conservati in cloud object storage, descritti tramite meta
 attraverso il portale e gli strumenti interni. Il NAS locale rimane utile come cache o replica operativa, ma non
 rappresenta più il punto centrale dell'architettura.
 
-#### 4.2.2 Funzioni software richieste
+
+#### 4.2.2 Selezione applicativa
+
+La scelta delle applicazioni TO BE è stata effettuata considerando il rapporto tra copertura funzionale, costo, complessità di introduzione e coerenza con le dimensioni dell’azienda. L’obiettivo non è introdurre il maggior numero possibile di strumenti, ma selezionare componenti specializzati e integrabili tra loro.
+
+| Area | Alternative considerate | Scelta proposta | Motivazione |
+| :--- | :--- | :--- | :--- |
+| Database metadati | MySQL, PostgreSQL, MongoDB | PostgreSQL + PostGIS | Supporta dati relazionali e geografici, particolarmente utili per commesse, aree di rilievo e dataset territoriali. |
+| Sistema documentale | SharePoint, Alfresco, Nextcloud | Nextcloud | È flessibile, controllabile e adatto a separare documenti aziendali e dataset tecnici pesanti. |
+| Business Intelligence | Power BI, Tableau, Metabase | Metabase | È semplice da collegare al database, contiene i costi iniziali e permette dashboard operative e direzionali. |
+| Storage tecnico | Solo NAS, Google Drive, object storage S3-compatible | Cloud object storage + NAS cache | Migliora scalabilità, accesso remoto e business continuity, mantenendo il NAS come supporto operativo locale. |
+| Integrazione | Script manuali, API, connettori ETL | API e script ETL interni o misti | Permettono di collegare storage, database, NAS, documentale e software interni in modo progressivo. |
+
+Questa selezione conferma l’approccio ibrido già descritto: outsourcing o servizi esterni per le componenti infrastrutturali, sviluppo interno o misto per gli elementi più vicini ai processi specifici di DigiSky, come portale, metadati, regole di sincronizzazione e integrazione con software interni.
+
+#### 4.2.3 Funzioni software richieste
 
 | Funzione software richiesta                 | Descrizione                                                                                                    | Criticità AS IS risolta                                                                       |
 | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -692,7 +885,7 @@ rappresenta più il punto centrale dell'architettura.
 Le funzioni centrali del nuovo sistema sono quindi quattro: gestione cloud dei dataset tecnici, gestione strutturata dei
 metadati, integrazione con i software interni e analisi tramite Business Intelligence.
 
-#### 4.2.3 Analisi di copertura
+#### 4.2.4 Analisi di copertura
 
 L'analisi di copertura confronta le funzioni software richieste con le componenti tecnologiche proposte, verificando se
 il nuovo sistema è in grado di rispondere alle necessità individuate.
@@ -723,7 +916,7 @@ regole di caricamento dei dataset sul cloud, la sincronizzazione selettiva verso
 cold/archive storage, l'integrazione con i software interni, la classificazione documentale, i permessi per ruolo e le
 policy di backup e recovery.
 
-#### 4.2.4 Analisi di integrazione
+#### 4.2.5 Analisi di integrazione
 
 L'integrazione tra le componenti è fondamentale per evitare che il nuovo sistema generi nuovi silos informativi: infatti
 la nostra soluzione funziona **solo se NAS, cloud storage, database, sistema documentale e BI comunicano in modo
@@ -752,7 +945,7 @@ l'aggiornamento delle dashboard e l'integrazione con i software interni di piani
 
 ![image](mermaid-diagram.png)
 
-#### 4.2.5 Outsourcing o sviluppo interno
+#### 4.2.6 Outsourcing o sviluppo interno
 
 La scelta tra outsourcing e sviluppo interno deve essere valutata considerando competenze disponibili, criticità dei
 sistemi, costi, tempi di implementazione e necessità di personalizzazione.
@@ -775,7 +968,7 @@ backup e ottimizzazione cloud, possono essere tranquillamente esternalizzate.
 | **Backup e disaster recovery**               | Supporto esterno specialistico                             | È una componente critica per la continuità operativa                                                                                                |
 | **Cybersecurity e access control**           | Supporto esterno specialistico                             | Necessario per dati sensibili, documenti HR e protezione dei dataset aziendali                                                                      |
 
-#### 4.2.6 Gap analysis
+#### 4.2.7 Gap analysis
 
 Osservando le situazioni AS IS e TO BE:
 
@@ -1077,6 +1270,22 @@ Il vantaggio della soluzione proposta non è semplicemente "usare il cloud", ma 
 storage più veloce per i dati operativi, storage più economico per i dati storici e NAS locale come cache dei dataset
 più utilizzati in sede.
 
+
+#### 4.3.7 ROI e break-even
+
+Sulla base delle stime effettuate, il progetto richiede un investimento iniziale legato soprattutto a configurazione cloud, progettazione del database, migrazione dei dati, sviluppo o configurazione del portale, formazione e supporto specialistico. A fronte di questi costi, i benefici economici derivano dalla riduzione del costo medio di storage, dalla diminuzione delle duplicazioni e dal recupero di tempo operativo da parte dei reparti tecnici.
+
+Assumendo un investimento iniziale indicativo compreso tra **25.000 € e 35.000 €** e un risparmio annuo complessivo tra **12.000 € e 18.000 €**, il tempo di recupero dell’investimento può essere stimato tra **2 e 3 anni**. Il break-even non dipende solo dal risparmio sullo storage, ma anche dalla riduzione dei tempi di ricerca, condivisione e rilavorazione dei dati.
+
+| Voce | Stima indicativa |
+| :--- | :--- |
+| Investimento iniziale | 25.000-35.000 € |
+| Risparmio annuo atteso | 12.000-18.000 € |
+| Tempo di recupero stimato | 2-3 anni |
+| Benefici principali | minori costi di storage, minori duplicazioni, meno tempo perso nella ricerca e condivisione dei dati |
+
+Questa valutazione deve essere interpretata come una stima preliminare. Il ROI effettivo dipenderà dal volume reale dei dati migrati, dal provider cloud scelto, dalle policy di lifecycle applicate e dal grado di adozione del nuovo sistema da parte degli utenti.
+
 ### 4.4 Piano di cambiamento
 
 L'introduzione della nuova architettura informativa in DigiSky non rappresenta semplicemente un aggiornamento
@@ -1156,31 +1365,78 @@ URI dei file sul cloud.
 
 I fattori critici di successo identificati per DigiSky sono:
 
-- **CSF1 (Efficienza dei costi)**: Contenimento e ottimizzazione dei costi ricorrenti di archiviazione dei dataset di
-  grandi dimensioni.
-- **CSF2 (Tempestività operativa)**: Riduzione dei tempi morti nel passaggio dei dati tra le diverse fasi del processo
-  (acquisizione → elaborazione → consegna).
-- **CSF3 (Soddisfazione del cliente)**: Miglioramento dei tempi di consegna e dell'affidabilità degli output finali
-  forniti ai clienti.
+* **CSF1 - Efficienza dei costi**: contenimento e ottimizzazione dei costi ricorrenti di archiviazione dei dataset di grandi dimensioni.
+* **CSF2 - Tempestività operativa**: riduzione dei tempi morti nel passaggio dei dati tra le diverse fasi del processo, cioè acquisizione, elaborazione e consegna.
+* **CSF3 - Soddisfazione del cliente**: miglioramento dei tempi di consegna e dell'affidabilità degli output finali forniti ai clienti.
 
-#### 4.5.2 KPI di efficienza, servizio e qualità
+Il periodo di riferimento scelto per tutti i KPI è **un anno solare**.
 
-| KPI                                          | Tipo       | Definizione                                                                                                                                                                         | Unità di Misura | CSF di riferimento |
-| :------------------------------------------- | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------- | :----------------- |
-| Numero annuale di commesse soddisfatte       | Generale   |                                                                                                                                                                                     |                 |                    |
-| Costo unitario di archiviazione              | Efficienza | Costo annuo totale dello storage diviso per il volume totale di dati conservati.                                                                                                    | $/TB/Anno       | CSF1               |
-| Tempo medio di ricerca dati                  | Efficienza | Tempo medio necessario per individuare e recuperare documenti e dati operativi all'interno dell'archivio.                                                                           | Minuti          | CSF3               |
-| Tasso di duplicazione dei file memorizzati   | Qualità    | Percentuale di file duplicati, obsoleti o incoerenti presenti all'interno dei sistemi di storage.                                                                                   | %               | CSF1, CSF3         |
-| Tempo di condivisione dei dati               | Efficienza | Tempo medio richiesto per condividere i dati e i dataset tra i diversi reparti aziendali.                                                                                           | Minuti          | CSF2               |
-| Lead Time di disponibilità del dato grezzo   | Servizio   | Tempo che intercorre tra la fine delle operazioni di volo di acquisizione e l'effettiva disponibilità dei dati grezzi pronti sul cloud object storage per l'elaborazione geomatica. | Ore             | CSF2               |
-| Lead Time di generazione del report          | Servizio   | Tempo che intercorre tra la disponibililtà dei dati grezzi su cloud e la realizzazione di un report da consegnare al clinete.                                                       | Ore             | CSF2, CSF3         |
-| Tasso di errore/contestazione nelle consegne | Qualità    | Percentuale di consegne rifiutate o contestate dal cliente a causa di versioni non aggiornate del report o di file di output errati.                                                | %               | CSF3               |
+Gli indicatori definiti nell’AS IS vengono mantenuti anche nel TO BE, così da misurare l’effetto del cambiamento sugli stessi fattori critici di successo. In questo modo il confronto non riguarda KPI diversi, ma la variazione attesa degli stessi indicatori dopo l’introduzione della nuova architettura informativa.
 
----
+#### 4.5.2 Indicatori generali TO BE
+
+| Indicatore generale | Descrizione                                                                    | Unità di misura |
+| :------------------ | :----------------------------------------------------------------------------- | :-------------- |
+| **N_commesse**      | Numero di commesse gestite in un anno                                          | numero/anno     |
+| **N_missioni**      | Numero di missioni di volo eseguite in un anno                                 | numero/anno     |
+| **N_dataset**       | Numero di dataset prodotti e registrati nel sistema                            | numero/anno     |
+| **TB_gestiti**      | Volume complessivo di dati tecnici conservati                                  | TB              |
+| **N_report**        | Numero di report tecnici prodotti e consegnati                                 | numero/anno     |
+| **N_utenti_SI**     | Numero di utenti interni che utilizzano portale, database, storage e dashboard | numero          |
+
+Questi indicatori servono a dimensionare il processo e a rendere confrontabili le misurazioni AS IS e TO BE.
+
+#### 4.5.3 KPI di efficienza, servizio e qualità TO BE
+
+| CSF  | Tipo       | KPI                 | Definizione                                                                                | Formula                                         | Unità     |
+| :--- | :--------- | :------------------ | :----------------------------------------------------------------------------------------- | :---------------------------------------------- | :-------- |
+| CSF1 | Efficienza | **UC_storage**      | Costo unitario annuo di archiviazione dei dataset                                          | costo annuo storage / TB conservati             | €/TB/anno |
+| CSF1 | Efficienza | **T_dup**           | Percentuale di file duplicati, obsoleti o incoerenti                                       | file duplicati o obsoleti / file totali         | %         |
+| CSF2 | Servizio   | **LT_dato_grezzo**  | Tempo tra fine acquisizione e disponibilità del dato grezzo per la geomatica               | tempo da fine missione a disponibilità su cloud | ore       |
+| CSF2 | Servizio   | **LT_ricerca**      | Tempo medio necessario per trovare un dataset, report o documento collegato a una commessa | tempo totale ricerca / numero ricerche          | minuti    |
+| CSF2 | Servizio   | **LT_condivisione** | Tempo medio necessario per condividere dati tra reparti                                    | tempo totale condivisioni / numero condivisioni | ore       |
+| CSF3 | Servizio   | **LT_report**       | Tempo tra disponibilità dei dati grezzi e generazione del report finale                    | tempo da dati disponibili a report prodotto     | ore       |
+| CSF3 | Qualità    | **R_consegne**      | Percentuale di consegne contestate o da correggere                                         | consegne contestate / consegne totali           | %         |
+
+#### 4.5.4 Valori obiettivo TO BE
+
+I valori TO BE sono stimati considerando gli effetti attesi dell'introduzione del cloud object storage, del database PostgreSQL/PostGIS, del sistema documentale e delle dashboard di Business Intelligence.
+
+| KPI                 | Valore AS IS stimato | Valore TO BE atteso | Miglioramento atteso                                                  |
+| :------------------ | -------------------: | ------------------: | :-------------------------------------------------------------------- |
+| **UC_storage**      |        750 €/TB/anno |       450 €/TB/anno | Riduzione dei costi grazie a lifecycle e cold/archive storage         |
+| **T_dup**           |                  15% |                  5% | Riduzione delle copie grazie a database e tracciamento posizione file |
+| **LT_dato_grezzo**  |                8 ore |               2 ore | Upload diretto sul cloud e disponibilità più rapida per la geomatica  |
+| **LT_ricerca**      |            25 minuti |            5 minuti | Ricerca tramite metadati strutturati e portale                        |
+| **LT_condivisione** |                4 ore |               1 ora | Condivisione tramite cloud storage e workflow più chiari              |
+| **LT_report**       |               48 ore |              36 ore | Meno tempi morti, file più accessibili e versioni più controllate     |
+| **R_consegne**      |                   8% |                  3% | Minori errori di versione e maggiore controllo documentale            |
+
+#### 4.5.5 Confronto AS IS vs TO BE
+
+Il confronto tra AS IS e TO BE mostra che i benefici principali riguardano soprattutto la riduzione dei tempi operativi e il miglioramento della qualità informativa. La nuova architettura non elimina completamente i costi IT, ma li rende più controllabili e più collegati al valore generato dal processo.
+
+| Area             | KPI                       |         AS IS |         TO BE | Beneficio |
+| :--------------- | :------------------------ | ------------: | ------------: | :-------- |
+| Costi            | Costo unitario storage    | 750 €/TB/anno | 450 €/TB/anno | -40%      |
+| Qualità dati     | Duplicazione file         |           15% |            5% | -67%      |
+| Servizio         | Disponibilità dato grezzo |         8 ore |         2 ore | -75%      |
+| Servizio         | Ricerca dati              |     25 minuti |      5 minuti | -80%      |
+| Servizio         | Condivisione dati         |         4 ore |         1 ora | -75%      |
+| Servizio         | Generazione report        |        48 ore |        36 ore | -25%      |
+| Qualità consegna | Consegne contestate       |            8% |            3% | -62,5%    |
+
+
+Dal confronto emerge che il miglioramento più significativo riguarda la **ricerca dei dati**, la **disponibilità del dato grezzo** e la **condivisione tra reparti**. Questi sono infatti gli aspetti più penalizzati dalla situazione AS IS, basata su cartelle, copie locali, NAS, Google Drive e comunicazioni informali.
+
+La riduzione del costo unitario di archiviazione dipende invece dalla corretta applicazione delle policy di lifecycle. Se tutti i dati fossero mantenuti nello storage più costoso, il beneficio economico sarebbe inferiore. Il vantaggio nasce quindi dalla classificazione dei dataset e dallo spostamento dei dati storici verso classi di storage più economiche.
+
+Infine, la diminuzione delle consegne contestate deriva dalla maggiore tracciabilità delle versioni, dall'utilizzo del sistema documentale per i report e dal collegamento tra output finali, commesse e dataset nel database centralizzato.
+
 
 ## 5. Conclusione
 
-### 5.1 Benefici per Digisky
+### 5.1 Benefici per DigiSky
 
 Il nuovo approccio proposto dalla soluzione TO BE ha il potenziale di apportare a DigiSky rilevanti vantaggi competitivi
 e organizzativi.
@@ -1215,13 +1471,14 @@ i colli di bottiglia della vecchia infrastruttura: i caricamenti non sono più v
 sede fisica, limitata a circa 100 Mbit/s, bypassando così le storiche lentezze della WAN locale e velocizzando la
 disponibilità del dato grezzo.
 
-### 5.3 Valutazione finale
+### 5.3 Rischi e limiti
 
-In conclusione, il progetto TO BE risponde in modo completo e bilanciato a tutte le criticità emerse nell'analisi AS IS
-di DigiSky. L'architettura proposta coniuga la scalabilità e l'accessibilità del cloud con l'efficienza prestazionale
-della cache locale su NAS, mantenendo un focus rigoroso sul contenimento dei costi tramite il lifecycle management dello
-storage. L'investimento iniziale richiesto per la progettazione del database PostgreSQL/PostGIS, la configurazione del
-portale metadati, Nextcloud e Metabase, e la formazione del personale viene ampiamente compensato dai risparmi sui costi
-di storage e dal recupero di efficienza del personale tecnico. Il progetto rappresenta quindi una scelta strategica e ad
-alto rendimento, in grado di trasformare il sistema informativo di DigiSky in un reale abilitatore di crescita e
-innovazione tecnologica.
+Nonostante i benefici attesi, la soluzione TO BE presenta anche alcuni rischi e limiti che devono essere considerati. Il primo riguarda la maggiore dipendenza dalla connettività Internet: l'accesso al cloud object storage, al portale e alle dashboard richiede una connessione stabile, soprattutto per gli operatori fuori sede. Un secondo rischio è il possibile lock-in verso il provider cloud scelto, che potrebbe rendere più complessa o costosa una futura migrazione verso altre piattaforme. Inoltre, i costi cloud possono variare in base a download, egress, operazioni e recupero dei dati da classi archive, quindi devono essere monitorati con attenzione. Un ulteriore limite riguarda la fase di migrazione iniziale, che richiede tempo, classificazione dei dati, deduplicazione e controllo dell'integrità. Infine, il successo del progetto dipende anche dall'adozione da parte degli utenti: se i dipendenti continuassero a usare cartelle e procedure informali, i benefici del nuovo sistema sarebbero ridotti.
+
+### 5.4 Valutazione finale
+
+In conclusione, il progetto TO BE risponde in modo completo e bilanciato alle principali criticità emerse nell'analisi AS IS di DigiSky. L'architettura proposta coniuga la scalabilità e l'accessibilità del cloud con l'efficienza prestazionale della cache locale su NAS, mantenendo un focus sul contenimento dei costi tramite il lifecycle management dello storage.
+
+L'investimento iniziale richiesto per la progettazione del database PostgreSQL/PostGIS, la configurazione del portale metadati, l'introduzione di Nextcloud e Metabase e la formazione del personale viene compensato dai risparmi attesi sui costi di storage e dal recupero di efficienza del personale tecnico.
+
+Il progetto rappresenta quindi una scelta strategica per DigiSky, perché permette di trasformare il sistema informativo da semplice archivio digitale frammentato a infrastruttura integrata a supporto dei processi aziendali, della tracciabilità dei dati e delle decisioni direzionali.
